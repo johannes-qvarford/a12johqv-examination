@@ -1,0 +1,89 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>54</width>
+		<height>34</height>
+	    <background>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mm..bb......bb............mm............bb..........mm</row>
+		    <row>mm..bb......bb............mm............bb..........mm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bb..mm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bb..mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mmmmww..wwww..wwww..wwww......wwww..wwww..wwww..wwmmmm</row>
+		    <row>mmmmww..wwww..wwww..wwww......wwww..wwww..wwww..wwmmmm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm..bb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mm..bb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mm..........bb............mm............bb......bb..mm</row>
+		    <row>mm..........bb............mm............bb......bb..mm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+	    </background>
+	</entity>
+    <entity id="1">
+		<type>BCOBase</type>
+		<x>2</x>
+		<y>2</y>
+		<owner>player1</owner>
+	</entity>
+    <entity id="2">
+		<type>BCOBase</type>
+		<x>50</x>
+		<y>30</y>
+		<owner>player2</owner>
+	</entity>
+    <entity id="3">
+		<type>BCOPlayerTank</type>
+		<x>6</x>
+		<y>2</y>
+		<owner>player1</owner>
+		<color>00ff00</color>
+		<direction>up</direction>
+	</entity>
+    <entity id="4">
+		<type>BCOPlayerTank</type>
+		<x>46</x>
+		<y>30</y>
+		<owner>player2</owner>
+		<color>ff0000</color>
+		<direction>down</direction>
+	</entity>
+    <entity id="5">
+		<type>BCOTankGenerator</type>
+		<x>50</x>
+		<y>2</y>
+		<time-for-next>100</time-for-next>
+		<remaining-tanks>4</remaining-tanks>
+		<interval>200</interval>
+		<tank-type>0</tank-type>
+	</entity>
+    <entity id="6">
+		<type>BCOTankGenerator</type>
+		<x>2</x>
+		<y>30</y>
+		<time-for-next>200</time-for-next>
+		<remaining-tanks>4</remaining-tanks>
+		<interval>200</interval>
+		<tank-type>0</tank-type>
+	</entity>
+</gamestate>

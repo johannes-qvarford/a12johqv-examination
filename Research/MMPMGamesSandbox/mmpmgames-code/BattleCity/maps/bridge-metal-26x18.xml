@@ -1,0 +1,55 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>26</width>
+		<height>18</height>
+	    <background>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mm......bb..ww..bb......mm</row>
+		    <row>mm......bb..ww..bb......mm</row>
+		    <row>mm......bb......bb......mm</row>
+		    <row>mm......bb......bb......mm</row>
+		    <row>mmbbbb..bb..ww..bb..bbbbmm</row>
+		    <row>mmbbbb..bb..ww..bb..bbbbmm</row>
+		    <row>mm..bb......ww......bb..mm</row>
+		    <row>mm..bb......ww......bb..mm</row>
+		    <row>mmbbbb..bb..ww..bb..bbbbmm</row>
+		    <row>mmbbbb..bb..ww..bb..bbbbmm</row>
+		    <row>mm......bb......bb......mm</row>
+		    <row>mm......bb......bb......mm</row>
+		    <row>mm......bb..ww..bb......mm</row>
+		    <row>mm......bb..ww..bb......mm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+	    </background>
+	</entity>
+    <entity id="1">
+		<type>BCOBase</type>
+		<x>2</x>
+		<y>8</y>
+		<owner>player1</owner>
+	</entity>
+    <entity id="2">
+		<type>BCOBase</type>
+		<x>22</x>
+		<y>8</y>
+		<owner>player2</owner>
+	</entity>
+    <entity id="3">
+		<type>BCOPlayerTank</type>
+		<x>6</x>
+		<y>6</y>
+		<owner>player1</owner>
+		<color>00ff00</color>
+		<direction>up</direction>
+	</entity>
+    <entity id="4">
+		<type>BCOPlayerTank</type>
+		<x>18</x>
+		<y>10</y>
+		<owner>player2</owner>
+		<color>ff0000</color>
+		<direction>down</direction>
+	</entity>
+</gamestate>

@@ -1,0 +1,99 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>54</width>
+		<height>34</height>
+	    <background>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mm..bb......bb............mm............bb......bb..mm</row>
+		    <row>mm..bb......bb............mm............bb......bb..mm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mmmmww..wwww..wwww..wwww......wwww..wwww..wwww..wwmmmm</row>
+		    <row>mmmmww..wwww..wwww..wwww......wwww..wwww..wwww..wwmmmm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mm........................bb........................mm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mmbbbb..bbbbbb..mmmmmmmm..bb..mmmmmmmm..bbbbbb..bbbbmm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..........bb............bb............bb..........mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm..bbbbbb..bb..bbbbbbbb..ww..bbbbbbbb..bb..bbbbbb..mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mm......bb............mm..bb..mm............bb......mm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mmbbbb..bb..bb..bbbbbbbb..bb..bbbbbbbb..bb..bb..bbbbmm</row>
+		    <row>mm..bb......bb............mm............bb......bb..mm</row>
+		    <row>mm..bb......bb............mm............bb......bb..mm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+	    </background>
+	</entity>
+    <entity id="1">
+		<type>BCOBase</base>
+		<x>2</x>
+		<y>2</y>
+		<owner>player1</owner>
+	</entity>
+    <entity id="2">
+		<type>BCOBase</base>
+		<x>50</x>
+		<y>2</y>
+		<owner>player2</owner>
+	</entity>
+    <entity id="3">
+		<type>BCOBase</base>
+		<x>2</x>
+		<y>30</y>
+		<owner>player3</owner>
+	</entity>
+    <entity id="4">
+		<type>BCOBase</base>
+		<x>50</x>
+		<y>30</y>
+		<owner>player4</owner>
+	</entity>
+    <entity id="5">
+		<type>BCOPlayerTank</base>
+		<x>6</x>
+		<y>2</y>
+		<owner>player1</owner>
+		<color>00ff00</color>
+		<direction>right</direction>
+	</entity>
+    <entity id="6">
+		<type>BCOPlayerTank</base>
+		<x>46</x>
+		<y>2</y>
+		<owner>player2</owner>
+		<color>00ff00</color>
+		<direction>lrft</direction>
+	</entity>
+    <entity id="7">
+		<type>BCOPlayerTank</base>
+		<x>6</x>
+		<y>30</y>
+		<owner>player3</owner>
+		<color>00ff00</color>
+		<direction>right</direction>
+	</entity>
+    <entity id="8">
+		<type>BCOPlayerTank</base>
+		<x>46</x>
+		<y>30</y>
+		<owner>player4</owner>
+		<color>00ff00</color>
+		<direction>left</direction>
+	</entity>
+</gamestate>

@@ -1,0 +1,89 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>24</width>
+		<height>24</height>
+	    <background>
+		    <row>........................</row>
+		    <row>...w................w...</row>
+		    <row>...w................w...</row>
+		    <row>.www................www.</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>........................</row>
+		    <row>.www................www.</row>
+		    <row>...w................w...</row>
+		    <row>...w................w...</row>
+		    <row>........................</row>
+		</background>
+	</entity>
+    <entity id="player1">
+		<type>TPlayer</type>
+		<gold>10</gold>
+		<color>00ff00</color>
+		<owner>player1</owner>
+	</entity>
+    <entity id="player2">
+		<type>TPlayer</type>
+		<gold>10</gold>
+		<color>ff0000</color>
+		<owner>player2</owner>
+	</entity>
+    <entity id="player3">
+		<type>TPlayer</type>
+		<gold>10</gold>
+		<color>0000ff</color>
+		<owner>player3</owner>
+	</entity>
+    <entity id="player4">
+		<type>TPlayer</type>
+		<gold>10</gold>
+		<color>ffff00</color>
+		<owner>player4</owner>
+	</entity>
+    <entity id="b1">
+		<type>TBase</type>
+		<x>1</x>
+		<y>1</y>
+		<hitpoints>20</hitpoints>
+		<nextunit>50</nextunit>
+		<owner>player1</owner>
+	</entity>
+    <entity id="b2">
+		<type>TBase</type>
+		<x>22</x>
+		<y>22</y>
+		<hitpoints>20</hitpoints>
+		<nextunit>50</nextunit>
+		<owner>player2</owner>
+	</entity>
+    <entity id="b3">
+		<type>TBase</type>
+		<x>1</x>
+		<y>22</y>
+		<hitpoints>20</hitpoints>
+		<nextunit>50</nextunit>
+		<owner>player3</owner>
+	</entity>
+    <entity id="b4">
+		<type>TBase</type>
+		<x>22</x>
+		<y>1</y>
+		<hitpoints>20</hitpoints>
+		<nextunit>50</nextunit>
+		<owner>player4</owner>
+	</entity>
+</gamestate>

@@ -1,0 +1,61 @@
+<gamestate>
+	<entity id="0">
+		<type>map</type>
+		<width>34</width>
+		<height>24</height>
+	    <background>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mm......bb..ww..bb..ww..bb......mm</row>
+		    <row>mm......bb..ww..bb..ww..bb......mm</row>
+		    <row>mm......bb......bb..ww......bb..mm</row>
+		    <row>mm......bb......bb..ww......bb..mm</row>
+		    <row>mmbbbb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mmbbbb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mmbbbb..bb..ww..bb......bb......mm</row>
+		    <row>mmbbbb..bb..ww..bb......bb......mm</row>
+		    <row>mm......bb......bb..ww..bb..bbbbmm</row>
+		    <row>mm......bb......bb..ww..bb..bbbbmm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bb..mm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bbbbmm</row>
+		    <row>mm..bb..bb..ww..bb..ww..bb..bbbbmm</row>
+		    <row>mm..bb......ww..bb......bb......mm</row>
+		    <row>mm..bb......ww..bb......bb......mm</row>
+		    <row>mm......bb..ww..bb..ww..bb......mm</row>
+		    <row>mm......bb..ww..bb..ww..bb......mm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+		    <row>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</row>
+	    </background>
+	</entity>
+    <entity id="1">
+		<type>BCOBase</base>
+		<x>2</x>
+		<y>8</y>
+		<owner>player1</owner>
+	</entity>
+    <entity id="2">
+		<type>BCOBase</base>
+		<x>30</x>
+		<y>14</y>
+		<owner>player2</owner>
+	</entity>
+    <entity id="3">
+		<type>BCOPlayerTank</base>
+		<x>6</x>
+		<y>8</y>
+		<owner>player1</owner>
+		<color>00ff00</color>
+		<direction>up</direction>
+	</entity>
+    <entity id="4">
+		<type>BCOPlayerTank</base>
+		<x>26</x>
+		<y>14</y>
+		<owner>player2</owner>
+		<color>ff0000</color>
+		<direction>down</direction>
+	</entity>
+</gamestate>

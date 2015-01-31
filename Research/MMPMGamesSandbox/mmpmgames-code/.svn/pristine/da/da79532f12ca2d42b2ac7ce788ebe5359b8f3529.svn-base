@@ -1,0 +1,433 @@
+<Domain name="BattleCity" classname="BCDomain" package="bc.mmpm">
+  <!-- autor: David Llanso based in previous D2 work -->
+
+<ActionSet package="bc.mmpm.actions">
+  
+  <Action name="Fire">
+    <PreCondition>
+        NextShotDelay() == 0
+    </PreCondition>
+    <FailureCondition>
+        false
+    </FailureCondition>
+    <SuccessCondition>
+        true
+    </SuccessCondition>
+  </Action>
+  
+  <Action name="Move">
+    <Parameter name="failureTime" type="INTEGER"/>
+    <Parameter name="successTime" type="INTEGER"/>
+    <Parameter name="direction" type="DIRECTION"/>
+    <PreCondition>
+        NextMoveDelay() == 0
+    </PreCondition>
+    <OnFailureCondition>
+        failureTime = 32 + cycle
+    </OnFailureCondition>
+    <FailureCondition>
+      <!--cycle >= failureTime-->
+        Timer(failureTime)
+    </FailureCondition>
+    <OnSuccessCondition>
+        successTime = 8 + cycle
+    </OnSuccessCondition>
+    <SuccessCondition>
+      <!--cycle >= successTime-->
+        Timer(successTime)
+    </SuccessCondition>
+  </Action>
+  
+</ActionSet>
+
+  
+<SensorSet package="bc.mmpm.sensors">
+  
+  <Sensor name="DisappearedEntity" type="BOOLEAN">
+    <Parameter name="entity" type="ENTITY_ID"/>
+    <Code>
+        EntityExists(entity) == false
+    </Code>
+  </Sensor>
+  
+  <Sensor name="NewEntity" type="BOOLEAN">
+    <Parameter name="entity" type="ENTITY_ID"/>
+    <Code>
+        EntityExists(entity)
+    </Code>
+  </Sensor>
+  
+  <Sensor name="ChangedEntity" type="BOOLEAN">
+    <Parameter name="entity" type="ENTITY_ID"/>
+    <Parameter name="newAttribute" type="STRING"/>
+    <Code>
+        HasAttribute(entity, newAttribute)
+    </Code>
+  </Sensor>
+  
+  <Sensor name="NextMoveDelay" type="INTEGER">
+    <Code>
+        IntAttribute(Entity(Type("bc.mmpm.entities.BCOPlayerTank"), player), "next_move_delay")
+    </Code>
+  </Sensor>
+  
+  <Sensor name="NextShotDelay" type="INTEGER">
+    <Code>
+        IntAttribute(Entity(Type("bc.mmpm.entities.BCOPlayerTank"), player), "next_shot_delay")
+    </Code>
+  </Sensor>
+  
+  <Sensor name="ClosestEntityInLine" type="ENTITY_ID">
+    <Code language="java">
+      <!--It should return the closest entity in the direction of the tank. NULL in other case.-->
+      <![CDATA[
+		gatech.mmpm.TwoDMap grid = (gatech.mmpm.TwoDMap) gs.getMap();
+        bc.mmpm.entities.BCOPlayerTank entityfromGameState = null;
+
+        java.util.List<gatech.mmpm.Entity> entities = gs.getEntityByType(bc.mmpm.entities.BCOPlayerTank.class);
+
+		  for (gatech.mmpm.Entity entity : entities)
+			  if (entity.getowner()!=null &&
+                  entity.getowner().equals(player))
+				  entityfromGameState = (bc.mmpm.entities.BCOPlayerTank)entity;
+
+		  if(entityfromGameState!= null)
+		  {
+			  int cellCoor[] = grid.toCellCoords(entityfromGameState);
+			  int x = cellCoor[0];
+			  int y = cellCoor[1];
+			  int direction = entityfromGameState.getDirection();
+			  float coor[] = new float[3];
+			  int incx = 0, incy = 0;
+			  if (direction == 0) incy = -1;
+			  if (direction == 1) incx = 1;
+			  if (direction == 2) incy = 1;
+			  if (direction == 3) incx = -1;
+
+			  x += incx;
+			  y += incy;
+			  while(x>0 && x<grid.getSizeInDimension(0) &&
+					  y>0 && y<grid.getSizeInDimension(1)) {
+
+				  cellCoor[0] = x;
+				  cellCoor[1] = y;
+				  cellCoor[2] = 0;
+				  gatech.mmpm.PhysicalEntity mapEntity = grid.getCellLocation(cellCoor);
+				  if(mapEntity instanceof bc.mmpm.entities.BCOWall)
+					  return mapEntity;
+
+				  coor = grid.toCoords(cellCoor);
+				  for(gatech.mmpm.Entity e:entities) {
+					  if (e!=entityfromGameState && ((gatech.mmpm.PhysicalEntity)e).collision(entityfromGameState,coor)) {
+						  return entityfromGameState;
+					  }
+				  }
+
+				  x+=incx;
+				  y+=incy;
+			  } // while
+
+				  return null;
+		  }
+		  return null;
+      ]]>
+    </Code>
+  </Sensor>
+  
+  <Sensor name="EnemyInLine" type="BOOLEAN">
+    <Code>
+      <![CDATA[
+        "BCOPlayerTank" == (StringAttribute(ClosestEntityInLine(),"type")) &&
+        player != (StringAttribute(ClosestEntityInLine(),"owner"))
+      ]]>
+    </Code>
+  </Sensor>
+  
+  <Sensor name="PlayerBaseInLine" type="BOOLEAN">
+    <Code>
+      <![CDATA[
+        "BCOBase" == (StringAttribute(ClosestEntityInLine(),"type")) &&
+        player ==(StringAttribute(ClosestEntityInLine(),"owner"))
+      ]]>
+    </Code>
+  </Sensor>
+  
+  <Sensor name="EnemyBaseInLine" type="BOOLEAN">
+    <Code>
+      <![CDATA[
+        ("BCOBase" == StringAttribute(ClosestEntityInLine(),"type")) &&
+        (player != StringAttribute(ClosestEntityInLine(),"owner"))
+      ]]>
+    </Code>
+  </Sensor>
+  
+  <Sensor name="WallAhead" type="BOOLEAN">
+    <Code>
+      "BCOWall" == StringAttribute(ClosestEntityInLine(),"type")
+    </Code>
+  </Sensor>
+  
+  <Sensor name="BlockAhead" type="BOOLEAN">
+    <Code>
+      "BCOBlock" == StringAttribute(ClosestEntityInLine(),"type")
+    </Code>
+  </Sensor>
+  
+</SensorSet>
+
+<GoalSet package="bc.mmpm.goals">
+
+  <Goal name="DestroyEnemies">
+    <Code>
+      <!--If there are only tanks of the player, he has won.-->
+      NumberOfEntities(Type("bc.mmpm.entities.BCOPlayerTank"),player)==NumberOfEntities(Type("bc.mmpm.entities.BCOPlayerTank"))
+    </Code>
+  </Goal>
+
+  <Goal name="DestroyEnemyBase">
+    <Code>
+      <!--If there are only bases of the player, he has won.-->
+      NumberOfEntities(Type("bc.mmpm.entities.BCOBase"),player)==NumberOfEntities(Type("bc.mmpm.entities.BCOBase"))
+    </Code>
+  </Goal>
+
+  <Goal name="GetInLineWithEnemyBase">
+    <Code>
+      <![CDATA[
+      ("BCOBase" == StringAttribute(ClosestEntityInLine(),"type")) &&
+      (player != StringAttribute(ClosestEntityInLine(),"owner"))
+      ]]>
+    </Code>
+  </Goal>
+
+  <Goal name="GetInLineWithEnemy">
+    <Code>
+      <![CDATA[
+      ("BCOPlayerTank" == StringAttribute(ClosestEntityInLine(),"type")) &&
+      (player != StringAttribute(ClosestEntityInLine(),"owner"))
+      ]]>
+    </Code>
+  </Goal>
+
+  <WinGoal name="WinGoal">
+    <Code>
+      DestroyEnemies()||DestroyEnemyBase()
+    </Code>
+  </WinGoal>
+  
+</GoalSet>
+
+<EntitySet package="bc.mmpm.entities">
+
+<Entity>
+<Name>BCOTank</Name>
+	<Super>PhysicalEntity</Super>
+	<Features>
+		<Feature>
+			<Name>direction</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>color</Name>
+			<cardinality>single</cardinality>
+			<DataType>String</DataType>
+		</Feature>
+		<Feature>
+			<Name>next_shot_delay</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>next_move_delay</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>ai_type</Name>
+			<cardinality>single</cardinality>
+			<DataType>String</DataType>
+		</Feature>		
+            <Feature>
+                <Name>width</Name>
+                <DefaultValue>32</DefaultValue>
+            </Feature>
+            <Feature>
+                <Name>length</Name>
+                <DefaultValue>32</DefaultValue>
+            </Feature>   				
+	</Features>	
+</Entity>
+
+<Entity>
+<Name>BCOEnemyTank</Name>
+	<Super>BCOTank</Super>
+	<Features>
+	</Features>
+	<Actions>
+	</Actions>	
+</Entity>
+
+
+<Entity>
+<Name>BCOPlayerTank</Name>
+	<Super>BCOTank</Super>
+	<Features>
+	</Features>
+	<Actions>
+			<Action name="Fire"/>
+			<Action name="Move">
+				<Parameter name="direction" value="0"/>
+			</Action>
+			<Action name="Move">
+				<Parameter name="direction" value="1"/>
+			</Action>
+			<Action name="Move">
+				<Parameter name="direction" value="2"/>
+			</Action>
+			<Action name="Move">
+				<Parameter name="direction" value="3"/>
+			</Action>
+	</Actions>	
+</Entity>
+
+<Entity>
+<Name>BCOTankGenerator</Name>
+	<Super>PhysicalEntity</Super>
+	<Features>
+		<Feature>
+			<Name>time_for_next</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>		
+		<Feature>
+			<Name>remaining_tanks</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>interval</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>tank_type</Name>
+			<cardinality>single</cardinality>
+			<DataType>String</DataType>
+		</Feature>
+	</Features>
+</Entity>
+
+
+<Entity>
+<Name>BCOBullet</Name>
+	<Super>PhysicalEntity</Super>
+	<Features>
+		<Feature>
+			<Name>direction</Name>
+			<cardinality>single</cardinality>
+			<DataType>int</DataType>
+		</Feature>
+		<Feature>
+			<Name>tank</Name>
+			<cardinality>single</cardinality>
+			<DataType>String</DataType>
+		</Feature>
+           <Feature>
+                <Name>width</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>
+            <Feature>
+                <Name>length</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>   
+	</Features>
+	
+</Entity>
+
+<Entity>
+<Name>BCOBase</Name>
+	<Super>PhysicalEntity</Super>
+	<Features>
+            <Feature>
+                <Name>width</Name>
+                <DefaultValue>32</DefaultValue>
+            </Feature>
+            <Feature>
+                <Name>length</Name>
+                <DefaultValue>32</DefaultValue>
+            </Feature>   
+	</Features>
+</Entity>
+<Entity>
+        <Name>BCOWater</Name>
+		<Super>PhysicalEntity</Super>
+        <ShortName>w</ShortName>
+        <Features>
+            <Feature>
+                <Name>canBePassedFlag</Name>
+                <cardinality>single</cardinality>
+                <DataType>boolean</DataType>
+                <DefaultValue>true</DefaultValue>                
+            </Feature>
+           <Feature>
+                <Name>width</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>
+            <Feature>
+                <Name>length</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>   
+        </Features>
+    </Entity>
+
+    <Entity>
+        <Name>BCOBoundaryUnit</Name>
+		<Super>PhysicalEntity</Super>
+        <Features>
+            <Feature>
+                <Name>canBeDestroyedFlag</Name>
+                <cardinality>single</cardinality>
+                <DataType>boolean</DataType>
+                <DefaultValue>false</DefaultValue>                
+            </Feature>
+           <Feature>
+                <Name>width</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>
+            <Feature>
+                <Name>length</Name>
+                <DefaultValue>16</DefaultValue>
+            </Feature>   
+        </Features>
+    </Entity>
+
+    <Entity>
+        <Name>BCOWall</Name>
+		<Super>BCOBoundaryUnit</Super>
+        <ShortName>m</ShortName>
+        <Features>
+            <Feature>
+                <Name>canBeDestroyedFlag</Name>
+                <cardinality>single</cardinality>
+                <DataType>boolean</DataType>
+                <DefaultValue>false</DefaultValue>
+            </Feature>
+        </Features>
+    </Entity>
+
+    <Entity>
+        <Name>BCOBlock</Name>
+		<Super>BCOBoundaryUnit</Super>
+        <ShortName>b</ShortName>
+        <Features>
+            <Feature>
+                <Name>canBeDestroyedFlag</Name>
+                <cardinality>single</cardinality>
+                <DataType>boolean</DataType>
+                <DefaultValue>true</DefaultValue>
+            </Feature>
+        </Features>
+    </Entity>
+</EntitySet>    
+</Domain>
