@@ -1,21 +1,25 @@
 ﻿namespace a12johqv.Examination.Chess
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics;
+    using System.Collections.Immutable;
     using System.Globalization;
     using System.Linq;
 
     public struct Position : IEquatable<Position>
     {
-        private readonly SquareContent[] squaresContent;
+        private readonly IReadOnlyList<SquareContent> squaresContent; 
 
         private static readonly Position InitialField = new Position(InitialPositionUtility.InitialSquares);
 
-        private Position(SquareContent[] squaresContent)
+        private Position(IReadOnlyList<SquareContent> squaresContent)
         {
             this.squaresContent = squaresContent;
+        }
+
+        public IReadOnlyList<SquareContent> SquareContentsFromLowRowAndColumn
+        {
+            get { return this.squaresContent; }
         }
 
         public static Position Initial
@@ -25,7 +29,7 @@
 
         private SquareContent this[Square square]
         {
-            get { return this.squaresContent[(square.Row * 8) + square.Column]; }
+            get { return this.squaresContent[square.SquareIndex]; }
         }
 
         public static Position FromString(string serialized)
@@ -110,7 +114,7 @@
 
         private static Move GetRookMoveForCastling(Move move)
         {
-            bool kingMovingLeft = move.From.Column < move.To.Column;
+            bool kingMovingLeft = move.From.Column > move.To.Column;
             bool kingIsWhite = move.From.Row == 0;
             int rookRow = kingIsWhite ? 0 : 7;
             Square from = Square.FromRowAndColumn(rookRow, kingMovingLeft ? 0 : 7);
@@ -145,7 +149,7 @@
 
         private static Position FromSquareContents(IEnumerable<SquareContent> squares)
         {
-            return new Position(squares.ToArray());
+            return new Position(squares.ToImmutableList());
         }
 
         public bool Equals(Position position)

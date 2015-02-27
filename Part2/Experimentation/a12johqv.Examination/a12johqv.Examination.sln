@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Chess"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Chess.Tests", "a12johqv.Examination.Chess.Tests\a12johqv.Examination.Chess.Tests.csproj", "{3B994E72-FA10-42BA-9A7F-6EAFACBAC8E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Application", "a12johqv.Examination.Application\a12johqv.Examination.Application.csproj", "{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,16 @@ Global
 		{3B994E72-FA10-42BA-9A7F-6EAFACBAC8E5}.Release|ARM.ActiveCfg = Release|Any CPU
 		{3B994E72-FA10-42BA-9A7F-6EAFACBAC8E5}.Release|x64.ActiveCfg = Release|Any CPU
 		{3B994E72-FA10-42BA-9A7F-6EAFACBAC8E5}.Release|x86.ActiveCfg = Release|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Release|x64.ActiveCfg = Release|Any CPU
+		{D5FBEBBB-79BF-4DBD-BACC-FDF21508D4F8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
