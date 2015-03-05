@@ -21,7 +21,13 @@
 
         private Square aDifferentToSquare;
 
+        private PieceType aDifferentPromotion;
+
+        private string aDifferentMoveString;
+
         private Move aDifferentFromToMove;
+
+        private Move aDifferentFromStringMove;
 
         [SetUp]
         public void Setup()
@@ -33,9 +39,13 @@
             this.aMoveString = "c2e4";
             this.aFromStringMove = Move.FromString(this.aMoveString);
 
-            this.aDifferentFromSquare = Square.FromRowAndColumn(0, 0);
-            this.aDifferentToSquare = Square.FromRowAndColumn(3, 5);
-            this.aDifferentFromToMove = Move.FromSquareToSquare(this.aDifferentFromSquare, this.aDifferentToSquare);
+            this.aDifferentFromSquare = Square.FromRowAndColumn(6, 0);
+            this.aDifferentToSquare = Square.FromRowAndColumn(7, 0);
+            this.aDifferentPromotion = PieceType.Queen;
+            this.aDifferentFromToMove = Move.FromSquareToSquareWithPromotion(this.aDifferentFromSquare, this.aDifferentToSquare, this.aDifferentPromotion);
+
+            this.aDifferentMoveString = "a7a8Q";
+            this.aDifferentFromStringMove = Move.FromString(this.aDifferentMoveString);
         }
 
         [Test]
@@ -51,15 +61,21 @@
         }
 
         [Test]
-        public void FromStringReturnsMoveFromSquaresEncodedInString()
+        public void FromStringReturnsRegularMoveFromSquaresEncodedInStringWithoutPromotion()
         {
             Assert.AreEqual(this.aFromToMove, this.aFromStringMove);
         }
 
         [Test]
-        public void FromStringThrowsArgumentExceptionOnStringOfWrongLength()
+        public void FromStringReturnsPromotionMoveFromSquaresAndPromotionTypeEncodedInString()
         {
-            Assert.Throws<ArgumentException>(() => Move.FromString(this.aMoveString + "extra"));
+            Assert.AreEqual(this.aDifferentFromToMove, this.aDifferentFromStringMove);
+        }
+
+        [Test]
+        public void FromStringThrowsArgumentExceptionOnToLongString()
+        {
+            Assert.Throws<ArgumentException>(() => Move.FromString(this.aDifferentMoveString + "_"));
         }
 
         [Test]
@@ -69,9 +85,39 @@
         }
 
         [Test]
-        public void ToStringFromStringReturnsTheOriginalMove()
+        public void FromSquareToSquareWithPromotionReturnsMoveWithGivenFromSquare()
+        {
+            Assert.AreEqual(this.aDifferentFromSquare, this.aDifferentFromToMove.From);
+        }
+
+        [Test]
+        public void FromSquareToSquareWithPromotionReturnsMoveWithGivenToSquare()
+        {
+            Assert.AreEqual(this.aDifferentToSquare, this.aDifferentFromToMove.To);
+        }
+
+        [Test]
+        public void FromSquareToSquareWithPromotionIsPromotion()
+        {
+            Assert.IsTrue(this.aDifferentFromToMove.IsPromotion);
+        }
+
+        [Test]
+        public void FromSquareToSquareWithPromotionHasGivenPromotionType()
+        {
+            Assert.AreEqual(this.aDifferentPromotion, this.aDifferentFromToMove.PromotionType);
+        }
+
+        [Test]
+        public void ToStringFromStringReturnsTheOriginalMoveForRegularMove()
         {
             Assert.AreEqual(this.aFromToMove, Move.FromString(this.aFromToMove.ToString()));
+        }
+
+        [Test]
+        public void ToStringFromStringReturnsTheOriginalMoveForPromotionMove()
+        {
+            Assert.AreEqual(this.aDifferentFromToMove, Move.FromString(this.aDifferentFromToMove.ToString()));
         }
 
         [Test]

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="pgn.net">
+      <HintPath>..\packages\pgn.net.1.1.1.0\lib\net45\pgn.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\Level0.pgn" />
+    <None Include="Resources\Level1.pgn" />
+    <None Include="Resources\Level2.pgn" />
+    <None Include="Resources\Level3.pgn" />
+    <None Include="Resources\Level4.pgn" />
+    <None Include="Resources\Levels.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

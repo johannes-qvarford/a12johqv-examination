@@ -34,14 +34,34 @@
             get { return this.empty; }
         }
 
-        public PieceType? PieceTypeOnSquare
+        public PieceType PieceTypeOnSquare
         {
-            get { return this.IsEmpty ? (PieceType?)null : this.pieceType; }
+            get
+            {
+                if (this.IsEmpty)
+                {
+                    throw new InvalidOperationException("Cannot call PieceTypeOnSquare on empty square.");
+                }
+                else
+                {
+                    return this.pieceType;
+                }
+            }
         }
 
-        public Color? ColorOnSquare
+        public Color ColorOnSquare
         {
-            get { return this.IsEmpty ? (Color?)null : this.color; }
+            get
+            {
+                if (this.IsEmpty)
+                {
+                    throw new InvalidOperationException("Cannot call ColorOnSquare on empty square.");
+                }
+                else
+                {
+                    return this.color;
+                }
+            }
         }
 
         public static SquareContent FromPieceAndColor(PieceType pieceType, Color color)

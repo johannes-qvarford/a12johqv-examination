@@ -22,9 +22,7 @@
         {
             SquareContent squareContent = SquareContent.FromPieceAndColor(APiece, AColor);
 
-            Assert.IsTrue(squareContent.PieceTypeOnSquare.HasValue);
             Assert.AreEqual(squareContent.PieceTypeOnSquare, APiece);
-            Assert.IsTrue(squareContent.ColorOnSquare.HasValue);
             Assert.AreEqual(squareContent.ColorOnSquare, AColor);
         }
 
@@ -37,13 +35,19 @@
         }
 
         [Test]
-        public void GetEmptySquareReturnsEmptySquareWithNoPieceOrColor()
+        public void GetColorOnSquareThrowsInvalidOperationExceptionOnEmptySquare()
         {
             SquareContent squareContent = SquareContent.GetEmptySquare();
 
-            Assert.IsTrue(squareContent.IsEmpty);
-            Assert.IsFalse(squareContent.ColorOnSquare.HasValue);
-            Assert.IsFalse(squareContent.PieceTypeOnSquare.HasValue);
+            Assert.Throws<InvalidOperationException>(delegate { var v = squareContent.ColorOnSquare; });
+        }
+
+        [Test]
+        public void GetPieceTypeOnSquareThrowsInvalidOperationExceptionOnEmptySquare()
+        {
+            SquareContent squareContent = SquareContent.GetEmptySquare();
+
+            Assert.Throws<InvalidOperationException>(delegate { var v = squareContent.PieceTypeOnSquare; });
         }
 
         [Test]

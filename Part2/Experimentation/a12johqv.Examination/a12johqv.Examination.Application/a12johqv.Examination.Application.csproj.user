@@ -3,4 +3,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartWorkingDirectory>C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\a12johqv.Examination\a12johqv.Examination.Application\</StartWorkingDirectory>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartWorkingDirectory>C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\a12johqv.Examination\a12johqv.Examination.Application\</StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+  </PropertyGroup>
 </Project>

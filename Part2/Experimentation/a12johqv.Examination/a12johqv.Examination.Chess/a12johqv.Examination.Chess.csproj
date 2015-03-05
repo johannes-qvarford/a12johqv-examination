@@ -45,6 +45,7 @@
     <Compile Include="Color.cs" />
     <Compile Include="ColorUtility.cs" />
     <Compile Include="Move.cs" />
+    <Compile Include="MovementEvents.cs" />
     <Compile Include="PieceType.cs" />
     <Compile Include="PieceTypeUtility.cs" />
     <Compile Include="Position.cs" />

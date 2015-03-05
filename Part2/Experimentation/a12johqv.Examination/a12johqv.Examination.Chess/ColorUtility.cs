@@ -14,5 +14,10 @@
             string str = character.ToString(CultureInfo.InvariantCulture);
             return str == str.ToUpper() ? Color.White : Color.Black;
         }
+
+        public static Color OppositeColor(this Color color)
+        {
+            return color == Color.White ? Color.Black : Color.White;
+        }
     }
 }
