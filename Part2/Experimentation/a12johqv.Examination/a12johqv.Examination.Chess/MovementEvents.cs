@@ -110,7 +110,7 @@ namespace a12johqv.Examination.Chess
         }
 
         [Pure]
-        private MovementEvents WithKingHasMoved(Color color)
+        public MovementEvents WithKingHasMoved(Color color)
         {
             return color == Color.White ? this.Create(whiteKingHasMovedP: true) : this.Create(blackKingHasMovedP: true);
         }
@@ -131,7 +131,7 @@ namespace a12johqv.Examination.Chess
         }
 
         [Pure]
-        private MovementEvents WithNextMoveColorFlipped()
+        public MovementEvents WithNextMoveColorFlipped()
         {
             return this.Create(nextMoveColorP: this.nextMoveColor.OppositeColor());
         }

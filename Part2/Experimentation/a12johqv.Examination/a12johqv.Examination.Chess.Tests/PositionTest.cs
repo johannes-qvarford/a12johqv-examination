@@ -366,7 +366,7 @@
             string[] expectedMoveStrings = { "g7g6", "g7g8", "g7f7", "g7h7", "g7f6", "g7f8", "g7h6", "g7h8" };
 
             // Needed to make it blacks turn.
-            var movementEvents = MovementEvents.Initial.WithPerformedMoveByKing(Move.FromString("g1g2"));
+            var movementEvents = CastlingDisabled().WithPerformedMoveByKing(Move.FromString("g1g2"));
 
             AssertValidMovesForPosition(expectedMoveStrings, PositionString, movementEvents);
         }
@@ -385,7 +385,7 @@
                 + "........";
             string[] expectedMoveStrings = { "g2g1", "g2f2", "g2h2", "g2f1", "g2h1" };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
@@ -402,10 +402,7 @@
                 + "........";
             string[] expectedMoveStrings = { "g4g5", "g4f4", "g4h4", "g4f5", "g4h5" };
 
-            // Needed to make it blacks turn.
-            var movementEvents = MovementEvents.Initial.WithPerformedMoveByKing(Move.FromString("g1g2"));
-
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString, movementEvents);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled().WithPerformedMoveByKing(Move.FromString("g1g2")));
         }
 
         [Test]
@@ -422,7 +419,7 @@
                 + ".......K";
             string[] expectedMoveStrings = { "a2a3", "a2a4", "h1h2", "h1g1", "h1g2" };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
@@ -439,7 +436,7 @@
                 + ".......K";
             string[] expectedMoveStrings = { "a3a4", "h1h2", "h1g1", "h1g2" };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
@@ -456,7 +453,7 @@
                 + ".......K";
             string[] expectedMoveStrings = { "a3a4", "a3b4", "h1h2", "h1g1", "h1g2" };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
@@ -473,11 +470,11 @@
                 + "........";
             string[] expectedMoveStrings = { "a4a5", "a4b5", "a4b4", "a4b3" };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
-        public void ValidMovesForQueenIsMovementHorizontallyVerticallyAndDiagonally()
+        public void ValidMovesForQueenIsMovementHorizontallyVerticallyAndDiagonallyButIsBlockedByPiecesOnTheWay()
         {
             const string PositionString =
                   ".......k"
@@ -506,7 +503,7 @@
                     "b4c5", "b4d6", "b4c3", "b4d2"
                 };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
@@ -530,21 +527,21 @@
                     "b1a1", "b1a2", "b1b2", "b1c2", "b1c1"
                 };
 
-            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
         }
 
         [Test]
         public void ValidMovesForBishopIsMovementDiagonally()
         {
             const string PositionString =
-                  ".......k"
+                  "...k...."
                 + "........"
                 + "........"
                 + "....p..."
                 + "........"
                 + "..B....."
-                + ".K......"
-                + "........";
+                + "........"
+                + "...K....";
             string[] expectedMoveStrings =
                 {
                     // Diagonally up left
@@ -556,9 +553,211 @@
                     // Diagonally up right
                     "c3d4", "c3e5",
 
+                    // Diagonally down left
+                    "c3b2", "c3a1",
+
                     // King moves
-                    "b2a1", "b2a2", "b2a3", "b2b1", "b2b3", "b2c1", "b2c2"
+                    "d1c1", "d1c2", "d1d2", "d1e2", "d1e1"
                 };
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
+        }
+
+        [Test]
+        public void ValidMovesForRookIsMovementHorizontallyAndVerticallyButIsBlockedByPiecesOnTheWay()
+        {
+            const string PositionString =
+                  ".......k"
+                + "........"
+                + "........"
+                + "........"
+                + "..p....."
+                + "..R..p.."
+                + "........"
+                + "..K.....";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "c3c2", "c3c4", "c3b3", "c3a3", "c3d3", "c3e3", "c3f3",
+
+                    // King moves
+                    "c1b1", "c1b2", "c1c2", "c1d2", "c1d1"
+                };
+            
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingIncludeLeftCastlingIfThereAreNoPiecesInTheWayRookAndKingHasntMovedBeforeAndNoSquaresOnTheWayOfTheKingAreThreatened()
+        {
+            const string PositionString =
+                  "r...k..."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "R...K...";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "a1a2", "a1a3", "a1a4", "a1a5", "a1a6", "a1a7", "a1a8", "a1b1", "a1c1", "a1d1",
+
+                    // King moves
+                    "e1d1", "e1e2", "e1d2", "e1f1", "e1f2",
+
+                    // Castling
+                    "e1c1"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingDoesntIncludeLeftCastlingIfKingHasMovedBefore()
+        {
+            const string PositionString =
+                  "r...k..."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "R...K...";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "a1a2", "a1a3", "a1a4", "a1a5", "a1a6", "a1a7", "a1a8", "a1b1", "a1c1", "a1d1",
+
+                    // King moves
+                    "e1d1", "e1e2", "e1d2", "e1f1", "e1f2"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString, MovementEvents.Initial.WithKingHasMoved(Color.White));
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingDoesntIncludeLeftCastlingIfKingIsThreatened()
+        {
+            const string PositionString =
+                  "r...k..."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + ".....b.."
+                + "R...K...";
+            string[] expectedMoveStrings =
+                {
+                    // King moves
+                    "e1d1", "e1e2", "e1d2", "e1f1", "e1f2"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingDoesntIncludeLeftCastlingIfTargetSquareIsThreatened()
+        {
+            const string PositionString =
+                  "r..k...."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "bb......"
+                + "R...K...";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "a1a2", "a1b1", "a1c1", "a1d1",
+
+                    // King moves
+                    "e1d1", "e1e2", "e1d2", "e1f1", "e1f2"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingDoesntIncludeLeftCastlingIfSquareOnTheWayIsThreatened()
+        {
+            const string PositionString =
+                  "r...k..."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "..b....."
+                + "R...K...";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "a1a2", "a1a3", "a1a4", "a1a5", "a1a6", "a1a7", "a1a8", "a1b1", "a1c1", "a1d1",
+
+                    // King moves
+                    "e1d2", "e1e2", "e1f1", "e1f2"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingDoesntIncludeLeftCastlingIfThereIsAPieceOnB1()
+        {
+            const string PositionString =
+                              "....k..."
+                            + "........"
+                            + "........"
+                            + "........"
+                            + "........"
+                            + "........"
+                            + "........"
+                            + "RN..K...";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "a1a2", "a1a3", "a1a4", "a1a5", "a1a6", "a1a7", "a1a8",
+
+                    // Knight moves
+                    "b1a3", "b1c3", "b1d2",
+
+                    // King moves
+                    "e1d1", "e1d2", "e1e2", "e1f1", "e1f2",
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
+        }
+
+        [Test]
+        public void ValidMovesForWhiteKingIncludeRightCastlingIfThereAreNoPiecesInTheWayRookAndKingHasntMovedBeforeAndNoSquaresOnTheWayOfTheKingAreThreatened()
+        {
+            const string PositionString =
+                  "....k..."
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "....K..R";
+            string[] expectedMoveStrings =
+                {
+                    // Rook moves
+                    "h1h2", "h1h3", "h1h4", "h1h5", "h1h6", "h1h7", "h1h8", "h1g1", "h1f1",
+
+                    // King moves
+                    "e1d1", "e1e2", "e1d2", "e1f1", "e1f2",
+
+                    // Castling
+                    "e1g1"
+                };
+
+            AssertValidMovesForPosition(expectedMoveStrings, PositionString);
         }
 
         private static void AssertValidMovesForPosition(IEnumerable<string> moveStrings, string positionString = null, MovementEvents? movementEvents = null)
@@ -570,6 +769,11 @@
             ImmutableHashSet<Move> actualMoves = ImmutableHashSet.CreateRange(position.ValidMoves);
 
             Assert.AreEqual(moves, actualMoves);
+        }
+
+        private static MovementEvents CastlingDisabled()
+        {
+            return MovementEvents.Initial.WithKingHasMoved(Color.White).WithKingHasMoved(Color.Black);
         }
 
         #endregion

@@ -95,7 +95,6 @@ namespace a12johqv.Examination.Chess
             {
                 return string.Format("{0}{1}", this.from, this.to);
             }
-            
         }
 
         public static Move FromString(string serialized)
