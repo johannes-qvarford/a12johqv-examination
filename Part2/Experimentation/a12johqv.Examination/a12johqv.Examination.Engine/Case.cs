@@ -2,31 +2,34 @@
 {
     using a12johqv.Examination.Chess;
 
-    public struct Case
+    public struct Case<TProblem, TSolution>
     {
-        private readonly Position position;
+        private readonly TProblem problem;
 
-        private readonly Move move;
+        private readonly TSolution solution;
 
-        private Case(Position position, Move move)
+        public Case(TProblem problem, TSolution solution)
         {
-            this.position = position;
-            this.move = move;
+            this.problem = problem;
+            this.solution = solution;
         }
 
-        public Position Position
+        public TProblem Problem
         {
-            get { return this.position; }
+            get { return this.problem; }
         }
 
-        public Move Move
+        public TSolution Solution
         {
-            get { return this.move; }
+            get { return this.solution; }
         }
+    }
 
-        public static Case FromPositionAndMove(Position position, Move move)
+    public static class Case
+    {
+        public static Case<TProblem, TSolution> FromProblemAndSolution<TProblem, TSolution>(TProblem problem, TSolution solution)
         {
-            return new Case(position, move);
+            return new Case<TProblem, TSolution>(problem, solution);
         }
     }
 }

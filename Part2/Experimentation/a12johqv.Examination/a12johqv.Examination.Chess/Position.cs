@@ -24,14 +24,25 @@
 
         #region Properties And Indexers
 
+        public Result CurrentResult
+        {
+            get
+            {
+                return this.ValidMoves.Any() ? Result.Undecided :
+                    this.IsOwnKingIsThreatened() ? 
+                        (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
+                        Result.Draw;
+            }
+        }
+
+        public Color CurrentColor
+        {
+            get { return this.movementEvents.NextMoveColor; }
+        }
+
         public IEnumerable<SquareContent> SquareContentsFromLowRowAndColumn
         {
             get { return this.squaresContent; }
-        }
-
-        public MovementEvents MovementEvents
-        {
-            get { return this.movementEvents; }
         }
 
         public IEnumerable<Move> ValidMoves
@@ -44,7 +55,9 @@
             get { return InitialField; }
         }
 
-        private SquareContent this[Square square]
+        public MovementEvents MovementEvents { get { return this.movementEvents; } }
+
+        public SquareContent this[Square square]
         {
             get { return this.squaresContent.Skip(square.SquareIndex).First(); }
         }
@@ -88,6 +101,7 @@
         }
 
         #endregion
+
 
         #region By Move
 
@@ -217,7 +231,7 @@
 
         #region Valid Moves
 
-        public IEnumerable<Move> GetValidMoves(bool ignoreThreatenedKing)
+        private IEnumerable<Move> GetValidMoves(bool ignoreThreatenedKing)
         {
             var theThis = this;
             var moves = Enumerable.Range(start: 0, count: 8 * 8)
@@ -252,7 +266,7 @@
             return this.ByMove(move).OpponentKingIsThreatened();
         }
 
-        private bool OwnKingIsThreatened()
+        private bool IsOwnKingIsThreatened()
         {
             return this.WithMovementEvents(this.movementEvents.WithNextMoveColorFlipped()).OpponentKingIsThreatened();
         }
@@ -268,7 +282,7 @@
         {
             Position theThis = this;
             return this.squaresContent.Any(content => 
-                !content.IsEmpty && content.ColorOnSquare == theThis.MovementEvents.NextMoveColor && content.PieceTypeOnSquare == PieceType.King);
+                !content.IsEmpty && content.ColorOnSquare == theThis.movementEvents.NextMoveColor && content.PieceTypeOnSquare == PieceType.King);
         }
 
         private IEnumerable<Move> GetValidMovesForSquare(Square square, bool ignoreThreatenedKing)
@@ -458,7 +472,7 @@
             
             // These moves are only valid if king can move one step to the right or left without being captured.
             // We don't know that right now, so we may filter away these later.
-            bool kingCanMoveForCastling = !this.HasCurrentKingMoved() && (ignoreThreatenedKing || !this.OwnKingIsThreatened());
+            bool kingCanMoveForCastling = !this.HasCurrentKingMoved() && (ignoreThreatenedKing || !this.IsOwnKingIsThreatened());
             
             bool canDoLeftCastling = kingCanMoveForCastling
                 && !this.HasCurrentRookMoved(left: true)

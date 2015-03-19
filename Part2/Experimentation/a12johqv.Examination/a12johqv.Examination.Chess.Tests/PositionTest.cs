@@ -777,5 +777,91 @@
         }
 
         #endregion
+
+        #region Current Result
+
+        public void CurrentResultIsWhiteVictoryIfItsBlacksTurnToMoveItCannotMoveAndItIsInCheck()
+        {
+            const string PositionString = 
+              "....k..R"
+            + ".......R"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "....K...";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.WhiteVictory, Color.Black);
+        }
+
+        public void CurrentResultIsDrawIfItsBlacksTurnToMoveItCannotMoveAndItIsNotInCheck()
+        {
+            const string PositionString =
+              "k.K....."
+            + ".......R"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.Black);
+        }
+
+        public void CurrentResultIsBlackVictoryIfItsWhitesTurnToMoveItCannotMoveAndItIsInCheck()
+        {
+            const string PositionString =
+              "....K..r"
+            + ".......r"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "....k...";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.BlackVictory, Color.White);
+        }
+
+        public void CurrentResultIsDrawIfItsWhitesTurnToMoveItCannotMoveAndItIsNotInCheck()
+        {
+            const string PositionString =
+              "K.k....."
+            + ".......r"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.White);
+        }
+
+        public void CurrentResultIsUndecidedIfItsWhitesTurnAndItCanMoveDespiteBeingChecked()
+        {
+            const string PositionString =
+              "K......r"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + ".......k";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Undecided, Color.White);
+        }
+
+        private static void ExpectResultFromPositionAtColorsTurn(string positionString, Result expectedResult, Color color)
+        {
+            var movementEvents = color == Color.White ? MovementEvents.Initial : MovementEvents.Initial.WithNextMoveColorFlipped();
+            var position = Position.FromString(positionString, movementEvents);
+
+            Assert.AreEqual(expectedResult, position.CurrentResult);
+        }
+        #endregion
     }
 }

@@ -1,64 +1,36 @@
 ﻿namespace a12johqv.Examination.Application
 {
     using System;
-    using System.IO;
-    using System.Linq;
 
-    using ilf.pgn;
-    using ilf.pgn.Data;
-    
-    using File = System.IO.File;
+    using a12johqv.Examination.Chess;
+    using a12johqv.Examination.Engine;
 
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            PgnReader reader = new PgnReader();
-            Database database = reader.ReadFromFile("ChessMosaic2011");
-            // WritePlayers(database);
-            WritePlayersSortedByGameCount(database);
-        }
+            var loader = new CasebaseLoader();
+            var first = new ChessCbrEngine(loader.LoadCasebase(0));
+            var second = new ChessCbrEngine(loader.LoadCasebase(1));
 
-        private static void WritePlayers(Database database)
-        {
-            var players = database.Games.SelectMany(game => new[] { game.WhitePlayer, game.BlackPlayer }).Distinct();
 
-            using (var outStream = OpenGeneratedResourceForWriting("Players"))
+            Position position = Position.Initial;
+            var current = first;
+            var other = second;
+            while (position.CurrentResult == Result.Undecided)
             {
-                var outWriter = new StreamWriter(outStream);
-                foreach (var player in players)
-                {
-                    outWriter.WriteLine(player);
-                }
+                var move = current.DecideMove(position);
+                position.ByMove(move);
+                Swap(ref current, ref other);
             }
+            int a = 0;
         }
 
-        private static void WritePlayersSortedByGameCount(Database database)
+        private static void Swap<T>(ref T a, ref T b)
         {
-            var playersGameCount = database.Games
-                .SelectMany(game => new[] { game.WhitePlayer, game.BlackPlayer })
-                .GroupBy(player => player)
-                .Select(group => new { Player = group.Key, Count = group.Count() })
-                .OrderBy(pair => -pair.Count);
-
-            using (var outStream = OpenGeneratedResourceForWriting("PlayersGameCount"))
-            {
-                var outWriter = new StreamWriter(outStream);
-                foreach (var player in playersGameCount)
-                {
-                    outWriter.WriteLine("{0}:{1}", player.Player, player.Count);
-                }
-            }
-        }
-
-        private static FileStream OpenResourceForReading(string filename)
-        {
-            return File.OpenRead(string.Format("Resources/{0}", filename));
-        }
-
-        private static FileStream OpenGeneratedResourceForWriting(string filename)
-        {
-            return File.OpenWrite(string.Format("Resources/Generated/{0}_{1}", filename, DateTime.Now.Ticks));
+            var temp = a;
+            a = b;
+            b = temp;
         }
     }
 }
