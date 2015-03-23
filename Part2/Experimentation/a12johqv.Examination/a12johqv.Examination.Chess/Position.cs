@@ -28,8 +28,8 @@
         {
             get
             {
-                return this.ValidMoves.Any() ? Result.Undecided :
-                    this.IsOwnKingIsThreatened() ? 
+                return this.ValidMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
+                    this.IsOwnKingIsThreatened() ?
                         (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
                         Result.Draw;
             }
@@ -59,9 +59,8 @@
 
         public SquareContent this[Square square]
         {
-            get { return this.squaresContent.Skip(square.SquareIndex).First(); }
+            get { return this.squaresContent[square.SquareIndex]; }
         }
-
         #endregion
 
         #region Factory Methods
@@ -117,7 +116,8 @@
             }
             else
             {
-                return this.WithMovementEventsBasedOnMove(move).ByPlainMovement(move);
+                var position = this.WithMovementEventsBasedOnMove(move).ByPlainMovement(move);
+                return position;
             }
         }
 
@@ -218,8 +218,9 @@
             var newSquareContent = this.squaresContent
                 .Select((content, i) => move.To.SquareIndex == i ? contentForMovingPiece : content)
                 .Select((content, i) => move.From.SquareIndex == i ? SquareContent.GetEmptySquare() : content);
-
-            return FromSquareContents(newSquareContent, this.movementEvents);
+            var movementEventsWithPossiblePawnMove = this[move.From].PieceTypeOnSquare == PieceType.Pawn ? 
+                this.movementEvents.WithMoveByPawn() : this.movementEvents.WithMoveByNonPawn();
+            return FromSquareContents(newSquareContent, movementEventsWithPossiblePawnMove.WithVisitedPosition(this));
         }
 
         private Position WithMovementEvents(MovementEvents movementEvents)
@@ -275,14 +276,10 @@
         {
             var validMoves = this.GetValidMoves(ignoreThreatenedKing: true);
             Position theThis = this;
-            return validMoves.Any(move => !theThis.ByMove(move).HasKing());
-        }
-
-        private bool HasKing()
-        {
-            Position theThis = this;
-            return this.squaresContent.Any(content => 
-                !content.IsEmpty && content.ColorOnSquare == theThis.movementEvents.NextMoveColor && content.PieceTypeOnSquare == PieceType.King);
+            var oppositeColor = this.CurrentColor.OppositeColor();
+            return validMoves
+                .Select(move => theThis[move.To])
+                .Any(content => !content.IsEmpty && content.ColorOnSquare == oppositeColor && content.PieceTypeOnSquare == PieceType.King);
         }
 
         private IEnumerable<Move> GetValidMovesForSquare(Square square, bool ignoreThreatenedKing)
@@ -355,26 +352,18 @@
                 }
                 if (forwardValid)
                 {
-                    if (forwardRow == promotionRow)
-                    {
-                        var promotion = Enum.GetValues(typeof(PieceType))
-                            .Cast<PieceType>()
-                            .Select(type => Move.FromSquareToSquareWithPromotion(square, forward, type));
-                        foreach (var move in promotion)
-                        {
-                            validMoves.Add(move);
-                        }
-                    }
-                    else
-                    {
-                        validMoves.Add(Move.FromSquareToSquare(square, forward));
-                    }
+                    validMoves.Add(Move.FromSquareToSquare(square, forward));
                 }
                 if (longForwardValid)
                 {
                     validMoves.Add(Move.FromSquareToSquare(square, longForward.Value));
                 }
-                return validMoves;
+
+                // Transform moves that land on the first or final rows to promotion moves.
+                return validMoves.SelectMany(move => move.To.Row == 0 || move.To.Row == 7 ? 
+                    new[] { PieceType.Rook, PieceType.Knight, PieceType.Bishop, PieceType.Queen }
+                        .Select(pt => Move.FromSquareToSquareWithPromotion(move.From, move.To, pt)) :
+                    new[] { move });
             }
         }
 

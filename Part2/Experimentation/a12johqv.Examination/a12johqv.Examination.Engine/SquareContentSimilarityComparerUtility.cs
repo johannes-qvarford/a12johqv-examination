@@ -10,7 +10,7 @@
             {
                 return 1.0;
             }
-            else if (a.IsEmpty && !b.IsEmpty)
+            else if (a.IsEmpty || b.IsEmpty)
             {
                 return 0.5;
             }

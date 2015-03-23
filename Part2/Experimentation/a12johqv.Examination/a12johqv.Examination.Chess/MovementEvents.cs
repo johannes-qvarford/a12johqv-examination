@@ -1,7 +1,11 @@
 namespace a12johqv.Examination.Chess
 {
     using System;
+    using System.Collections.Generic;
+    using System.Collections.Immutable;
+    using System.Diagnostics;
     using System.Diagnostics.Contracts;
+    using System.Linq;
 
     public struct MovementEvents
     {
@@ -21,7 +25,14 @@ namespace a12johqv.Examination.Chess
 
         private readonly bool rightBlackRookHasMoved;
 
-        private static readonly MovementEvents InitialMovementEventsField = new MovementEvents();
+        private readonly int movesSinceLastPawnMove;
+
+        // Note: is not immutable for performance reasons.
+        private readonly ImmutableDictionary<Position, int> previouslyVisitedPositions;
+
+        private static readonly MovementEvents InitialMovementEventsField = 
+            new MovementEvents()
+            .Create(previouslyVisitedPositionsP: ImmutableDictionary.Create<Position, int>());
 
         private MovementEvents(
             Color nextMoveColor,
@@ -31,7 +42,9 @@ namespace a12johqv.Examination.Chess
             bool leftWhiteRookHasMoved,
             bool rightWhiteRookHasMoved,
             bool leftBlackRookHasMoved,
-            bool rightBlackRookHasMoved)
+            bool rightBlackRookHasMoved,
+            int movesSinceLastPawnMove,
+            ImmutableDictionary<Position, int> previouslyVisitedPositions)
         {
             this.nextMoveColor = nextMoveColor;
             this.lastMove = lastMove;
@@ -41,6 +54,8 @@ namespace a12johqv.Examination.Chess
             this.rightWhiteRookHasMoved = rightWhiteRookHasMoved;
             this.leftBlackRookHasMoved = leftBlackRookHasMoved;
             this.rightBlackRookHasMoved = rightBlackRookHasMoved;
+            this.movesSinceLastPawnMove = movesSinceLastPawnMove;
+            this.previouslyVisitedPositions = previouslyVisitedPositions;
         }
 
         public static MovementEvents Initial
@@ -84,6 +99,38 @@ namespace a12johqv.Examination.Chess
                    color == Color.White && !left ? this.rightWhiteRookHasMoved :
                    color == Color.Black && left ? this.leftBlackRookHasMoved :
                    this.rightBlackRookHasMoved;
+        }
+
+        public bool IsGameOver(Position currentPosition)
+        {
+            // Need to include currentPosition here because the position can never be included in its movementsEvents,
+            // while movementEvents is included in the position if both are immutable.
+            // This means that to figure out if it's game over, we need to provide the latest position.
+            var withVisitedPosition = this.WithVisitedPosition(currentPosition);
+            return this.movesSinceLastPawnMove >= 50 || withVisitedPosition.previouslyVisitedPositions.Values.Contains(3);
+        }
+
+        public MovementEvents WithVisitedPosition(Position position)
+        {
+            if (this.previouslyVisitedPositions.ContainsKey(position))
+            {
+                var previousCount = this.previouslyVisitedPositions[position];
+                return this.Create(previouslyVisitedPositionsP: this.previouslyVisitedPositions.SetItem(position, previousCount + 1));
+            }
+            else
+            {
+                return this.Create(previouslyVisitedPositionsP: this.previouslyVisitedPositions.Add(position, 1));
+            }
+        }
+
+        public MovementEvents WithMoveByPawn()
+        {
+            return this.Create(movesSinceLastPawnMoveP: 0);
+        }
+
+        public MovementEvents WithMoveByNonPawn()
+        {
+            return this.Create(movesSinceLastPawnMoveP: this.movesSinceLastPawnMove + 1);
         }
 
         public MovementEvents WithPerformedMoveByKing(Move move)
@@ -145,7 +192,9 @@ namespace a12johqv.Examination.Chess
             bool? leftWhiteRookHasMovedP = null,
             bool? rightWhiteRookHasMovedP = null,
             bool? leftBlackRookHasMovedP = null,
-            bool? rightBlackRookHasMovedP = null)
+            bool? rightBlackRookHasMovedP = null,
+            int? movesSinceLastPawnMoveP = null,
+            ImmutableDictionary<Position, int> previouslyVisitedPositionsP = null)
         {
             return new MovementEvents(
                 nextMoveColor: nextMoveColorP.HasValue ? nextMoveColorP.Value : this.nextMoveColor,
@@ -155,7 +204,9 @@ namespace a12johqv.Examination.Chess
                 leftWhiteRookHasMoved: leftWhiteRookHasMovedP.HasValue ? leftWhiteRookHasMovedP.Value : this.leftWhiteRookHasMoved,
                 rightWhiteRookHasMoved: rightWhiteRookHasMovedP.HasValue ? rightWhiteRookHasMovedP.Value : this.rightWhiteRookHasMoved,
                 leftBlackRookHasMoved: leftBlackRookHasMovedP.HasValue ? leftBlackRookHasMovedP.Value : this.leftBlackRookHasMoved,
-                rightBlackRookHasMoved: rightBlackRookHasMovedP.HasValue ? rightBlackRookHasMovedP.Value : this.rightBlackRookHasMoved);
+                rightBlackRookHasMoved: rightBlackRookHasMovedP.HasValue ? rightBlackRookHasMovedP.Value : this.rightBlackRookHasMoved,
+                movesSinceLastPawnMove: movesSinceLastPawnMoveP.HasValue ? movesSinceLastPawnMoveP.Value : this.movesSinceLastPawnMove,
+                previouslyVisitedPositions: previouslyVisitedPositionsP ?? this.previouslyVisitedPositions);
         }
     }
 }

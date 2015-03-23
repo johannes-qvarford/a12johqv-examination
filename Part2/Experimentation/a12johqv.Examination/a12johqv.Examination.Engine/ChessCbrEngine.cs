@@ -1,5 +1,6 @@
 ﻿namespace a12johqv.Examination.Engine
 {
+    using System;
     using System.Linq;
 
     using a12johqv.Examination.Chess;
@@ -23,9 +24,9 @@
             this.casebase = casebase;
         }
 
-        public Move DecideMove(Position position)
+        public Move DecideMove(Position position, Random random)
         {
-            var mostSimilarCase = this.casebase.FindMostSimilarCase(position, PositionSimilarityComparer);
+            var mostSimilarCase = this.casebase.FindMostSimilarCase(position, PositionSimilarityComparer, random);
             var validMoves = position.ValidMoves.ToArray();
             var adapter = MoveAdapter.CreateAdapterToAdaptToMostSimilarMoveInList(validMoves, GetMoveSimilarityComparer(position));
             return adapter(mostSimilarCase.Solution);
@@ -41,8 +42,8 @@
             SimilarityComparer<Move> squareContentComparer = MoveSim.CreateSimilarityBySquareContentOnFromSquareSimilarity(
                 actualPosition,
                 SquareContentSim.SimilarityByEqualColorThenByEqualPieceType);
-            SimilarityComparer<Move> distanceComparer = MoveSim.SimilarityByManhattanDistanceOfFromAndToSquares;
-            return (a, b) => squareContentComparer(a, b) + (28 - distanceComparer(a, b));
+            SimilarityComparer<Move> distanceComparer = MoveSim.SimilarityByInverseManhattanDistanceOfFromAndToSquares;
+            return (a, b) => (squareContentComparer(a, b) + distanceComparer(a, b)) / 2.0;
         }
     }
 }

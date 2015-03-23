@@ -31,7 +31,7 @@
             }
             else
             {
-                return PgnDatabaseCasebaseConversionUtility.ConvertToCasebaseForPlayer(
+                return PgnDatabaseConversionUtility.ConvertToCasebaseForPlayer(
                     pgnDatabase: this.LoadDatabase(index),
                     playerName: this.GetName(index));
             }

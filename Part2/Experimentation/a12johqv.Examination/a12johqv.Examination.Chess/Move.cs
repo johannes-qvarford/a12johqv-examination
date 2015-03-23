@@ -60,7 +60,8 @@ namespace a12johqv.Examination.Chess
         public bool Equals(Move move)
         {
             return this.from.Equals(move.from)
-                && this.to.Equals(move.to);
+                && this.to.Equals(move.to)
+                && this.promotionType.Equals(move.promotionType);
         }
 
         public override bool Equals(object obj)

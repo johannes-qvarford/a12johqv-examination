@@ -322,6 +322,23 @@
         #region Valid Moves
 
         [Test]
+        public void PieceCaptureBxc4IsAValidMoveForBlack()
+        {
+            const string PositionString = 
+                  "r..q.rk."
+                + "p..b..bp"
+                + "..n.p.pn"
+                + ".p.p.p.."
+                + "..PP.P.."
+                + "..P..NPP"
+                + "P.N.P.B."
+                + "R.B.QR.K";
+            var position = Position.FromString(PositionString, MovementEvents.Initial.WithNextMoveColorFlipped().WithKingHasMoved(Color.Black));
+
+            Assert.Contains(Move.FromString("b5c4"), position.ValidMoves.ToArray());
+        }
+
+        [Test]
         public void ValidMovesForInitialPositionIsAllShortAndLongWhitePawnMovesAndTheKnightsForwardMoves()
         {
             string[] expectedMoveStrings = {
@@ -471,6 +488,50 @@
             string[] expectedMoveStrings = { "a4a5", "a4b5", "a4b4", "a4b3" };
 
             AssertValidMovesForPosition(expectedMoveStrings, PositionString, CastlingDisabled());
+        }
+
+        [Test]
+        public void ValidMovesForWhitePawnThatCanPromoteAndKingIncludesKingMovesAndPromotionMoves()
+        {
+            const string PositionString =
+                  ".n......"
+                + "P......k"
+                + "........"
+                + "........"
+                + "K......."
+                + "........"
+                + "........"
+                + "........";
+            string[] expectedMoveString = 
+            { 
+                "a4a3", "a4a5", "a4b3", "a4b4", "a4b5",
+                "a7a8R", "a7a8N", "a7a8B", "a7a8Q",
+                "a7b8R", "a7b8N", "a7b8B", "a7b8Q"
+            };
+
+            AssertValidMovesForPosition(expectedMoveString, PositionString, CastlingDisabled());
+        }
+
+        [Test]
+        public void ValidMovesForBlackPawnThatCanPromoteAndKingIncludesKingMovesAndPromotionMoves()
+        {
+            const string PositionString =
+                  ".......K"
+                + "........"
+                + "........"
+                + "........"
+                + "k......."
+                + "........"
+                + "p......."
+                + ".B......";
+            string[] expectedMoveString = 
+            { 
+                "a4a3", "a4a5", "a4b3", "a4b4", "a4b5",
+                "a2a1R", "a2a1N", "a2a1B", "a2a1Q",
+                "a2b1R", "a2b1N", "a2b1B", "a2b1Q"
+            };
+
+            AssertValidMovesForPosition(expectedMoveString, PositionString, MovementEvents.Initial.WithNextMoveColorFlipped());
         }
 
         [Test]
@@ -780,6 +841,7 @@
 
         #region Current Result
 
+        [Test]
         public void CurrentResultIsWhiteVictoryIfItsBlacksTurnToMoveItCannotMoveAndItIsInCheck()
         {
             const string PositionString = 
@@ -795,6 +857,7 @@
             ExpectResultFromPositionAtColorsTurn(PositionString, Result.WhiteVictory, Color.Black);
         }
 
+        [Test]
         public void CurrentResultIsDrawIfItsBlacksTurnToMoveItCannotMoveAndItIsNotInCheck()
         {
             const string PositionString =
@@ -810,6 +873,7 @@
             ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.Black);
         }
 
+        [Test]
         public void CurrentResultIsBlackVictoryIfItsWhitesTurnToMoveItCannotMoveAndItIsInCheck()
         {
             const string PositionString =
@@ -825,6 +889,7 @@
             ExpectResultFromPositionAtColorsTurn(PositionString, Result.BlackVictory, Color.White);
         }
 
+        [Test]
         public void CurrentResultIsDrawIfItsWhitesTurnToMoveItCannotMoveAndItIsNotInCheck()
         {
             const string PositionString =
@@ -840,6 +905,7 @@
             ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.White);
         }
 
+        [Test]
         public void CurrentResultIsUndecidedIfItsWhitesTurnAndItCanMoveDespiteBeingChecked()
         {
             const string PositionString =
@@ -855,10 +921,74 @@
             ExpectResultFromPositionAtColorsTurn(PositionString, Result.Undecided, Color.White);
         }
 
-        private static void ExpectResultFromPositionAtColorsTurn(string positionString, Result expectedResult, Color color)
+        [Test]
+        public void CurrentResultIsDrawIfThereHasBeen50MovesSinceTheLastPawnMoved()
         {
-            var movementEvents = color == Color.White ? MovementEvents.Initial : MovementEvents.Initial.WithNextMoveColorFlipped();
-            var position = Position.FromString(positionString, movementEvents);
+            const string PositionString =
+              "K......."
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + ".......k";
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.White, WithNonPawnMoves(MovementEvents.Initial, 50));
+        }
+
+        [Test]
+        public void CurrentResultIsUndecidedIfThereHaveBeen50NonPawnMovesButThereHaveBeenPawnMovesInbetween()
+        {
+            const string PositionString =
+              "K......."
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + ".......k";
+
+            var movementEvents = WithNonPawnMoves(WithNonPawnMoves(MovementEvents.Initial, 25).WithMoveByNonPawn(), 25);
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.White, movementEvents);
+        }
+
+        [Test]
+        public void CurrentResultIsDrawIfTheSamePositionHasBeenRepeatedThreeTimes()
+        {
+            const string PositionString =
+              "K......."
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + "........"
+            + ".......k";
+
+            var whiteForward = Move.FromString("h1h2");
+            var whiteBackward = Move.FromString("h2h1");
+            var blackForward = Move.FromString("a8a7");
+            var blackBackward = Move.FromString("a7a8");
+
+            Move[] moves = { whiteForward, blackForward, whiteBackward, blackBackward };
+            var initialPosition = Position.FromString(PositionString, MovementEvents.Initial);
+            var movementEvents = Enumerable.Repeat(moves, 2).SelectMany(s => s).Aggregate(initialPosition, (position, move) => position.ByMove(move)).MovementEvents;
+
+            ExpectResultFromPositionAtColorsTurn(PositionString, Result.Draw, Color.White, movementEvents);
+        }
+
+        private static MovementEvents WithNonPawnMoves(MovementEvents movementEvents, int count)
+        {
+            return Enumerable.Range(0, count).Aggregate(movementEvents, (current, _) => current.WithMoveByNonPawn());
+        }
+
+        private static void ExpectResultFromPositionAtColorsTurn(string positionString, Result expectedResult, Color color, MovementEvents? movementEvents = null)
+        {
+            var _movementEvents = movementEvents.HasValue ? movementEvents.Value : MovementEvents.Initial;
+            _movementEvents = color == Color.White ? _movementEvents : _movementEvents.WithNextMoveColorFlipped();
+            var position = Position.FromString(positionString, _movementEvents);
 
             Assert.AreEqual(expectedResult, position.CurrentResult);
         }

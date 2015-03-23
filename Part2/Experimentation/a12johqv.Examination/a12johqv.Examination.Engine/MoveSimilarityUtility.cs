@@ -11,9 +11,10 @@
             return (a, b) => comparer(position[a.From], position[b.From]);
         }
 
-        public static double SimilarityByManhattanDistanceOfFromAndToSquares(Move a, Move b)
+        public static double SimilarityByInverseManhattanDistanceOfFromAndToSquares(Move a, Move b)
         {
-            return ManhattanDistance(a.From, b.From) + ManhattanDistance(a.To, b.To);
+            const int MaxManhattanDistance = 14;
+            return (MaxManhattanDistance - (ManhattanDistance(a.From, b.From) + ManhattanDistance(a.To, b.To))) / (double)MaxManhattanDistance;
         }
 
         private static int ManhattanDistance(Square a, Square b)
