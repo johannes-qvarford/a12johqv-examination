@@ -1,68 +1,71 @@
-﻿namespace a12johqv.Examination.Engine
+﻿namespace a12johqv.Examination.Ai
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Immutable;
+    using System.Diagnostics;
     using System.Diagnostics.Contracts;
     using System.Linq;
 
-    using a12johqv.Examination.ChessEngine;
+    using a12johqv.Examination.Chess;
+    using a12johqv.Examination.Core;
 
-    public struct Casebase<TProblem, TSolution>
+    /// A group of cases that can be queried to find the case whose problem is most similar to the current situation.
+    /// 
+    /// The function used to evaluate the simularity of two positions is as follows:
+    /// average({F(p[i],q[i]) | i in [0, 64)})
+    /// Where p and q are ordered lists of the square content in the two positions,
+    /// and F is the square content similarity function defined in SquareContentSimilarity.
+    public struct Casebase
     {
-        private readonly IList<Case<TProblem, TSolution>> cases;
+        private readonly IReadOnlyList<Case> cases;
 
-        public Casebase(IList<Case<TProblem, TSolution>> cases)
+        public Casebase(IReadOnlyList<Case> cases)
         {
             this.cases = cases;
         }
 
-        public void AddCase(Case<TProblem, TSolution> @case)
+        public Case FindMostSimilarCase(Position currentPosition, Color color, Random random, out double similarity)
         {
-            this.cases.Add(@case);
-        }
+            Contract.Assert(this.cases.Count > 1, "Needs at least one case to use");
 
-        public Case<TProblem, TSolution> FindMostSimilarCase(TProblem problem, SimilarityComparer<TProblem> comparer, Random random)
-        {
-            Contract.Assert(this.cases.Count > 1);
             var caseSimilarities = this.cases
-                .Select(@case => new CaseSimilarity(@case, comparer(@case.Problem, problem)))
-                .Aggregate(
-                    ImmutableList.Create<CaseSimilarity>(),
-                    (list, current) => !list.Any() || AreClose(list.First().Similarity, current.Similarity) ? list.Add(current) : list);
-            return caseSimilarities[random.Next(maxValue: caseSimilarities.Count)].Case;
-        }
+                .Where(@case => @case.Color == color)
+                .Select(@case => new
+                                     {
+                                         Case = @case,
+                                         Similarity = Similarity(@case.Position, currentPosition)
+                                     });
 
-        private static bool AreClose(double a, double b)
-        {
-            const double Epsilon = 0.001;
-            return Math.Abs(a - b) < Epsilon;
-        }
-
-        private struct CaseSimilarity
-        {
-            private readonly Case<TProblem, TSolution> @case;
-
-            private readonly double similarity;
-
-            public CaseSimilarity(Case<TProblem, TSolution> @case, double similarity)
-                : this()
+            double highestSimilarity = Double.MinValue;
+            List<Case> bestMatchingCases = new List<Case>();
+            foreach (var caseSimilarity in caseSimilarities)
             {
-                this.@case = @case;
-                this.similarity = similarity;
+                if (MathUtility.IsGreaterThen(caseSimilarity.Similarity, highestSimilarity))
+                {
+                    bestMatchingCases.Clear();
+                    bestMatchingCases.Add(caseSimilarity.Case);
+                    highestSimilarity = caseSimilarity.Similarity;
+                }
+                else if (MathUtility.AreEqual(caseSimilarity.Similarity, highestSimilarity))
+                {
+                    bestMatchingCases.Add(caseSimilarity.Case);
+                }
             }
+            Debug.Assert(bestMatchingCases.Any(), "There has to be at least one case that has a similarity higher than minus infinity");
 
-            public Case<TProblem, TSolution> Case { get { return this.@case; } }
-
-            public double Similarity { get { return this.similarity; } }
+            similarity = highestSimilarity;
+            Contract.Ensures(MathUtility.InRange(similarity, 0, 1), "Similarity has to be in [0,1)");
+            return bestMatchingCases[random.Next(maxValue: bestMatchingCases.Count)];
         }
-    }
 
-    public static class Casebase
-    {
-        public static Casebase<TProblem, TSolution> FromCases<TProblem, TSolution>(IEnumerable<Case<TProblem, TSolution>> cases)
+        private static double Similarity(Position a, Position b)
         {
-            return new Casebase<TProblem, TSolution>(cases.ToList());
+            var squareContentSimilarities = a.SquareContents.Zip(b.SquareContents, Tuple.Create)
+                .Select(t => SquareContentSimilarity.Similarity(t.Item1, t.Item2));
+
+            var averageSquareContentSimilarity = squareContentSimilarities.Average();
+            Debug.Assert(MathUtility.InRange(averageSquareContentSimilarity, 0, 1), "Similairity should be in [0, 1)");
+            return averageSquareContentSimilarity;
         }
     }
 }

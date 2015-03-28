@@ -7,6 +7,11 @@ namespace a12johqv.Examination.Chess
     using System.Diagnostics.Contracts;
     using System.Linq;
 
+    /// The noteworthy events that has occured during a match,
+    /// and the consequences of these events.
+    /// 
+    /// It records if either player can still perform castling (based on whether or not their kings or rooks have moved).
+    /// and if the game is over because no pawns have moved in 50 moves or a position has been repeated three times.
     public struct MovementEvents
     {
         private readonly Color nextMoveColor;
@@ -27,7 +32,6 @@ namespace a12johqv.Examination.Chess
 
         private readonly int movesSinceLastPawnMove;
 
-        // Note: is not immutable for performance reasons.
         private readonly ImmutableDictionary<Position, int> previouslyVisitedPositions;
 
         private static readonly MovementEvents InitialMovementEventsField = 
@@ -63,11 +67,13 @@ namespace a12johqv.Examination.Chess
             get { return InitialMovementEventsField; }
         }
 
+        /// Returns whether or not at least one move has been performed.
         public bool HasMoved
         {
             get { return this.lastMove.HasValue; }
         }
 
+        /// The last move performed.
         public Move LastMove
         {
             get
@@ -83,21 +89,30 @@ namespace a12johqv.Examination.Chess
             }
         }
 
+        /// The color of the player who should perform the next move.
         public Color NextMoveColor
         {
             get { return this.nextMoveColor; }
         }
 
+        /// All unique positions that have been visited during the match.
+        public IEnumerable<Position> VisitedPositions
+        {
+            get { return this.previouslyVisitedPositions.Keys; }
+        }
+
+        /// Returns whether or the king of the given color has moved.
         public bool HasKingMoved(Color color)
         {
             return color == Color.White ? this.whiteKingHasMoved : this.blackKingHasMoved;
         }
 
-        public bool HasRookMoved(Color color, bool left)
+        /// Returns whether or not the rook of the given color on the given side has moved.
+        public bool HasRookMoved(Color color, Side side)
         {
-            return color == Color.White && left ? this.leftWhiteRookHasMoved :
-                   color == Color.White && !left ? this.rightWhiteRookHasMoved :
-                   color == Color.Black && left ? this.leftBlackRookHasMoved :
+            return color == Color.White && side.IsLeft() ? this.leftWhiteRookHasMoved :
+                   color == Color.White && !side.IsLeft() ? this.rightWhiteRookHasMoved :
+                   color == Color.Black && side.IsLeft() ? this.leftBlackRookHasMoved :
                    this.rightBlackRookHasMoved;
         }
 
@@ -140,9 +155,9 @@ namespace a12johqv.Examination.Chess
 
         public MovementEvents WithPerformedMoveByRook(Move move)
         {
-            bool left = move.From.Column == 0;
+            Side side = move.From.Column == 0 ? Side.Left : Side.Right;
             Color color = this.NextMoveColor;
-            return this.WithRookHasMoved(color: color, left: left).WithPerformedMove(move);
+            return this.WithRookHasMoved(color: color, side: side).WithPerformedMove(move);
         }
 
         public MovementEvents WithPerformedMove(Move move)
@@ -150,34 +165,29 @@ namespace a12johqv.Examination.Chess
             return this.WithLastMove(move).WithNextMoveColorFlipped();
         }
 
-        [Pure]
-        public MovementEvents WithCastling(Move move, Color color, bool left)
+        public MovementEvents WithCastling(Move move, Color color, Side side)
         {
-            return this.WithKingHasMoved(color).WithRookHasMoved(color, left).WithNextMoveColorFlipped().WithLastMove(move);
+            return this.WithKingHasMoved(color).WithRookHasMoved(color, side).WithNextMoveColorFlipped().WithLastMove(move);
         }
 
-        [Pure]
         public MovementEvents WithKingHasMoved(Color color)
         {
             return color == Color.White ? this.Create(whiteKingHasMovedP: true) : this.Create(blackKingHasMovedP: true);
         }
 
-        [Pure]
-        private MovementEvents WithRookHasMoved(Color color, bool left)
+        private MovementEvents WithRookHasMoved(Color color, Side side)
         {
-            return color == Color.White && left ? this.Create(leftWhiteRookHasMovedP: true) :
-                   color == Color.White && !left ? this.Create(rightWhiteRookHasMovedP: true) :
-                   color == Color.Black && left ? this.Create(leftBlackRookHasMovedP: true) :
+            return color == Color.White && side.IsLeft() ? this.Create(leftWhiteRookHasMovedP: true) :
+                   color == Color.White && !side.IsLeft() ? this.Create(rightWhiteRookHasMovedP: true) :
+                   color == Color.Black && side.IsLeft() ? this.Create(leftBlackRookHasMovedP: true) :
                    this.Create(rightBlackRookHasMovedP: true);
         }
 
-        [Pure]
         private MovementEvents WithLastMove(Move move)
         {
             return this.Create(lastMoveP: move);
         }
 
-        [Pure]
         public MovementEvents WithNextMoveColorFlipped()
         {
             return this.Create(nextMoveColorP: this.nextMoveColor.OppositeColor());

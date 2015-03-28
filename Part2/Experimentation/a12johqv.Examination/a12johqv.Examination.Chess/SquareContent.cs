@@ -4,6 +4,11 @@
     using System.Globalization;
     using System.Linq;
 
+    /// The content that can exist on square on a chess board.
+    /// A square can either be empty, or contain a chess piece of a certain type and color.
+    /// 
+    /// Square content is represented as a string with a dot '.' if it's empty,
+    /// or with a certain letter that indicates its piece type and color (see PieceTypeUtility and ColorUtility).
     public struct SquareContent : IEquatable<SquareContent>
     {
         private readonly PieceType pieceType;
@@ -21,7 +26,7 @@
             this.empty = false;
         }
 
-        // Struct cannot have empty constructor, using wortless token parameter to get around restriction.
+        // Structs cannot have empty constructor, using wortless token parameter to get around restriction.
         private SquareContent(int emptyToken)
         {
             this.empty = true;
@@ -64,6 +69,11 @@
             }
         }
 
+        public static SquareContent Empty
+        {
+            get { return EmptySquareContent; }
+        }
+
         public static SquareContent FromPieceAndColor(PieceType pieceType, Color color)
         {
             return new SquareContent(pieceType, color);
@@ -79,7 +89,7 @@
             {
                 if (serialized == ".")
                 {
-                    return GetEmptySquare();
+                    return Empty;
                 }
                 else
                 {
@@ -110,11 +120,6 @@
             return Enum.GetValues(typeof(TEnum))
                 .Cast<TEnum>()
                 .Contains(e);
-        }
-
-        public static SquareContent GetEmptySquare()
-        {
-            return new SquareContent(emptyToken: 0);
         }
 
         public bool Equals(SquareContent other)

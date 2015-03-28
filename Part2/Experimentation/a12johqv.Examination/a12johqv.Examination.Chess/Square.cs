@@ -2,9 +2,14 @@
 {
     using System;
 
-    /// <summary>
-    /// Using algebraic notation, the column comes before the row.
-    /// </summary>
+    /// A square that represents a discrete location on a chess board.
+    /// It can be described with a zero-based row/rank and a column/file, or a square index.
+    /// A square index is zero-based and starts on the first row and column, and increases by column.
+    /// When it passes the last column it wraps around to the new row.
+    /// 
+    /// A square's string representation is its representation in algebraic notation.
+    /// First comes a letter from a to h that represents the rank, and then a number that represents the row.
+    /// "c2" therefor represents a square with column 2 (zero-based) and row 1 (zer-based).
     public struct Square : IEquatable<Square>
     {
         private readonly int row;

@@ -6,13 +6,38 @@
     using System.Globalization;
     using System.Linq;
 
+    /// The state of the chess board in a match.
+    /// Position contains the content of all 64 squares on the board,
+    /// as well as movement events that has happened, which is used determine the legality of certain moves,
+    /// and when a match ends.
+    /// A position can only be created from a string representation,
+    /// or by continously performing moves on the initial board setup.
+    /// 
+    /// The propoerty "ValidMoves" can be queried to determine which moves can be performed in the current position,
+    /// and the method "ByMove()" advances to a new position with the move performed.
+    /// ByMove should ONLY be called with moves from "ValidMoves", but this is not checked during runtime.
+    /// 
+    /// Moves created by ValidMoves and used by ByMove() uses special move representations for certain types of moves.
+    /// Normal captures and movement is just represented with a move from the square the moving piece moved from, to the square it moved to, 
+    /// with a potential promotion.
+    /// En passant is represented like a normal capture of the square the pawn is moving to, which means that whether or not a move
+    /// is en passant depends on the position.
+    /// Long and short castling is represented as normal movement of the king two steps to left or right respectivly.
+    /// A position ca be queried whether or not it's en passent or castling in a certain direction.
+    /// 
+    /// The position knows when the match ends and the result of that match,
+    /// and follows the rule that the match is a draw if the same position is repeated three times,
+    /// or if no pawns move in 50 moves.
+    /// 
+    /// Be aware that two positions are equal if they contain the same square content in the same order,
+    /// regardless of their respective movement events.
     public struct Position : IEquatable<Position>
     {
         private readonly IReadOnlyList<SquareContent> squaresContent;
 
         private readonly MovementEvents movementEvents;
 
-        private static readonly Position InitialField = new Position(InitialPositionUtility.InitialSquares, MovementEvents.Initial);
+        private static readonly Position InitialField = GetInitialPosition();
 
         private Position(
             IReadOnlyList<SquareContent> squaresContent,
@@ -24,15 +49,9 @@
 
         #region Properties And Indexers
 
-        public Result CurrentResult
+        public bool IsChecked
         {
-            get
-            {
-                return this.ValidMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
-                    this.IsOwnKingIsThreatened() ?
-                        (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
-                        Result.Draw;
-            }
+            get { return this.IsOwnKingIsThreatened(); }
         }
 
         public Color CurrentColor
@@ -40,7 +59,7 @@
             get { return this.movementEvents.NextMoveColor; }
         }
 
-        public IEnumerable<SquareContent> SquareContentsFromLowRowAndColumn
+        public IEnumerable<SquareContent> SquareContents
         {
             get { return this.squaresContent; }
         }
@@ -49,6 +68,7 @@
         {
             get { return this.GetValidMoves(ignoreThreatenedKing: false); }
         }
+
 
         public static Position Initial
         {
@@ -101,6 +121,36 @@
 
         #endregion
 
+        #region Queries
+
+        public Result GetResult(out Move[] validMoves)
+        {
+            validMoves = this.ValidMoves.ToArray();
+            return validMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
+                    this.IsOwnKingIsThreatened() ?
+                        (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
+                        Result.Draw;
+        }
+
+        public bool IsAnPassant(Move move)
+        {
+            return this.IsPawnCapturingPiece(move) && this[move.To].IsEmpty;
+        }
+
+        public bool IsCapture(Move move)
+        {
+            return !this[move.To].IsEmpty;
+        }
+
+        /// Get the direction of the (potential) castling move.
+        /// Returns null if move is not a castling move,
+        /// true if castling direction is left and false otherwise.
+        public bool? GetCastlingDirection(Move move)
+        {
+            return this.IsCastling(move) ? move.From.Column > move.To.Column : (bool?)null;
+        }
+
+        #endregion
 
         #region By Move
 
@@ -139,11 +189,6 @@
             int capturedColumn = move.To.Column;
             int capturedRow = move.From.Row;
             return Square.FromRowAndColumn(capturedRow, capturedColumn);
-        }
-
-        private bool IsAnPassant(Move move)
-        {
-            return this.IsPawnCapturingPiece(move) && this[move.To].IsEmpty;
         }
 
         private bool IsPawnCapturingPiece(Move move)
@@ -190,8 +235,12 @@
         private MovementEvents MovementEventsForCastling(Move move)
         {
             Color color = this.movementEvents.NextMoveColor;
-            bool leftRook = move.From.Column < move.To.Column;
-            return this.movementEvents.WithCastling(move: move, color: color, left: leftRook);
+            return this.movementEvents.WithCastling(move: move, color: color, side: RookSide(move));
+        }
+
+        private static Side RookSide(Move move)
+        {
+            return move.From.Column > move.To.Column ? Side.Left : Side.Right;
         }
 
         private MovementEvents MovementEventsForNonCastlingMove(Move move)
@@ -217,7 +266,7 @@
             // Overwrite to-space with from-space content, and remove content from from-space.
             var newSquareContent = this.squaresContent
                 .Select((content, i) => move.To.SquareIndex == i ? contentForMovingPiece : content)
-                .Select((content, i) => move.From.SquareIndex == i ? SquareContent.GetEmptySquare() : content);
+                .Select((content, i) => move.From.SquareIndex == i ? SquareContent.Empty : content);
             var movementEventsWithPossiblePawnMove = this[move.From].PieceTypeOnSquare == PieceType.Pawn ? 
                 this.movementEvents.WithMoveByPawn() : this.movementEvents.WithMoveByNonPawn();
             return FromSquareContents(newSquareContent, movementEventsWithPossiblePawnMove.WithVisitedPosition(this));
@@ -237,9 +286,9 @@
             var theThis = this;
             var moves = Enumerable.Range(start: 0, count: 8 * 8)
                 .SelectMany(i => theThis.GetValidMovesForSquare(Square.FromSquareIndex(i), ignoreThreatenedKing));
+
             var movesThatDoesntThreatenOwnKing = (ignoreThreatenedKing ? moves : 
                 moves.Where(move => !theThis.MoveLeadsToCapturedKing(move))).ToArray();
-
 
             return movesThatDoesntThreatenOwnKing.Where(
                 move =>
@@ -247,9 +296,8 @@
                         if (theThis.IsCastling(move))
                         {
                             // We need to remove castling, if king crosses a square that it cannot reach (that is threatened).
-                            bool left = move.To.Column < move.From.Column;
                             int row = move.From.Row;
-                            int passedColumn = left ? 3 : 5;
+                            int passedColumn = RookSide(move).IsLeft() ? 3 : 5;
                             Square passedSquare = Square.FromRowAndColumn(row, passedColumn);
                             Move kingToCrossedSquareMove = Move.FromSquareToSquare(move.From, passedSquare);
                             return movesThatDoesntThreatenOwnKing.Contains(kingToCrossedSquareMove);
@@ -322,7 +370,6 @@
             int forwardOffset = color == Color.White ? 1 : -1;
             int pawnStartRow = color == Color.White ? 1 : 6;
             int forwardRow = square.Row + forwardOffset;
-            int promotionRow = color == Color.White ? 0 : 7;
 
             Square? forwardLeft = MaybeFromRowAndColumn(row + forwardOffset, column - 1);
             Square? forwardRight = MaybeFromRowAndColumn(row + forwardOffset, column + 1);
@@ -464,14 +511,14 @@
             bool kingCanMoveForCastling = !this.HasCurrentKingMoved() && (ignoreThreatenedKing || !this.IsOwnKingIsThreatened());
             
             bool canDoLeftCastling = kingCanMoveForCastling
-                && !this.HasCurrentRookMoved(left: true)
+                && !this.HasCurrentRookMoved(side: Side.Left)
                 && this.DoesRookOfCurrentColorExists(Square.FromRowAndColumn(square.Row, 0))
                 && this.IsEmpty(Square.FromRowAndColumn(square.Row, square.Column - 1))
                 && this.IsEmpty(Square.FromRowAndColumn(square.Row, square.Column - 2))
                 && this.IsEmpty(Square.FromRowAndColumn(square.Row, square.Column - 3));
 
             bool canDoRightCastling = kingCanMoveForCastling
-                && !this.HasCurrentRookMoved(left: false)
+                && !this.HasCurrentRookMoved(side: Side.Right)
                 && this.DoesRookOfCurrentColorExists(Square.FromRowAndColumn(square.Row, 7))
                 && this.IsEmpty(Square.FromRowAndColumn(square.Row, square.Column + 1))
                 && this.IsEmpty(Square.FromRowAndColumn(square.Row, square.Column + 2));
@@ -500,9 +547,9 @@
                 && content.PieceTypeOnSquare == PieceType.Rook;
         }
 
-        private bool HasCurrentRookMoved(bool left)
+        private bool HasCurrentRookMoved(Side side)
         {
-            return this.movementEvents.HasRookMoved(color: this.movementEvents.NextMoveColor, left: left);
+            return this.movementEvents.HasRookMoved(color: this.movementEvents.NextMoveColor, side: side);
         }
 
         private bool HasCurrentKingMoved()
@@ -702,48 +749,16 @@
 
         private static Position GetInitialPosition()
         {
-            return FromSquareContents(InitialPositionUtility.InitialSquares, Chess.MovementEvents.Initial);
-        }
-
-        private static class InitialPositionUtility
-        {
-            private static readonly SquareContent Pw = SquareContent.FromPieceAndColor(PieceType.Pawn, Color.White);
-
-            private static readonly SquareContent Rw = SquareContent.FromPieceAndColor(PieceType.Rook, Color.White);
-
-            private static readonly SquareContent Nw = SquareContent.FromPieceAndColor(PieceType.Knight, Color.White);
-
-            private static readonly SquareContent Bw = SquareContent.FromPieceAndColor(PieceType.Bishop, Color.White);
-
-            private static readonly SquareContent Qw = SquareContent.FromPieceAndColor(PieceType.Queen, Color.White);
-
-            private static readonly SquareContent Kw = SquareContent.FromPieceAndColor(PieceType.King, Color.White);
-
-            private static readonly SquareContent Pb = SquareContent.FromPieceAndColor(PieceType.Pawn, Color.Black);
-
-            private static readonly SquareContent Rb = SquareContent.FromPieceAndColor(PieceType.Rook, Color.Black);
-
-            private static readonly SquareContent Nb = SquareContent.FromPieceAndColor(PieceType.Knight, Color.Black);
-
-            private static readonly SquareContent Bb = SquareContent.FromPieceAndColor(PieceType.Bishop, Color.Black);
-
-            private static readonly SquareContent Qb = SquareContent.FromPieceAndColor(PieceType.Queen, Color.Black);
-
-            private static readonly SquareContent Kb = SquareContent.FromPieceAndColor(PieceType.King, Color.Black);
-
-            private static readonly SquareContent Em = SquareContent.GetEmptySquare();
-
-            public static readonly SquareContent[] InitialSquares = 
-                {
-                    Rw, Nw, Bw, Qw, Kw, Bw, Nw, Rw,
-                    Pw, Pw, Pw, Pw, Pw, Pw, Pw, Pw,
-                    Em, Em, Em, Em, Em, Em, Em, Em,
-                    Em, Em, Em, Em, Em, Em, Em, Em,
-                    Em, Em, Em, Em, Em, Em, Em, Em,
-                    Em, Em, Em, Em, Em, Em, Em, Em,
-                    Pb, Pb, Pb, Pb, Pb, Pb, Pb, Pb,
-                    Rb, Nb, Bb, Qb, Kb, Bb, Nb, Rb
-                };
+            const string InitialString = 
+                  "rnbqkbnr"
+                + "pppppppp"
+                + "........"
+                + "........"
+                + "........"
+                + "........"
+                + "PPPPPPPP"
+                + "RNBQKBNR";
+            return FromString(InitialString, Chess.MovementEvents.Initial);
         }
 
         #endregion

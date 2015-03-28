@@ -2,6 +2,12 @@ namespace a12johqv.Examination.Chess
 {
     using System;
 
+    /// A chess move that can be performed on a board.
+    /// Represented as a pair of squares that indicate the square of the moving chess piece, and the target square it is moving towards.
+    /// Additionally if the move is a promotion, it includes a piece type that a pawn is promoting to.
+    /// 
+    /// String representation is the concatenation of the string representation of the source and target square.
+    /// If the move is a promotion, it has a suffix of the character representation of the piece type in lower case.
     public struct Move : IEquatable<Move>
     {
         private readonly Square from;

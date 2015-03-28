@@ -43,7 +43,7 @@
         public void SquareContentsFromLowRowAndColumnHasAWhiteRookAsFirstElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContentsFromLowRowAndColumn;
+            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
 
             bool isWhiteRook = HasColorAndPieceType(squaresContents.First(), Color.White, PieceType.Rook);
 
@@ -54,7 +54,7 @@
         public void SquareContentsFromLowRowAndColumnHasWhiteKnightAsSeventhElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContentsFromLowRowAndColumn;
+            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
 
             // Using 6 because index is 0 based.
             bool isWhiteKnight = HasColorAndPieceType(squaresContents.ElementAt(6), Color.White, PieceType.Knight);
@@ -66,7 +66,7 @@
         public void SquareContentsFromLowRowAndColumnHasBlackBishopAsFiftyNinthElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContentsFromLowRowAndColumn;
+            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
 
             bool isBlackBishop = HasColorAndPieceType(squaresContents.ElementAt(58), Color.Black, PieceType.Bishop);
 
@@ -989,8 +989,9 @@
             var _movementEvents = movementEvents.HasValue ? movementEvents.Value : MovementEvents.Initial;
             _movementEvents = color == Color.White ? _movementEvents : _movementEvents.WithNextMoveColorFlipped();
             var position = Position.FromString(positionString, _movementEvents);
-
-            Assert.AreEqual(expectedResult, position.CurrentResult);
+            
+            Move[] moves;
+            Assert.AreEqual(expectedResult, position.GetResult(out moves));
         }
         #endregion
     }

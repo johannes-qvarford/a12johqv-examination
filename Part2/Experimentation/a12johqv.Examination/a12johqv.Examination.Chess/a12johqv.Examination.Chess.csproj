@@ -51,6 +51,8 @@
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="Side.cs" />
+    <Compile Include="SideUtility.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="SquareContent.cs" />
   </ItemGroup>

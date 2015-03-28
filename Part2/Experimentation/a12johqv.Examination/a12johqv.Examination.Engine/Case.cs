@@ -1,35 +1,61 @@
-﻿namespace a12johqv.Examination.Engine
+﻿namespace a12johqv.Examination.Ai
 {
+    using System;
+
     using a12johqv.Examination.Chess;
 
-    public struct Case<TProblem, TSolution>
+    /// A case represented by a problem part: the position + color of player,
+    /// and a solution part: the move performed.
+    public struct Case : IEquatable<Case>
     {
-        private readonly TProblem problem;
+        private readonly Position position;
 
-        private readonly TSolution solution;
+        private readonly Move move;
 
-        public Case(TProblem problem, TSolution solution)
+        private readonly Color color;
+
+        public Case(Position position, Move move, Color color)
         {
-            this.problem = problem;
-            this.solution = solution;
+            this.position = position;
+            this.move = move;
+            this.color = color;
         }
 
-        public TProblem Problem
+        public Position Position
         {
-            get { return this.problem; }
+            get { return this.position; }
         }
 
-        public TSolution Solution
+        public Move Move
         {
-            get { return this.solution; }
+            get { return this.move; }
         }
-    }
 
-    public static class Case
-    {
-        public static Case<TProblem, TSolution> FromProblemAndSolution<TProblem, TSolution>(TProblem problem, TSolution solution)
+        public Color Color
         {
-            return new Case<TProblem, TSolution>(problem, solution);
+            get { return this.color; }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Case && this.Equals((Case)obj);
+        }
+
+        public bool Equals(Case other)
+        {
+            return this.position.Equals(other.Position) && this.move.Equals(other.Move) && this.color.Equals(other.Color);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = (int)2166136261;
+                hash = hash * 16777619 ^ this.position.GetHashCode();
+                hash = hash * 16777619 ^ this.move.GetHashCode();
+                hash = hash * 16777619 ^ this.color.GetHashCode();
+                return hash;
+            }
         }
     }
 }

@@ -1,0 +1,176 @@
+<gameReports>
+  <gameReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.26073492981007446</averageProblemSimilarity>
+      <averageMoveSimilarity>0.26073492981007446</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.3401114781172585</averageProblemSimilarity>
+      <averageMoveSimilarity>0.3401114781172585</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Sinan Younus Abdulrazzaq Abaeji"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+Ng1f3# g7g6# Nf3e5# Bf8g7# d2d4# Ng8f6# Ne5xf7# e7e6# Nf7e5# g6g5# Ne5f7# Rh8f8# Nf7e5# c7c6# Ne5g6# e6e5# d4d5# Bg7h6# d5xc6# Rf8f7# Ng6f4# Rf7g7# Nf4e6# d7d6# Ne6xg5# Qd8d7# Ng5e6# Qd7xc6# Ne6f4# d6d5# c2c4# d5d4# Nf4d5# Qc6xc4# Nd5c7# Qc4xc7# g2g4# Rg7g5# Qd1xd4# Qc7c5# Nb1c3# Nf6d5# Qd4xd5# Bc8e6# Qd5g2# Nb8a6# Qg2g3# Ke8d7# Nc3d5# e5e4# Nd5c3# Kd7c6# Qg3d6# Kc6xd6# Nc3d5# Bh6f8# Nd5c3# Bf8e7# f2f3# Kd6d7# f3xe4# Kd7c6# e4e5# Be7f8# Nc3d5# h7h6# Nd5f6# Qc5g1# Nf6e4# Ra8e8# Ne4d6# Kc6c5# Nd6f7# b7b6# Nf7d6# h6h5# Nd6e4# Kc5c6# b2b4# Bf8d6# b4b5# Kc6d5# b5xa6# Rg5xe5# Ne4g3# Bd6c5# e2e4# Kd5d6# g4g5# Re8c8# g5g6# Rc8c6# Bc1g5# b6b5# Bg5e7# Kd6d7# Be7xc5# Kd7e8# g6g7# h5h4# Bc5e3# Be6xa2# Be3b6# Re5d5# Bb6c5# Rd5f5# Bc5b6# Rc6c4# e4e5# h4xg3# e5e6# Rf5f3# g7g8=Q# Ke8e7# Bb6d4# Ke7d6# Bd4b6# Rf3f6# e6e7# Rf6f5# Bb6d4# Rf5f6# e7e8=Q# Rf6f3# Qe8xb5# Rf3f6# Qg8d5# Kd6e7# Qd5f5# Rf6h6# Qf5e6# Ke7xe6# Bd4e5# Ke6e7# Qb5c6# Ke7f7# Qc6c7# Kf7e6# Be5c3# Rh6h4# Qc7e7# Ke6d5# Qe7g7# Kd5d6# Qg7e7# Kd6c6# Qe7e5# Kc6d7# Qe5d5# Kd7e7# Qd5e6# Ke7xe6# Bc3f6# Ke6d5# Bf6d8# Kd5d6# Bd8a5# Kd6e7# Ba5d8# Ke7d6# Bd8g5# Rh4h6# Bg5d8# Rc4c2# Bd8a5# Kd6d7# Ba5b6# Kd7d6# Bb6a5# Rh6f6# Ba5c3# Rf6f4# Bc3f6#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.28048340548340561</averageProblemSimilarity>
+      <averageMoveSimilarity>0.28048340548340561</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.34758297258297244</averageProblemSimilarity>
+      <averageMoveSimilarity>0.34758297258297244</averageMoveSimilarity>
+    </black>
+    <result>WhiteVictory</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Sinan Younus Abdulrazzaq Abaeji"]
+[Black "Andreas Hirsch"]
+[Result "1-0"]
+
+d2d4# d7d5# e2e4# Bc8g4# Ng1f3# h7h6# e4xd5# Rh8h7# Nf3e5# Ng8f6# d5d6# g7g6# d6d7# Qd8xd7# Ne5xd7# Nf6d5# Nd7c5# Bf8g7# Nc5e6# c7c5# Ne6f4# Nb8c6# d4xc5# f7f5# Nf4e6# Ke8f7# Ne6f4# Kf7f6# Nf4xd5# Kf6e5# Nd5c3# e7e6# Nc3b5# Bg7f6# h2h4# Bg4h3# Nb5d4# g6g5# h4xg5# b7b6# Nd4xc6# Ke5e4# Nc6d4# f5f4# g5xf6# Rh7h8# c5c6# e6e5# c6c7# Rh8f8# f6f7# h6h5# c7c8=Q# f4f3# Qc8c5# Rf8h8# f7f8=Q# Rh8h6# Qc5d5# Ke4xd5# Qf8f6# b6b5# Nd4c6# Kd5e4# g2g4# Ra8d8# Nc6d4# Rd8d5# Qf6d6# Rh6g6# Qd6xd5# Ke4xd5# Ke1d2# a7a5# Nd4e6# Kd5e4# Ne6f4# Rg6g5# c2c4# b5b4# Nf4g6# Rg5xg6# c4c5# Rg6f6# g4xh5# Rf6c6# Kd2c2# a5a4# h5h6# Rc6f6# c5c6# b4b3# Kc2c3# Rf6f7# c6c7# Rf7f8# c7c8=Q# Rf8f5# Qc8c4#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.28221844293272874</averageProblemSimilarity>
+      <averageMoveSimilarity>0.28221844293272874</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.323318216175359</averageProblemSimilarity>
+      <averageMoveSimilarity>0.323318216175359</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+f2f4# h7h5# d2d4# g7g6# d4d5# d7d6# f4f5# f7f6# f5xg6# c7c6# d5xc6# Ng8h6# g6g7# d6d5# c6c7# Qd8d6# g7g8=Q# e7e6# Qg8g6# Ke8d7# Qg6xf6# Bf8g7# Qf6f5# Bg7f6# Qf5xd5# Rh8d8# Qd5xd6# Kd7e8# Qd6d5# Ke8f7# Qd5d6# Rd8xd6# g2g4# Rd6d5# c7xb8=Q# Kf7g7# g4g5# Ra8xb8# g5g6# e6e5# Ng1f3# Bc8g4# Nf3g5# b7b6# c2c4# Rd5a5# Ng5f7# Kg7xg6# Nf7d6# Bf6g7# e2e3# e5e4# Nd6xe4# Kg6f5# Ne4f2# Bg7d4# c4c5# b6xc5# e3xd4# Kf5g6# d4xc5# Kg6g7# a2a3# Kg7g6# Nf2e4# Kg6f5# c5c6# Rb8b6# c6c7# Ra5e5# b2b4# Nh6f7# c7c8=Q# Rb6e6# Qc8c5# a7a5# Qd1d4# Nf7d8# Qc5xe5# Re6xe5# Qd4xe5# Kf5g6# Qe5c5# Nd8f7# Ne4f6# Kg6xf6# Bf1a6# Nf7g5# Qc5xg5# Kf6f7# Qg5g7# Kf7e6# Ba6c4# Ke6d6# Qg7h6# Kd6e5# Qh6g7# Ke5d6# Qg7c7# Kd6xc7# Bc4g8# Kc7d7# Bg8f7# Bg4e2# Bf7e6# Kd7d6# Be6d7# Kd6xd7# h2h4# Kd7d6# b4b5# Kd6d5# b5b6# Kd5e6# Ke1d2# Ke6e7# b6b7# Ke7d7# b7b8=Q# Kd7e7# Kd2e3# Ke7f7# Qb8b6# Kf7f8# Qb6d6# Kf8g7# Qd6c5# Kg7g6# Qc5g5# Kg6f7# Qg5g6# Kf7e7# Qg6f5# Ke7d6# Qf5e6# Kd6xe6# Rh1h3# Ke6f6# a3a4# Kf6e6# Ke3d4# Ke6d6# Kd4c3# Kd6e5# Rh3g3# Ke5f6# Rg3g7# Kf6xg7# Kc3d4# Kg7g6# Kd4e5# Kg6f7# Ke5f5# Kf7e7# Kf5g6# Ke7d6# Kg6f5# Kd6d7# Kf5f6# Kd7e8# Kf6e6# Ke8d8# Ke6e5# Kd8e7# Ke5f5# Ke7f7# Kf5e5# Kf7g6# Ke5e6# Kg6g7# Ke6f5# Be2g4# Kf5e5# Kg7g6# Ke5f4# Kg6f6# Nb1c3# Kf6e6# Nc3d5# Ke6f7# Nd5f6# Kf7xf6# Kf4e4# Kf6g7# Ke4d5# Kg7f6# Kd5d6# Kf6f7# Kd6e5#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.27707373271889413</averageProblemSimilarity>
+      <averageMoveSimilarity>0.27707373271889413</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.3032422646477948</averageProblemSimilarity>
+      <averageMoveSimilarity>0.3032422646477948</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Sinan Younus Abdulrazzaq Abaeji"]
+[Black "Sinan Younus Abdulrazzaq Abaeji"]
+[Result "½-½"]
+
+Ng1f3# d7d5# d2d4# Ng8f6# Nf3e5# Qd8d6# Ne5d3# e7e5# d4xe5# c7c5# e5xf6# Qd6e5# Nd3xc5# g7xf6# Nc5e6# d5d4# Ne6f4# Bf8d6# Nf4e6# Rh8f8# Ne6xd4# Bd6c5# Nd4c6# Qe5d5# Nc6b4# Rf8g8# Nb4xd5# a7a6# Nd5xf6# Ke8e7# Nf6d5# Ke7d6# Nd5c7# Kd6e5# Nc7d5# Bc8f5# Nd5f6# b7b5# Nf6d5# Ke5d6# Nd5f6# Kd6e5# Nf6d5# Rg8g6# Nd5f6# Rg6xf6# g2g4# Bf5e4# Qd1d5# Ke5xd5# c2c4# Kd5d6# c4xb5# Kd6d5# b5b6# Nb8c6# Nb1c3# Kd5d4# Nc3d5# Nc6e5# Nd5xf6# h7h6# Nf6d5# Kd4xd5# b6b7# Be4b1# b7b8=Q# f7f6# Ke1d1# Bc5e7# Qb8b5# Kd5d4# f2f4# Be7d6# Qb5d5# Kd4xd5# a2a4# Ra8c8# a4a5# Bd6c5# f4xe5# Bc5d4# e5e6# f6f5# g4xf5# Rc8c7# e6e7# Rc7c6# h2h4# h6h5# e7e8=Q# Rc6c5# b2b3# Rc5xa5# Qe8e6# Kd5c5# Qe6d5# Kc5xd5# Bc1e3# Kd5d6# f5f6# Kd6d5# f6f7# Kd5e6# f7f8=Q# Ke6d5# Qf8f5# Kd5d6# Qf5c5# Kd6xc5# Be3xd4# Kc5d6# Bd4g7# Kd6d5# Bg7f6# Kd5d6# Ra1xa5# Kd6e6# Bf6e5# Ke6f5# Be5d6# Kf5e4# Bd6g3# Ke4e3# Ra5xa6# Ke3d4# Ra6a7# Kd4d5# Bg3d6# Kd5e6# Bd6e5# Ke6d5# Ra7g7# Kd5e4# Rg7g6# Ke4d5# Be5d4# Kd5e4# Bd4c5# Ke4d5# b3b4# Kd5e5# Bc5d4# Ke5xd4# Rg6g5# Kd4e4# b4b5# Ke4d4# b5b6# Kd4e4# b6b7# Bb1a2# b7b8=Q# Ke4e3# Qb8f8# Ke3d4# Qf8h6# Kd4c4# Rg5d5# Kc4b4# Rd5c5# Ba2g8# Qh6e6# Bg8xe6# Rc5f5# Be6d5# Rf5xd5# Kb4c4# Rd5f5# Kc4d4# Rf5f6# Kd4e5# Rf6f7# Ke5d6# Rf7f6# Kd6c5# Rf6d6# Kc5xd6# e2e4# Kd6c6# e4e5# Kc6b7# e5e6# Kb7c6# e6e7# Kc6d5# e7e8=Q# Kd5d6# Qe8e5# Kd6xe5# Bf1b5# Ke5d5# Bb5a4# Kd5e6# Ba4e8# Ke6d5# Be8g6# Kd5c4# Bg6e4# Kc4c5# Be4g6# Kc5d6# Bg6e8# Kd6e6# Be8g6# Ke6d5# Bg6f5# Kd5d6# Bf5d3# Kd6e6# Bd3g6# Ke6d6# Bg6f5# Kd6e5# Bf5c2# Ke5d5# Bc2g6#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.28173736743605732</averageProblemSimilarity>
+      <averageMoveSimilarity>0.28173736743605732</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.3109014348097317</averageProblemSimilarity>
+      <averageMoveSimilarity>0.3109014348097317</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+d2d4# h7h6# Bc1xh6# d7d5# Bh6f4# c7c5# Ng1f3# Qd8d6# Nf3e5# e7e6# d4xc5# Qd6d7# g2g4# Bf8e7# Ne5xf7# Qd7d6# g4g5# Ke8f8# g5g6# Nb8d7# Nf7g5# Ng8f6# Ng5e4# Be7d8# Ne4xd6# Nd7xc5# Nd6c4# Bd8b6# Bf4h6# Bc8d7# Bh6f4# Ra8c8# Bf4d6# Kf8e8# Bd6xc5# Bd7c6# Bc5f8# Nf6h7# g6xh7# Ke8d7# Bf8d6# Kd7d8# Bd6f8# g7g6# Nc4d2# Bc6b5# Bf8h6# Rc8c6# e2e4# d5xe4# Bh6f8# g6g5# Bf8c5# Rc6xc5# Nd2xe4# Kd8c7# Ne4f6# e6e5# Nf6g4# Kc7c6# Ng4f6# Rc5d5# f2f4# Rh8xh7# Nf6xd5# Kc6c5# Nd5e3# Rh7e7# f4xg5# Re7e6# c2c4# Re6e7# Qd1d8# Re7e6# g5g6# Kc5b4# g6g7# Bb6c5# Qd8d5# b7b6# Qd5xc5# b6xc5# c4xb5# Re6d6# b5b6# e5e4# g7g8=Q# Rd6d5# Qg8xd5# a7xb6# Qd5d6# b6b5# Qd6d5# c5c4# Qd5f5# c4c3# Qf5f6# Kb4c5# Qf6g7# Kc5d6# Qg7g3# Kd6c6# Qg3b8# Kc6c5# Qb8f8# Kc5c6# Qf8f5# Kc6d6# Qf5f7# Kd6c5# Qf7d7# Kc5b4# Qd7d6# Kb4a5# Qd6f6# b5b4# Qf6f5# Ka5b6# Qf5g5# Kb6c6# Qg5c5# Kc6xc5# a2a4# Kc5d6# Ne3d5# Kd6d7# Nd5e7# Kd7d8# Ne7d5# Kd8d7# Nd5f4# Kd7e7# Nf4e6# b4b3# Ne6d4# e4e3# h2h4# Ke7f6# Nd4f5# Kf6e5# Nb1xc3# Ke5e6# Nf5g3# Ke6d6# Nc3d5# Kd6d7# Nd5e7# Kd7e6# Ne7g8# Ke6d5# Ng8f6# Kd5d4# Nf6g4# Kd4d5# Ng4f6# Kd5d4# Nf6d5# Kd4e5# Nd5e7# Ke5f6# Ne7c8# Kf6e5# Nc8d6# Ke5f6# Nd6e4# Kf6e5# h4h5# Ke5d5# h5h6# Kd5c6# h6h7# Kc6d7# Ne4d6# Kd7d8# Nd6e4# Kd8d7# Ne4d6# Kd7d8# h7h8=Q# Kd8e7# Nd6c4# Ke7e6# Nc4d6# Ke6d5# Nd6c4# Kd5c6# Qh8h6# Kc6d7# Nc4d6# Kd7d8# Nd6b5# Kd8e7# Qh6g7# Ke7e6# Qg7g4# Ke6d5# Qg4e4# Kd5c5# Qe4g6# Kc5d5# Qg6f6# Kd5c5# Qf6f7# Kc5c6# Qf7f6# Kc6d5# Qf6f7# Kd5c6# Qf7d7# Kc6xd7# Ng3f5# Kd7e6# Nf5d6# Ke6e5# Nd6f7# Ke5f6# Nf7g5# Kf6g6# Nb5d4# Kg6xg5# Nd4c6# Kg5f5# Nc6e7# Kf5e6# Ne7f5# Ke6e5# Nf5d6# Ke5e6# Nd6c4#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.27607615894039733</averageProblemSimilarity>
+      <averageMoveSimilarity>0.27607615894039733</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.30824266792809846</averageProblemSimilarity>
+      <averageMoveSimilarity>0.30824266792809846</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Andreas Hirsch"]
+[Black "Sinan Younus Abdulrazzaq Abaeji"]
+[Result "½-½"]
+
+d2d4# d7d5# e2e4# Qd8d6# Bc1h6# Ng8f6# e4xd5# g7g6# Bh6d2# c7c6# d5xc6# Bf8h6# c6c7# O-O# Bd2g5# e7e6# c7xb8=Q# Qd6d5# Qb8d6# Qd5xd4# Qd6d5# Rf8e8# Bg5xf6# Kg8f8# Qd5d6# Qd4xd6# Bf6c3# f7f6# Bc3e5# Kf8f7# Be5d4# Qd6d5# c2c4# e6e5# c4xd5# Bc8f5# d5d6# Re8e6# d6d7# Re6d6# d7d8=Q# b7b6# h2h3# e5e4# Qd8xf6# Rd6xf6# Bd4xf6# Ra8d8# Bf6e5# a7a6# g2g3# Kf7e6# Qd1d3# Rd8d5# Be5f6# Rd5e5# Qd3d6# Ke6xd6# Bf6xe5# Kd6d7# Be5d6# b6b5# g3g4# e4e3# Bd6f8# Kd7c8# Bf8d6# Bh6g7# Bd6c5# Bg7f6# Bc5d4# h7h6# Bd4b6# Bf6e5# g4g5# h6xg5# f2f4# Kc8d7# Bb6xe3# Kd7d6# Ng1f3# Kd6c7# Be3b6# Kc7d6# Bb6d4# Kd6d7# Bd4b6# Kd7e6# Bb6c5# Ke6f6# Bc5b6# Be5c3# Nf3d2# Kf6f7# Bb6c5# Kf7e6# Bc5d4# Ke6e7# f4xg5# Ke7e6# Bd4f6# a6a5# Bf6e7# Ke6f7# Be7f6# Kf7e6# b2b4# Ke6d5# Bf6d4# Bf5e6# Bd4a7# Be6f5# h3h4# Bf5e6# Ba7e3# a5xb4# h4h5# Be6f5# Be3b6# b4b3# Bb6c5# Kd5xc5# h5xg6# Kc5d5# g6g7# Bf5e6# g7g8=Q# Kd5c6# Qg8xe6# Kc6c7# Qe6c6# Kc7xc6# g5g6# Kc6d7# g6g7# Kd7e8# g7g8=Q# Ke8e7# Qg8e8# Ke7f6# Qe8e6# Kf6xe6# Rh1h8# Ke6f6# Rh8c8# Kf6e5# Rc8c5# Ke5e6# Rc5f5# Ke6xf5# a2a4# Kf5e6# Bf1xb5# Ke6d5# Bb5e8# Kd5e6# Be8g6# Ke6d6# Bg6f5# Kd6e5# Bf5d3# Ke5f4# Bd3a6# Kf4e5# Ba6f1# Bc3a5# Bf1a6# Ba5b6# Ba6c8# Ke5f6# Bc8a6# Kf6g6# Ba6c8# Bb6d4# Bc8f5# Kg6xf5# a4a5# Bd4a7# Nd2e4# Ba7d4# Ne4f6# Kf5f4# Nf6e4# Kf4f5# Ne4f6# Bd4a7# Nf6h5# Ba7d4# Nh5g3# Kf5e6# a5a6# Ke6d6# Ng3f5# Kd6c6# Nf5e3# Kc6d6# a6a7# Kd6d7# Ne3d5# Kd7e8# Nd5f4# Ke8d7# Nf4g6# Kd7e6# Ng6e5# Ke6f6# Ne5f7# Bd4c3# Ke1f2# Kf6e7# Nf7e5# Ke7f6# Ne5f7# Kf6f5# Nf7h8# Kf5f6# Nh8g6# Kf6e6# Ng6f4# Ke6e5# Nf4e6# Ke5d6# Ne6g7# Kd6e7# Ng7f5# Ke7f6# a7a8=Q# Kf6f7# Nf5e7# Kf7f6# Ne7d5# Kf6f7# Nd5f6# Kf7e6# Qa8g2# Ke6e7# Nf6g4# Ke7d6# Ng4f6# Kd6e5# Nf6d5# Ke5d4# Nd5e7# Kd4c5# Ne7d5# Kc5d4# Nd5xc3# Kd4e5# Qg2g6# Ke5f4# Qg6c6# b3b2# Kf2f1# Kf4g5# Qc6d5# Kg5f4# Qd5h5# Kf4g3# Qh5f5# Kg3h4# Qf5f7# Kh4g4# Qf7c7# Kg4f5# Qc7d7# Kf5f6# Qd7f7# Kf6e5# Qf7a7# Ke5d6# Qa7e7# Kd6c6# Qe7g7# Kc6c5# Qg7f6# Kc5c4# Qf6c6# Kc4d4# Qc6g6# Kd4c5# Qg6d6# Kc5xd6# Kf1g2# Kd6e6# Kg2g3# Ke6e5# Nc3d5# Ke5d6# Nd5e7# Kd6c7# Ne7d5# Kc7c6# Nd5f6# Kc6c5# Nf6h7# Kc5d6# Nh7g5# Kd6e5# Ng5e6# Ke5d6# Ne6d4# Kd6d5#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.2868663594470045</averageProblemSimilarity>
+      <averageMoveSimilarity>0.2868663594470045</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.32073732718893994</averageProblemSimilarity>
+      <averageMoveSimilarity>0.32073732718893994</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Sinan Younus Abdulrazzaq Abaeji"]
+[Black "Sinan Younus Abdulrazzaq Abaeji"]
+[Result "½-½"]
+
+d2d4# d7d5# Ng1f3# Ng8f6# Nf3e5# Qd8d6# g2g4# e7e6# c2c4# Ke8e7# Ne5xf7# Nb8c6# Nf7e5# g7g6# a2a4# Qd6c5# d4xc5# Bf8h6# a4a5# Rh8f8# c4xd5# Ke7e8# Ne5d3# Ke8d7# d5d6# Rf8f7# d6xc7# Kd7e7# Nd3e5# Ke7e8# Ne5d3# Nf6d5# Nd3e5# Nc6d4# c5c6# Bc8d7# Ne5xd7# Nd5c3# Nd7c5# e6e5# g4g5# Rf7f5# Nc5d3# Ke8f7# c7c8=Q# Kf7g7# g5xh6# Kg7f6# Ke1d2# b7xc6# Qc8xc6# Kf6f7# Qc6e6# Kf7xe6# f2f4# Ra8d8# Ra1a4# e5e4# Nd3e5# g6g5# f4xg5# Rf5f6# Ne5d7# Rf6f7# Nd7e5# Nc3d5# Ne5c6# Rd8d6# Nc6b4# Nd5b6# Kd2e1# Rd6d5# g5g6# e4e3# Nb4c6# Nd4b3# Nc6b4# Rf7f6# g6g7# Rd5xd1# Ke1xd1# Ke6e7# g7g8=Q# Nb6c4# Qg8g6# h7xg6# h6h7# Ke7d6# Nb4d5# Kd6c6# Nd5c3# Kc6c5# Nc3d5# Kc5c6# Nd5c7# Kc6c5# Nc7b5# Rf6e6# Nb5d4# g6g5# Nd4xe6# Kc5d6# h7h8=Q# Kd6c6# a5a6# Kc6d5# Qh8h6# Kd5d6# Ne6d4# Kd6e5# Nd4c6# Ke5e4# Nc6b4# Nc4b6# Nb4d5# Ke4f5# Qh6g6# Kf5xg6# Nd5e7# Kg6f6# Ne7c8# Nb6c4# Ra4xc4# Kf6f7# Nc8d6# Kf7f6# Rc4g4# Nb3d2# Nd6c4# Kf6f7# Rg4xg5# Kf7e8# Rg5d5# Ke8f7# Rd5f5# Kf7e6# Rf5d5# Ke6f6# Rd5d6# Kf6f5# Rd6d7# Kf5f6# Rd7d5# Kf6e6# Rd5f5# Ke6xf5# Nc4d6# Kf5f6# Nd6c8# Kf6f7# Nc8d6# Kf7f8# Nd6f5# Kf8f7# Nf5d4#</pgn>
+  </gameReport>
+  <gameReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.2683365292425694</averageProblemSimilarity>
+      <averageMoveSimilarity>0.2683365292425694</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.3229865771812081</averageProblemSimilarity>
+      <averageMoveSimilarity>0.3229865771812081</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.??"]
+[Round "0"]
+[White "Andreas Hirsch"]
+[Black "Sinan Younus Abdulrazzaq Abaeji"]
+[Result "½-½"]
+
+d2d4# Ng8f6# d4d5# e7e6# d5d6# g7g6# d6xc7# d7d6# g2g4# Bf8e7# g4g5# Rh8f8# g5xf6# Be7xf6# c7xd8=Q# Ke8xd8# h2h4# d6d5# h4h5# Nb8c6# Qd1xd5# e6xd5# e2e4# Kd8d7# Bc1g5# Rf8e8# h5xg6# Re8e6# c2c4# h7xg6# c4c5# Bf6e5# e4xd5# f7f6# Bg5f4# Kd7d8# Bf4xe5# b7b6# d5xe6# Nc6b4# b2b3# Kd8e7# Be5xf6# Ke7xe6# Bf6c3# Bc8b7# Bc3f6# Ra8g8# Bf6e5# Rg8g7# Rh1h

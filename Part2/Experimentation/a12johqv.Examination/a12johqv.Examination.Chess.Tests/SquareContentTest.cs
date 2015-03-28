@@ -37,7 +37,7 @@
         [Test]
         public void GetColorOnSquareThrowsInvalidOperationExceptionOnEmptySquare()
         {
-            SquareContent squareContent = SquareContent.GetEmptySquare();
+            SquareContent squareContent = SquareContent.Empty;
 
             Assert.Throws<InvalidOperationException>(delegate { var v = squareContent.ColorOnSquare; });
         }
@@ -45,7 +45,7 @@
         [Test]
         public void GetPieceTypeOnSquareThrowsInvalidOperationExceptionOnEmptySquare()
         {
-            SquareContent squareContent = SquareContent.GetEmptySquare();
+            SquareContent squareContent = SquareContent.Empty;
 
             Assert.Throws<InvalidOperationException>(delegate { var v = squareContent.PieceTypeOnSquare; });
         }
@@ -65,7 +65,7 @@
         [Test]
         public void FromStringReturnsEmptySquareContentForDot()
         {
-            Assert.AreEqual(SquareContent.GetEmptySquare(), SquareContent.FromString("."));
+            Assert.AreEqual(SquareContent.Empty, SquareContent.FromString("."));
         }
 
         [Test]
@@ -98,7 +98,7 @@
 
         public void ToStringReturnsDotForEmptySquareContent()
         {
-            Assert.AreEqual(".", SquareContent.GetEmptySquare());
+            Assert.AreEqual(".", SquareContent.Empty);
         }
 
         #region Equality
@@ -106,8 +106,8 @@
         [Test]
         public void EmptySquareIsEqualToEmptySquare()
         {
-            SquareContent first = SquareContent.GetEmptySquare();
-            SquareContent second = SquareContent.GetEmptySquare();
+            SquareContent first = SquareContent.Empty;
+            SquareContent second = SquareContent.Empty;
             
             Assert.AreEqual(first, second);
         }
@@ -115,7 +115,7 @@
         [Test]
         public void EmptySquareIsNotEqualToSquareWithPiece()
         {
-            SquareContent first = SquareContent.GetEmptySquare();
+            SquareContent first = SquareContent.Empty;
             SquareContent second = SquareContent.FromPieceAndColor(APiece, AColor);
 
             Assert.AreNotEqual(first, second);
@@ -160,8 +160,8 @@
         [Test]
         public void EmptySquaresHaveSameHashCode()
         {
-            SquareContent first = SquareContent.GetEmptySquare();
-            SquareContent second = SquareContent.GetEmptySquare();
+            SquareContent first = SquareContent.Empty;
+            SquareContent second = SquareContent.Empty;
 
             Assert.AreEqual(first.GetHashCode(), second.GetHashCode());
         }
