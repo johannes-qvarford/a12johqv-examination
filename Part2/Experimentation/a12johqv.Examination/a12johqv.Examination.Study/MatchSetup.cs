@@ -22,24 +22,26 @@
             this.blackPlayerWithCasebase = blackPlayerWithCasebase;
         }
 
-        public IEnumerable<MatchReport> Play(int count, Random random)
+        public IEnumerable<MatchReport> Play(int count, Weights weights, Random random)
         {
-            return Enumerable.Range(0, count).Select(_ => this.PlayOnce(random));
+            return Enumerable.Range(0, count).Select(_ => this.PlayOnce(weights, random));
         }
 
-        private MatchReport PlayOnce(Random random)
+        private MatchReport PlayOnce(Weights weights, Random random)
         {
             // Cycle between ais on every iteration of the loop.
             ChessAi[] ais =
                 {
-                    new ChessAi(this.whitePlayerWithCasebase.Item2, Color.White),
-                    new ChessAi(this.blackPlayerWithCasebase.Item2, Color.Black)
+                    new ChessAi(this.whitePlayerWithCasebase.Item2, weights, Color.White),
+                    new ChessAi(this.blackPlayerWithCasebase.Item2, weights, Color.Black)
                 };
             var aiIt = ais.Cycle().GetEnumerator();
 
-            MatchReport matchReport = MatchReport.CreateFromWhiteAndBlackPlayer(
-                this.whitePlayerWithCasebase.Item1,
-                this.blackPlayerWithCasebase.Item1);
+            MatchReport matchReport = MatchReport.CreateFromWhiteAndBlackPlayerWithWeights(
+                whitePlayer: this.whitePlayerWithCasebase.Item1,
+                blackPlayer: this.blackPlayerWithCasebase.Item1,
+                whiteWeights: weights,
+                blackWeights: weights);
             Position position = Position.Initial;
 
             Move[] validMoves;

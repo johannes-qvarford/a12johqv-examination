@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Ai", "a12johqv.Examination.Engine\a12johqv.Examination.Ai.csproj", "{97101293-2E81-4352-8F85-C18727A8491D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Ai", "a12johqv.Examination.Ai\a12johqv.Examination.Ai.csproj", "{97101293-2E81-4352-8F85-C18727A8491D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Chess", "a12johqv.Examination.Chess\a12johqv.Examination.Chess.csproj", "{1232DE6A-820B-48AF-9D60-628AE10DFB1A}"
 EndProject

@@ -13,11 +13,14 @@
     {
         private readonly Casebase casebase;
 
+        private readonly Weights weights;
+
         private readonly Color color;
 
-        public ChessAi(Casebase casebase, Color color)
+        public ChessAi(Casebase casebase, Weights weights, Color color)
         {
             this.casebase = casebase;
+            this.weights = weights;
             this.color = color;
         }
 
@@ -28,21 +31,25 @@
             ref MatchReport matchReport)
         {
             double problemSimilarity;
+            bool moreThanOneBestMatch;
             var @case = this.casebase.FindMostSimilarCase(
                 currentPosition: position,
                 color: this.color,
                 random: random,
-                similarity: out problemSimilarity);
+                weights: this.weights,
+                similarity: out problemSimilarity,
+                moreThanOneBestMatch: out moreThanOneBestMatch);
             
             double moveSimilarity;
             var adaptedMove = MoveAdaption.AdaptToOneOfPossibleMoves(
                 currentPosition: position,
                 possibleMoves: validMoves,
                 @case: @case,
+                weights: this.weights,
                 similarity: out moveSimilarity);
 
             var newPlayerReport = matchReport.GetPlayerReport(this.color)
-                .WithCaseResult(problemSimilarity: problemSimilarity, moveSimilarity: moveSimilarity);
+                .WithCaseResult(problemSimilarity: problemSimilarity, moveSimilarity: moveSimilarity, moreThanOneBestMatch: moreThanOneBestMatch);
             matchReport = matchReport.WithPlayerReportOfColor(newPlayerReport, this.color);
             matchReport.AddMove(adaptedMove);
 

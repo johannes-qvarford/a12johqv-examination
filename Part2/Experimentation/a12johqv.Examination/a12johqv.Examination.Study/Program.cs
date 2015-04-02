@@ -18,7 +18,7 @@
         public static void Main(string[] args)
         {
             const int Seed = 1000;
-            const int MatchesPerPairOfPlayers = 5;
+            const int MatchesPerPairOfPlayers = 2;
 
             var now = DateTime.Now;
 
@@ -39,15 +39,46 @@
                     playerCasebasePair.firstPlayerCasebase, 
                     playerCasebasePair.secondPlayerCasebase));
 
+            double[,] bareWeightsList =
+                {
+                    { 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 },
+                    { 0.1, 0.9, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 },
+                    { 0.9, 0.1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 },
+                    { 0.5, 0.5, 0.9, 0.1, 0.5, 0.5, 0.5, 0.5 },
+                    { 0.5, 0.5, 0.1, 0.9, 0.5, 0.5, 0.5, 0.5 },
+                    { 0.5, 0.5, 0.5, 0.5, 0.9, 0.2, 0.5, 0.5 },
+                    { 0.5, 0.5, 0.5, 0.5, 0.2, 0.1, 0.5, 0.5 },
+                    { 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.9, 0.1 },
+                    { 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.1, 0.9 }
+                };
+            IList<Weights> weightsList = ConvertToWeightsList(bareWeightsList).ToArray();
+
             // Play a number of matches for each setup, and collect their reports.
             // Every match setup has its own random number generator with a unique seed,
             // to avoid race conditions and make matches unique if the same setup is used for more than one match.
             var reports = matchSetups.AsParallel().AsUnordered()
-                .Select(matchSetup => new { MatchSetup = matchSetup, Random = new Random(Seed + matchSetup.GetHashCode()) })
-                .SelectMany(pair => pair.MatchSetup.Play(count: MatchesPerPairOfPlayers, random: pair.Random));
+                .SelectMany(matchSetup => weightsList.Select(weights =>
+                    new { MatchSetup = matchSetup, Weights = weights, Random = new Random(Seed + matchSetup.GetHashCode()) }))
+                .SelectMany(triple => triple.MatchSetup.Play(count: MatchesPerPairOfPlayers, weights: triple.Weights, random: triple.Random));
             
             // Force evaluation of reports before logging them.
             LogReportedGames(reports.AsSequential().ToArray(), now);
+        }
+
+        private static IEnumerable<Weights> ConvertToWeightsList(double[,] bareWeightsList)
+        {
+            for (int i = 0; i < bareWeightsList.GetLength(0); i++)
+            {
+                yield return new Weights(
+                    moveInverseDistanceWeight: bareWeightsList[i, 0],
+                    moveSquareContentWeight: bareWeightsList[i, 1],
+                    moveInverseDistanceSourceWeight: bareWeightsList[i, 2],
+                    moveInverseDistanceTargetWeight: bareWeightsList[i, 3],
+                    moveSquareContentSourceWeight: bareWeightsList[i, 4],
+                    moveSquareContentTargetWeight: bareWeightsList[i, 5],
+                    positionSquareContentSimilarity: bareWeightsList[i, 6],
+                    positionSquareWithSquareContentDistance: bareWeightsList[i, 7]);
+            }
         }
 
         private static void LogReportedGames(IEnumerable<MatchReport> gameReports, DateTime dateTime)

@@ -65,11 +65,11 @@
             return color == Color.White ? this.whitePlayerReport : this.blackPlayerReport;
         }
 
-        public static MatchReport CreateFromWhiteAndBlackPlayer(Player whitePlayer, Player blackPlayer)
+        public static MatchReport CreateFromWhiteAndBlackPlayerWithWeights(Player whitePlayer, Player blackPlayer, Weights whiteWeights, Weights blackWeights)
         {
             return new MatchReport(
-                whitePlayerReport: PlayerReport.FromPlayer(whitePlayer),
-                blackPlayerReport: PlayerReport.FromPlayer(blackPlayer),
+                whitePlayerReport: PlayerReport.FromPlayerAndWeights(whitePlayer, whiteWeights),
+                blackPlayerReport: PlayerReport.FromPlayerAndWeights(blackPlayer, blackWeights),
                 result: Chess.Result.Undecided,
                 moves: new List<Move>());
         }

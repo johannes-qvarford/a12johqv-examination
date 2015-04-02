@@ -51,6 +51,8 @@
     <Compile Include="PlayerReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SquareContentSimilarity.cs" />
+    <Compile Include="SquareDistance.cs" />
+    <Compile Include="Weights.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

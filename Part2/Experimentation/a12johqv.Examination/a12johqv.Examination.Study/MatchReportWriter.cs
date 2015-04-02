@@ -49,9 +49,25 @@
                             pair.Color.ToString().ToLower(),
                             new XElement("playerIndex", pair.PlayerReport.Player.Index),
                             new XElement("averageProblemSimilarity", pair.PlayerReport.AverageProblemSimilarity),
-                            new XElement("averageMoveSimilarity", pair.PlayerReport.AverageMoveSimilarity))),
+                            new XElement("averageMoveSimilarity", pair.PlayerReport.AverageMoveSimilarity),
+                            new XElement("averageMoreThanOneBestMatches", pair.PlayerReport.AverageMoreThanOneBestMatches),
+                            new XElement("weights", WeightsToString(pair.PlayerReport.Weights)))),
                 new XElement("result", matchReport.Result),
-                new XElement("str", FormatPgn(GetPgn(matchReport))));
+                new XElement("pgn", FormatPgn(GetPgn(matchReport))));
+        }
+
+        private static string WeightsToString(Weights weights)
+        {
+            return string.Format(
+                "{0} {1} {2} {3} {4} {5} {6} {7}",
+                weights.MoveInverseDistanceWeight,
+                weights.MoveSquareContentWeight,
+                weights.MoveInverseDistanceSourceWeight,
+                weights.MoveInverseDistanceTargetWeight,
+                weights.MoveSquareContentSourceWeight,
+                weights.MoveSquareContentTargetWeight,
+                weights.PositionSquareContentSimilarity,
+                weights.PositionSquareWithSquareContentDistance);
         }
 
         private static string FormatPgn(string pgn)
@@ -65,7 +81,7 @@
 
         private static string BreakLinesWithSpaces(string str, int maxSpacesPerLine)
         {
-            var sb = new StringBuilder(str);
+            var sb = new StringBuilder();
             int spacesOnLine = 0;
             for (int i = 0; i < str.Length; i++)
             {

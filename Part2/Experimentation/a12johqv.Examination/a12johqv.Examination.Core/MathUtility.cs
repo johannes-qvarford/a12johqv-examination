@@ -26,5 +26,10 @@
         {
             return Math.Abs(a - b);
         }
+
+        public static double Inverse(double zeroToOne)
+        {
+            return 1 - zeroToOne;
+        }
     }
 }
