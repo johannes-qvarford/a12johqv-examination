@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
 
     using a12johqv.Examination.Ai;
@@ -45,15 +46,9 @@
                     };
 
             var aiIt = ais.Cycle().GetEnumerator();
-
-            GameReport gameReport = GameReport.CreateFromWhiteAndBlackPlayerWithWeights(
-                whitePlayer: this.whitePlayerWithCasebase.Item1,
-                blackPlayer: this.blackPlayerWithCasebase.Item1,
-                whiteWeights: weights,
-                blackWeights: weights);
             Position position = Position.Initial;
+            IList<Move> performedMoves = new List<Move>();
 
-            int moveCount = 0;
             Move[] validMoves;
             Result result;
             while ((result = position.GetResult(out validMoves)) == Result.Undecided)
@@ -61,32 +56,31 @@
                 aiIt.MoveNext();
                 var currentAi = aiIt.Current;
 
-                var startTime = DateTime.Now;
+                var stopWatch = new Stopwatch();
+                stopWatch.Start();
                 var move = currentAi.DecideMove(
-                    position: position,
+                    position: position.BarePosition,
                     validMoves: validMoves,
-                    random: random,
-                    gameReport: ref gameReport);
-                var endTime = DateTime.Now;
+                    random: random);
+                stopWatch.Stop();
 
-                if (moveCount < 40 * 2)
+                if (performedMoves.Count < 40 * 2)
                 {
-                    var decisionDuration = endTime - startTime;
-                    timeToDecideFirst40Moves[currentAi.Color] += decisionDuration;
+                    timeToDecideFirst40Moves[currentAi.Color] += stopWatch.Elapsed;
                 }
 
+                performedMoves.Add(move);
                 position = position.ByMove(move);
-                moveCount++;
             }
 
-            // Insert decision time in report.
-            foreach (var color in new[] { Color.White, Color.Black })
-            {
-                var newPlayerReport = gameReport.GetPlayerReport(color).WithDecisionTimeOfFirst40Moves(timeToDecideFirst40Moves[color]);
-                gameReport = gameReport.WithPlayerReportOfColor(newPlayerReport, color);
-            }
-
-            return gameReport.WithResult(result);
+            var whitePlayerReport = new PlayerReport(player: this.whitePlayerWithCasebase.Item1, decisionTimeOfFirst40Moves: timeToDecideFirst40Moves[Color.White]);
+            var blackPlayerReport = new PlayerReport(player: this.blackPlayerWithCasebase.Item1, decisionTimeOfFirst40Moves: timeToDecideFirst40Moves[Color.Black]);
+            return new GameReport(
+                whitePlayerReport: whitePlayerReport,
+                blackPlayerReport: blackPlayerReport,
+                result: result,
+                weights: weights,
+                moves: performedMoves);
         }
     }
 }

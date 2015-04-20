@@ -22,8 +22,8 @@
         {
             SquareContent squareContent = SquareContent.FromPieceAndColor(APiece, AColor);
 
-            Assert.AreEqual(squareContent.PieceTypeOnSquare, APiece);
-            Assert.AreEqual(squareContent.ColorOnSquare, AColor);
+            Assert.AreEqual(APiece, squareContent.PieceTypeOnSquare);
+            Assert.AreEqual(AColor, squareContent.ColorOnSquare);
         }
 
         [Test]

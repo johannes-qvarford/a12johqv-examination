@@ -31,7 +31,7 @@
     ///   0.0               otherwise }
     /// where A is the shortest manhattan distance to square in q containing p[i],
     /// and M is the max manhattan distance.
-    public struct Casebase
+    public unsafe struct Casebase
     {
         private readonly IReadOnlyList<Case> cases;
 
@@ -40,50 +40,42 @@
             this.cases = cases;
         }
 
-        public Case FindMostSimilarCase(Position currentPosition, Color color, Random random, Weights weights, out double similarity, out bool moreThanOneBestMatch)
+        public Case FindMostSimilarCase(BarePosition currentPosition, Color color, Random random, Weights weights)
         {
             Contract.Assert(this.cases.Count > 1, "Needs at least one case to use");
 
-            var caseSimilarities = this.cases
-                .Where(@case => @case.Color == color)
-                .Select(@case => new
-                                     {
-                                         Case = @case,
-                                         Similarity = Similarity(@case.Position, currentPosition)
-                                     });
+            var currentPositionBytes = currentPosition.Bytes;
+            double highestSimilarity = double.MinValue;
 
-            double highestSimilarity = Double.MinValue;
             List<Case> bestMatchingCases = new List<Case>();
-            foreach (var caseSimilarity in caseSimilarities)
+            foreach (var @case in this.cases)
             {
-                if (MathUtility.IsGreaterThen(caseSimilarity.Similarity, highestSimilarity))
+                double caseSimilarity = Similarity(@case.BarePosition.Bytes, currentPositionBytes);
+                if (@case.Color == color && MathUtility.IsGreaterThen(caseSimilarity, highestSimilarity))
                 {
                     bestMatchingCases.Clear();
-                    bestMatchingCases.Add(caseSimilarity.Case);
-                    highestSimilarity = caseSimilarity.Similarity;
+                    bestMatchingCases.Add(@case);
+                    highestSimilarity = caseSimilarity;
                 }
-                else if (MathUtility.AreEqual(caseSimilarity.Similarity, highestSimilarity))
+                else if (MathUtility.AreEqual(caseSimilarity, highestSimilarity))
                 {
-                    bestMatchingCases.Add(caseSimilarity.Case);
+                    bestMatchingCases.Add(@case);
                 }
             }
             Debug.Assert(bestMatchingCases.Any(), "There has to be at least one case that has a similarity higher than minus infinity");
 
-            similarity = highestSimilarity;
-            moreThanOneBestMatch = bestMatchingCases.Count > 1;
-            Contract.Ensures(MathUtility.InRange(similarity, 0, 1), "Similarity has to be in [0,1)");
             return bestMatchingCases[random.Next(maxValue: bestMatchingCases.Count)];
         }
 
-        private static double Similarity(Position a, Position b)
+        private static double Similarity(byte* a, byte* b)
         {
             // Hotspot, implemented for performance.
             double similaritySum = 0;
-            var scA = a.SquareContents;
-            var scB = b.SquareContents;
             for (int i = 0; i < 64; i++)
             {
-                similaritySum += SquareContentSimilarity.Similarity(scA[i], scB[i]);
+                similaritySum += SquareContentSimilarity.Similarity(
+                    SquareContent.FromByte(*(a + i)),
+                    SquareContent.FromByte(*(b + i)));
             }
 
             var averageSquareContentSimilarity = similaritySum / 64;

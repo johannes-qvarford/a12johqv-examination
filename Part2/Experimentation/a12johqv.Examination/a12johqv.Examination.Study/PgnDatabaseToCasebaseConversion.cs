@@ -36,7 +36,7 @@
 
                 if (currentColor == colorOfPlayer)
                 {
-                    yield return new Case(currentPosition, chessMove, colorOfPlayer);
+                    yield return new Case(currentPosition.BarePosition, chessMove, colorOfPlayer);
                 }
                 
                 currentPosition = currentPosition.ByMove(chessMove);

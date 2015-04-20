@@ -43,7 +43,7 @@
         public void SquareContentsFromLowRowAndColumnHasAWhiteRookAsFirstElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
+            IEnumerable<SquareContent> squaresContents = initialPosition.BarePosition;
 
             bool isWhiteRook = HasColorAndPieceType(squaresContents.First(), Color.White, PieceType.Rook);
 
@@ -54,7 +54,7 @@
         public void SquareContentsFromLowRowAndColumnHasWhiteKnightAsSeventhElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
+            IEnumerable<SquareContent> squaresContents = initialPosition.BarePosition;
 
             // Using 6 because index is 0 based.
             bool isWhiteKnight = HasColorAndPieceType(squaresContents.ElementAt(6), Color.White, PieceType.Knight);
@@ -66,7 +66,7 @@
         public void SquareContentsFromLowRowAndColumnHasBlackBishopAsFiftyNinthElement()
         {
             Position initialPosition = Position.Initial;
-            IEnumerable<SquareContent> squaresContents = initialPosition.SquareContents;
+            IEnumerable<SquareContent> squaresContents = initialPosition.BarePosition;
 
             bool isBlackBishop = HasColorAndPieceType(squaresContents.ElementAt(58), Color.Black, PieceType.Bishop);
 

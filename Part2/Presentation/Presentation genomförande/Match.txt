@@ -1,0 +1,12 @@
+[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.4.2"]
+[Round "?"]
+[White "Postny, Evgeny"]
+[Black "Carlsen, Magnus"]
+[Result "½-½"]
+
+d2d4 Ng8f6 c2c4 e7e6 Ng1f3 b7b6 g2g3 Bc8a6 Qd1c2 Bf8b4
+Bc1d2+ Bb4xd2 Nb1xd2+ d7d5 Bf1g2 O-O O-O Nb8d7 Rf1c1 c7c5
+e2e4 Qd8e7 Bg2h3 Qe7d6 Bh3g4 Qd6e7 Bg4f5 Qe7d6 Bf5g4 Qd6e7
+Bg4f5 Qe7d6 Bf5g4

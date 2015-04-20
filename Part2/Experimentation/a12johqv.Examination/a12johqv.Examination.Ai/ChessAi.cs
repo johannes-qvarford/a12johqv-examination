@@ -6,8 +6,8 @@
     using a12johqv.Examination.Chess;
 
     /// Ai playing a certain color that uses a casebase to decide which chess moves to make.
-    /// It uses a game report to document the similarity of the current position and the
-    /// position in the chosen case,
+    /// It uses a game report to document the similarity of the current barePosition and the
+    /// barePosition in the chosen case,
     /// and the similarity of the adapted move, and the move in the case.
     public struct ChessAi
     {
@@ -27,33 +27,21 @@
         public Color Color { get { return this.color; } }
 
         public Move DecideMove(
-            Position position,
+            BarePosition position,
             IReadOnlyList<Move> validMoves,
-            Random random,
-            ref GameReport gameReport)
+            Random random)
         {
-            double problemSimilarity;
-            bool moreThanOneBestMatch;
             var @case = this.casebase.FindMostSimilarCase(
                 currentPosition: position,
                 color: this.Color,
                 random: random,
-                weights: this.weights,
-                similarity: out problemSimilarity,
-                moreThanOneBestMatch: out moreThanOneBestMatch);
+                weights: this.weights);
             
-            double moveSimilarity;
             var adaptedMove = MoveAdaption.AdaptToOneOfPossibleMoves(
                 currentPosition: position,
                 possibleMoves: validMoves,
                 @case: @case,
-                weights: this.weights,
-                similarity: out moveSimilarity);
-
-            var newPlayerReport = gameReport.GetPlayerReport(this.Color)
-                .WithCaseResult(problemSimilarity: problemSimilarity, moveSimilarity: moveSimilarity, moreThanOneBestMatch: moreThanOneBestMatch);
-            gameReport = gameReport.WithPlayerReportOfColor(newPlayerReport, this.Color);
-            gameReport.AddMove(adaptedMove);
+                weights: this.weights);
 
             return adaptedMove;
         }

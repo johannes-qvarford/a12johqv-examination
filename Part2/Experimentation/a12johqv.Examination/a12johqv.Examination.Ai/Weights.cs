@@ -1,46 +1,28 @@
 ﻿namespace a12johqv.Examination.Ai
 {
     /// Weights used in move adaption.
-    public class Weights
+    public struct Weights
     {
-        private readonly double moveInverseDistanceWeight;
+        private readonly double moveWeight;
 
-        private readonly double moveSquareContentWeight;
+        private readonly double squareContentWeight;
 
-        private readonly double moveSquareContentSourceWeight;
-
-        private readonly double moveSquareContentTargetWeight;
-
-        private readonly double moveInverseDistanceSourceWeight;
-
-        private readonly double moveInverseDistanceTargetWeight;
+        private readonly double distanceWeight;
 
         public Weights(
-            double moveInverseDistanceWeight,
-            double moveSquareContentWeight,
-            double moveSquareContentSourceWeight,
-            double moveSquareContentTargetWeight,
-            double moveInverseDistanceSourceWeight,
-            double moveInverseDistanceTargetWeight)
+            double moveWeight,
+            double squareContentWeight,
+            double distanceWeight)
         {
-            this.moveInverseDistanceWeight = moveInverseDistanceWeight;
-            this.moveSquareContentWeight = moveSquareContentWeight;
-            this.moveSquareContentSourceWeight = moveSquareContentSourceWeight;
-            this.moveSquareContentTargetWeight = moveSquareContentTargetWeight;
-            this.moveInverseDistanceSourceWeight = moveInverseDistanceSourceWeight;
-            this.moveInverseDistanceTargetWeight = moveInverseDistanceTargetWeight;
+            this.moveWeight = moveWeight;
+            this.squareContentWeight = squareContentWeight;
+            this.distanceWeight = distanceWeight;
         }
 
-        public double MoveInverseDistanceWeight { get { return this.moveInverseDistanceWeight; } }
+        public double MoveWeight { get { return this.moveWeight; } }
 
-        public double MoveSquareContentWeight { get { return this.moveSquareContentWeight; } }
+        public double SquareContentWeight { get { return this.squareContentWeight; } }
 
-        public double MoveSquareContentSourceWeight { get { return this.moveSquareContentSourceWeight; } }
-
-        public double MoveSquareContentTargetWeight { get { return this.moveSquareContentTargetWeight; } }
-
-        public double MoveInverseDistanceSourceWeight { get { return this.moveInverseDistanceSourceWeight; } }
-
-        public double MoveInverseDistanceTargetWeight { get { return this.moveInverseDistanceTargetWeight; } }
+        public double DistanceWeight { get { return this.distanceWeight; } }
     }
 }

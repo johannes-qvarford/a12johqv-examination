@@ -8,22 +8,22 @@
     /// and a solution part: the move performed.
     public struct Case : IEquatable<Case>
     {
-        private readonly Position position;
+        private readonly BarePosition barePosition;
 
         private readonly Move move;
 
         private readonly Color color;
 
-        public Case(Position position, Move move, Color color)
+        public Case(BarePosition barePosition, Move move, Color color)
         {
-            this.position = position;
+            this.barePosition = barePosition;
             this.move = move;
             this.color = color;
         }
 
-        public Position Position
+        public BarePosition BarePosition
         {
-            get { return this.position; }
+            get { return this.barePosition; }
         }
 
         public Move Move
@@ -43,7 +43,7 @@
 
         public bool Equals(Case other)
         {
-            return this.position.Equals(other.Position) && this.move.Equals(other.Move) && this.color.Equals(other.Color);
+            return this.barePosition.Equals(other.BarePosition) && this.move.Equals(other.Move) && this.color.Equals(other.Color);
         }
 
         public override int GetHashCode()
@@ -51,7 +51,7 @@
             unchecked
             {
                 int hash = (int)2166136261;
-                hash = hash * 16777619 ^ this.position.GetHashCode();
+                hash = hash * 16777619 ^ this.barePosition.GetHashCode();
                 hash = hash * 16777619 ^ this.move.GetHashCode();
                 hash = hash * 16777619 ^ this.color.GetHashCode();
                 return hash;

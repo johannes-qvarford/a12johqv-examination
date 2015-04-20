@@ -20,7 +20,7 @@
     /// 
     /// The content similarity of the moves is defined as:
     /// w3 * F(p[m.From], c[n.From]) + w4 * F(p[m.To], c[n.To])
-    /// Where w3 and w4 are weights, p is the current position, c is the case position,
+    /// Where w3 and w4 are weights, p is the current barePosition, c is the case barePosition,
     /// and F is the similarity function for square content defined in SquareContentSimilarity.
     /// 
     /// The inverse distance similarity of the moves is defined as:
@@ -33,59 +33,49 @@
     /// and D is the absolute difference of the given numbers.
     public static class MoveAdaption
     {
-        public static Move AdaptToOneOfPossibleMoves(Position currentPosition, Case @case, IReadOnlyList<Move> possibleMoves, Weights weights, out double similarity)
+        public static Move AdaptToOneOfPossibleMoves(BarePosition currentPosition, Case @case, IReadOnlyList<Move> possibleMoves, Weights weights)
         {
             Debug.Assert(possibleMoves != null && possibleMoves.Count > 0, "Cannot adopt to a move if there are no possibilities.");
 
             if (possibleMoves.Count == 1)
             {
-                similarity = MoveSimilarity(@case.Position, currentPosition, @case.Move, possibleMoves.First(), weights);
                 return possibleMoves.First();
             }
             else
             {
                 var moveSimilarityPair = possibleMoves
-                    .Select(move => new { Move = move, Similarity = MoveSimilarity(@case.Position, currentPosition, @case.Move, move, weights) })
+                    .Select(move => new { Move = move, Similarity = MoveSimilarity(@case.BarePosition, currentPosition, @case.Move, move, weights) })
                     .Aggregate((bestPair, newPair) => bestPair.Similarity >= newPair.Similarity ? bestPair : newPair);
-                similarity = moveSimilarityPair.Similarity;
                 return moveSimilarityPair.Move;
             }
         }
 
-        private static double MoveSimilarity(Position positionA, Position positionB, Move a, Move b, Weights weights)
+        private static double MoveSimilarity(BarePosition positionA, BarePosition positionB, Move a, Move b, Weights weights)
         {
-            //const double DistanceWeight = 0.8;
-            //const double SquareWeight = 0.2;
-
             var distanceSimilarity = MoveSimilarityByInverseDistance(a, b, weights);
             var squareSimilarity = MoveSimilarityBySquareContentOnSourceAndTargetSquares(positionA, positionB, a, b, weights);
 
-            var similarity = (distanceSimilarity * weights.MoveInverseDistanceWeight) + (squareSimilarity * weights.MoveSquareContentWeight);
+            var similarity = (distanceSimilarity * weights.MoveWeight) + (squareSimilarity * (1 - weights.MoveWeight));
             Debug.Assert(MathUtility.InRange(similarity, 0, 1), "Similarity has to be in range");
             return similarity;
         }
 
-        private static double MoveSimilarityBySquareContentOnSourceAndTargetSquares(Position positionA, Position positionB, Move a, Move b, Weights weights)
+        private static double MoveSimilarityBySquareContentOnSourceAndTargetSquares(BarePosition positionA, BarePosition positionB, Move a, Move b, Weights weights)
         {
-            //const double SourceWeight = 0.7;
-            //const double TargetWeight = 0.3;
-
             var sourceA = positionA[a.From];
             var sourceB = positionB[b.From];
             var targetA = positionA[a.To];
             var targetB = positionA[b.To];
-            return (weights.MoveSquareContentSourceWeight * SquareContentSimilarity.Similarity(sourceA, sourceB))
-                + (weights.MoveSquareContentTargetWeight * SquareContentSimilarity.Similarity(targetA, targetB));
+            return (weights.SquareContentWeight * SquareContentSimilarity.Similarity(sourceA, sourceB))
+                + ((1 - weights.SquareContentWeight) * SquareContentSimilarity.Similarity(targetA, targetB));
         }
 
         private static double MoveSimilarityByInverseDistance(Move a, Move b, Weights weights)
         {
-            //const double SourceWeight = 0.5;
-            //const double TargetWeight = 0.5;
             double fromDistance = SquareDistance.NormalizedManhattanDistance(a.From, b.From);
             double toDistance = SquareDistance.NormalizedManhattanDistance(a.To, b.To);
 
-            double distanceSum = (fromDistance * weights.MoveInverseDistanceSourceWeight) + (toDistance * weights.MoveInverseDistanceTargetWeight);
+            double distanceSum = (fromDistance * weights.DistanceWeight) + (toDistance * (1 - weights.DistanceWeight));
             double inverseOfDistanceSum = Inverse(distanceSum);
 
             Contract.Ensures(MathUtility.InRange(inverseOfDistanceSum, 0, 1), "Similarity has to be in [0, 1)");

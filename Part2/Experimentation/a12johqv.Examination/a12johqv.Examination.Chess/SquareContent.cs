@@ -11,32 +11,43 @@
     /// or with a certain letter that indicates its piece type and color (see PieceTypeUtility and ColorUtility).
     public struct SquareContent : IEquatable<SquareContent>
     {
-        private readonly PieceType pieceType;
+        private const byte EmptySquareRepresentation = 0x00;
 
-        private readonly Color color;
+        private const int BitsForEmptyOrNot = 1;
 
-        private readonly bool empty;
+        private const int BitsForPieceType = 3;
 
-        private static readonly SquareContent EmptySquareContent = new SquareContent(emptyToken: 0);
+        private const int BitsForColor = 1;
 
-        private SquareContent(PieceType pieceType, Color color)
+        private const int BitsToShiftForEmptyOrNot = 0;
+
+        private const int BitsToShiftForPieceType = BitsToShiftForEmptyOrNot + BitsForEmptyOrNot;
+
+        private const int BitsToShiftForColor = BitsToShiftForPieceType + BitsForPieceType;
+
+        private const int MaskForShiftedPieceType = (1 << BitsForPieceType) - 1;
+
+        private const int MaskForShiftedColor = (1 << BitsForColor) - 1;
+
+        private const int MaskForShiftedEmptyOrNot = (1 << BitsForEmptyOrNot) - 1;
+
+        private readonly byte representation;
+
+        private static readonly SquareContent EmptySquareContent = new SquareContent(EmptySquareRepresentation);
+
+        private SquareContent(byte representation)
         {
-            this.pieceType = pieceType;
-            this.color = color;
-            this.empty = false;
+            this.representation = representation;
         }
 
-        // Structs cannot have empty constructor, using wortless token parameter to get around restriction.
-        private SquareContent(int emptyToken)
+        public byte Representation
         {
-            this.empty = true;
-            this.color = Color.White;
-            this.pieceType = PieceType.Pawn;
+            get { return this.representation; }
         }
 
         public bool IsEmpty
         {
-            get { return this.empty; }
+            get { return this.representation == EmptySquareRepresentation; }
         }
 
         public PieceType PieceTypeOnSquare
@@ -49,7 +60,8 @@
                 }
                 else
                 {
-                    return this.pieceType;
+                    int shifted = this.representation >> BitsToShiftForPieceType;
+                    return (PieceType)(shifted & MaskForShiftedPieceType);
                 }
             }
         }
@@ -64,7 +76,7 @@
                 }
                 else
                 {
-                    return this.color;
+                    return (Color)((this.representation >> BitsToShiftForColor) & MaskForShiftedColor);
                 }
             }
         }
@@ -74,9 +86,18 @@
             get { return EmptySquareContent; }
         }
 
+        public static SquareContent FromByte(byte representation)
+        {
+            return new SquareContent(representation);
+        }
+
         public static SquareContent FromPieceAndColor(PieceType pieceType, Color color)
         {
-            return new SquareContent(pieceType, color);
+            const int NotEmptyPart = 0x01;
+            int pieceTypePart = (int)pieceType << 1;
+            int colorPart = (int)color << 4;
+            byte representation = (byte)(NotEmptyPart | pieceTypePart | colorPart);
+            return new SquareContent(representation);
         }
 
         public static SquareContent FromString(string serialized)
@@ -124,27 +145,19 @@
 
         public bool Equals(SquareContent other)
         {
-            return this.empty.Equals(other.empty)
-                && this.color.Equals(other.color)
-                && this.pieceType.Equals(other.pieceType);
+            return this.representation == other.representation;
         }
 
         public override bool Equals(object obj)
         {
-            SquareContent? squareContent = obj as SquareContent?;
-            return squareContent.HasValue
-                && this.Equals(squareContent.Value);
+            return obj is SquareContent && this.Equals((SquareContent)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hash = (int)2166136261;
-                hash = hash * 16777619 ^ this.color.GetHashCode();
-                hash = hash * 16777619 ^ this.pieceType.GetHashCode();
-                hash = hash * 16777619 ^ this.empty.GetHashCode();
-                return hash;
+                return this.representation;
             }
         }
 
@@ -156,8 +169,8 @@
             }
             else
             {
-                string uncoloredPiece = this.pieceType.AsCharacter().ToString(CultureInfo.InvariantCulture);
-                return this.color.IsCharacterRepresentationCapitalized() ? uncoloredPiece.ToUpper() : uncoloredPiece.ToLower();
+                string uncoloredPiece = this.PieceTypeOnSquare.AsCharacter().ToString(CultureInfo.InvariantCulture);
+                return this.ColorOnSquare.IsCharacterRepresentationCapitalized() ? uncoloredPiece.ToUpper() : uncoloredPiece.ToLower();
             }
         }
     }

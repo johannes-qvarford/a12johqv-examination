@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
 
@@ -39,12 +40,12 @@
                     playerCasebasePair.firstPlayerCasebase, 
                     playerCasebasePair.secondPlayerCasebase));
 
-
             IList<Weights> weightsList = GetWeightsList().ToArray();
 
             // Play a number of games for each setup, and collect their reports.
             // Every match setup has its own random number generator with a unique seed,
             // to avoid race conditions and make games unique if the same setup is used for more than one match.
+            // Games with the same setup but different weights will have the same seed.
             var reports = matchSetups.AsParallel().AsUnordered()
                 .SelectMany(matchSetup => weightsList.Select(weights =>
                     new { MatchSetup = matchSetup, Weights = weights, Random = new Random(Seed + matchSetup.GetHashCode()) }))
@@ -56,26 +57,24 @@
 
         private static IEnumerable<Weights> GetWeightsList()
         {
+            // Use different sets of weights to see if one stands out.
             double[,] bareWeightsList =
                 {
-                    { 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 },
-                    { 0.9, 0.1, 0.5, 0.5, 0.5, 0.5 },
-                    { 0.1, 0.9, 0.5, 0.5, 0.5, 0.5 },
-                    { 0.5, 0.5, 0.9, 0.1, 0.5, 0.5 },
-                    { 0.5, 0.5, 0.1, 0.9, 0.5, 0.5 },
-                    { 0.5, 0.5, 0.5, 0.5, 0.9, 0.1 },
-                    { 0.5, 0.5, 0.5, 0.5, 0.1, 0.9 }
+                    { 0.5, 0.5, 0.5, },
+                    { 0.8, 0.5, 0.5, },
+                    { 0.2, 0.5, 0.5, },
+                    { 0.5, 0.8, 0.5, },
+                    { 0.5, 0.2, 0.5, },
+                    { 0.5, 0.5, 0.8, },
+                    { 0.5, 0.5, 0.2, }
                 };
 
             for (int i = 0; i < bareWeightsList.GetLength(0); i++)
             {
                 yield return new Weights(
-                    moveInverseDistanceWeight: bareWeightsList[i, 0],
-                    moveSquareContentWeight: bareWeightsList[i, 1],
-                    moveInverseDistanceSourceWeight: bareWeightsList[i, 2],
-                    moveInverseDistanceTargetWeight: bareWeightsList[i, 3],
-                    moveSquareContentSourceWeight: bareWeightsList[i, 4],
-                    moveSquareContentTargetWeight: bareWeightsList[i, 5]);
+                    moveWeight: bareWeightsList[i, 0],
+                    distanceWeight: bareWeightsList[i, 1],
+                    squareContentWeight: bareWeightsList[i, 2]);
             }
         }
 
@@ -84,8 +83,8 @@
             using (Stream stream = GeneratedContentStreaming.OpenStreamForGameReports(dateTime))
             {
                 var streamWriter = new StreamWriter(stream);
-                var gameReportWriter = new GameReportWriter(streamWriter);
-                gameReportWriter.WriteGameReports(gameReports);
+                var gameReportWriter = new StudyGameReportXmlWriter(streamWriter);
+                gameReportWriter.WriteStudyGameReports(gameReports);
                 streamWriter.Flush();
             }
         }

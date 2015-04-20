@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Immutable;
     using System.Globalization;
     using System.Linq;
 
@@ -33,17 +32,17 @@
     /// regardless of their respective movement events.
     public struct Position : IEquatable<Position>
     {
-        private readonly IReadOnlyList<SquareContent> squaresContent;
-
         private readonly MovementEvents movementEvents;
+
+        private BarePosition barePosition;
 
         private static readonly Position InitialField = GetInitialPosition();
 
         private Position(
-            IReadOnlyList<SquareContent> squaresContent,
+            ref BarePosition barePosition,
             MovementEvents movementEvents)
         {
-            this.squaresContent = squaresContent;
+            this.barePosition = barePosition;
             this.movementEvents = movementEvents;
         }
 
@@ -59,14 +58,19 @@
             get { return this.movementEvents.NextMoveColor; }
         }
 
-        public IReadOnlyList<SquareContent> SquareContents
+        public BarePosition BarePosition
         {
-            get { return this.squaresContent; }
+            get { return this.barePosition; }
         }
 
         public IEnumerable<Move> ValidMoves
         {
-            get { return this.GetValidMoves(ignoreThreatenedKing: false); }
+            get
+            {
+                ICollection<Move> moves = new List<Move>();
+                this.GetValidMoves(ignoreThreatenedKing: false, moves: moves);
+                return moves;
+            }
         }
 
 
@@ -79,7 +83,7 @@
 
         public SquareContent this[Square square]
         {
-            get { return this.squaresContent[square.SquareIndex]; }
+            get { return this.barePosition[square.SquareIndex]; }
         }
         #endregion
 
@@ -98,7 +102,8 @@
                     // Print row order is opposite of storage order (i.e white rook is first internal content, but black rook is first print content).
                     var contentOnUpsideDownRows = serialized.Select(character => SquareContent.FromString(character.ToString(CultureInfo.InvariantCulture))).ToArray();
                     var squaresOnRightRows = Enumerable.Range(start: 0, count: 64).Select(i => contentOnUpsideDownRows[IndexOnUpsideDownPosition(i)]);
-                    return FromSquareContents(squaresOnRightRows, movementEvents);
+                    var newBarePosition = BarePosition.FromSquareContents(squaresOnRightRows.ToArray());
+                    return FromSquareContents(ref newBarePosition, movementEvents);
                 }
                 catch (ArgumentException exception)
                 {
@@ -107,9 +112,9 @@
             }
         }
 
-        private static Position FromSquareContents(IEnumerable<SquareContent> squares, MovementEvents movementEvents)
+        private static Position FromSquareContents(ref BarePosition barePosition, MovementEvents movementEvents)
         {
-            return new Position(squares.ToImmutableList(), movementEvents);
+            return new Position(ref barePosition, movementEvents);
         }
 
         private static int IndexOnUpsideDownPosition(int i)
@@ -126,10 +131,11 @@
         public Result GetResult(out Move[] validMoves)
         {
             validMoves = this.ValidMoves.ToArray();
-            return validMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
+            var result = validMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
                     this.IsOwnKingIsThreatened() ?
                         (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
                         Result.Draw;
+            return result;
         }
 
         public bool IsAnPassant(Move move)
@@ -264,49 +270,80 @@
             var contentForMovingPiece = SquareContent.FromPieceAndColor(pieceTypeForMovingPiece, this[move.From].ColorOnSquare);
 
             // Overwrite to-space with from-space content, and remove content from from-space.
-            var newSquareContent = this.squaresContent
+            var newSquareContent = this.barePosition
                 .Select((content, i) => move.To.SquareIndex == i ? contentForMovingPiece : content)
                 .Select((content, i) => move.From.SquareIndex == i ? SquareContent.Empty : content);
+            var newBarePosition = BarePosition.FromSquareContents(newSquareContent.ToArray());
             var movementEventsWithPossiblePawnMove = this[move.From].PieceTypeOnSquare == PieceType.Pawn ? 
                 this.movementEvents.WithMoveByPawn() : this.movementEvents.WithMoveByNonPawn();
-            return FromSquareContents(newSquareContent, movementEventsWithPossiblePawnMove.WithVisitedPosition(this));
+            return FromSquareContents(ref newBarePosition, movementEventsWithPossiblePawnMove.WithVisitedPosition(this));
         }
 
         private Position WithMovementEvents(MovementEvents movementEvents)
         {
-            return FromSquareContents(this.squaresContent, movementEvents);
+            return FromSquareContents(ref this.barePosition, movementEvents);
         }
 
         #endregion
 
         #region Valid Moves
 
-        private IEnumerable<Move> GetValidMoves(bool ignoreThreatenedKing)
+        private void GetValidMoves(bool ignoreThreatenedKing, ICollection<Move> moves)
         {
-            var theThis = this;
-            var moves = Enumerable.Range(start: 0, count: 8 * 8)
-                .SelectMany(i => theThis.GetValidMovesForSquare(Square.FromSquareIndex(i), ignoreThreatenedKing));
+            ICollection<Move> unthreatenedMoves = new List<Move>();
+            for (int i = 0; i < 64; i++)
+            {
+                this.GetValidMovesForSquare(Square.FromSquareIndex(i), ignoreThreatenedKing, unthreatenedMoves);
+            }
 
-            var movesThatDoesntThreatenOwnKing = (ignoreThreatenedKing ? moves : 
-                moves.Where(move => !theThis.MoveLeadsToCapturedKing(move))).ToArray();
+            // Filter away moves that were blocked by other chess pieces.
+            ICollection<Move> unthreatenedNonBlockedMoves = ignoreThreatenedKing ? moves : new List<Move>();
+            foreach (var move in unthreatenedMoves)
+            {
+                if (!move.From.Equals(move.To)
+                    && this.IsSquareOnTheWayBlocking(move)
+                    && !this.IsOccupiedByPieceOfColor(move.To, this.movementEvents.NextMoveColor))
+                {
+                    unthreatenedNonBlockedMoves.Add(move);
+                }
+                else
+                {
+                    int a = 0;
+                }
+            }
 
-            return movesThatDoesntThreatenOwnKing.Where(
-                move =>
+            if (!ignoreThreatenedKing)
+            {
+                // Moves ignore moves that caused the king to threatened.
+                var normalMoves = new List<Move>();
+                foreach (var move in unthreatenedNonBlockedMoves)
+                {
+                    if (!this.MoveLeadsToCapturedKing(move))
                     {
-                        if (theThis.IsCastling(move))
+                        normalMoves.Add(move);
+                    }
+                }
+
+                foreach (var move in normalMoves)
+                {
+                    if (this.IsCastling(move))
+                    {
+                        // We need to remove castling, if king crosses a square that it cannot reach (that is threatened).
+                        int row = move.From.Row;
+                        int passedColumn = RookSide(move).IsLeft() ? 3 : 5;
+                        Square passedSquare = Square.FromRowAndColumn(row, passedColumn);
+                        Move kingToCrossedSquareMove = Move.FromSquareToSquare(move.From, passedSquare);
+                        if (normalMoves.Contains(kingToCrossedSquareMove))
                         {
-                            // We need to remove castling, if king crosses a square that it cannot reach (that is threatened).
-                            int row = move.From.Row;
-                            int passedColumn = RookSide(move).IsLeft() ? 3 : 5;
-                            Square passedSquare = Square.FromRowAndColumn(row, passedColumn);
-                            Move kingToCrossedSquareMove = Move.FromSquareToSquare(move.From, passedSquare);
-                            return movesThatDoesntThreatenOwnKing.Contains(kingToCrossedSquareMove);
+                            moves.Add(move);
                         }
-                        else
-                        {
-                            return true;
-                        }
-                    });
+                    }
+                    else
+                    {
+                        moves.Add(move);
+                    }
+                }
+            }
         }
 
         private bool MoveLeadsToCapturedKing(Move move)
@@ -322,47 +359,56 @@
 
         private bool OpponentKingIsThreatened()
         {
-            var validMoves = this.GetValidMoves(ignoreThreatenedKing: true);
-            Position theThis = this;
+            var validMoves = new List<Move>();
+            this.GetValidMoves(ignoreThreatenedKing: true, moves: validMoves);
+
             var oppositeColor = this.CurrentColor.OppositeColor();
-            return validMoves
-                .Select(move => theThis[move.To])
-                .Any(content => !content.IsEmpty && content.ColorOnSquare == oppositeColor && content.PieceTypeOnSquare == PieceType.King);
+            foreach (var move in validMoves)
+            {
+                var toContent = this[move.To];
+                if (!toContent.IsEmpty && toContent.ColorOnSquare == oppositeColor && toContent.PieceTypeOnSquare == PieceType.King)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private IEnumerable<Move> GetValidMovesForSquare(Square square, bool ignoreThreatenedKing)
+        private void GetValidMovesForSquare(Square square, bool ignoreThreatenedKing, ICollection<Move> moves)
         {
             SquareContent squareContent = this[square];
             bool correctColor = !squareContent.IsEmpty && squareContent.ColorOnSquare == this.movementEvents.NextMoveColor;
 
-            if (!correctColor)
-            {
-                return ImmutableList.Create<Move>();
-            }
-            else
+            if (correctColor)
             {
                 PieceType pieceType = squareContent.PieceTypeOnSquare;
                 switch (pieceType)
                 {
                     case PieceType.Pawn:
-                        return this.GetValidMovesForPawn(square);
+                        this.GetValidMovesForPawn(square, moves);
+                        break;
                     case PieceType.Rook:
-                        return this.GetValidMovesForRook(square);
+                        GetValidMovesForRook(square, moves);
+                        break;
                     case PieceType.Knight:
-                        return this.GetValidMovesForKnight(square);
+                        GetValidMovesForKnight(square, moves);
+                        break;
                     case PieceType.Bishop:
-                        return this.GetValidMovesForBishop(square);
+                        GetValidMovesForBishop(square, moves);
+                        break;
                     case PieceType.Queen:
-                        return this.GetValidMovesForQueen(square);
+                        GetValidMovesForQueen(square, moves);
+                        break;
                     case PieceType.King:
-                        return this.GetValidMovesForKing(square, ignoreThreatenedKing);
+                        this.GetValidMovesForKing(square, ignoreThreatenedKing, moves);
+                        break;
                     default:
                         throw new Exception("Unexpected piece type.");
                 }
             }
         }
 
-        private IEnumerable<Move> GetValidMovesForPawn(Square square)
+        private void GetValidMovesForPawn(Square square, ICollection<Move> moves)
         {
             Color color = this.movementEvents.NextMoveColor;
             int row = square.Row;
@@ -406,11 +452,24 @@
                     validMoves.Add(Move.FromSquareToSquare(square, longForward.Value));
                 }
 
+                var validPromotions = new[] { PieceType.Rook, PieceType.Knight, PieceType.Bishop, PieceType.Queen };
+
                 // Transform moves that land on the first or final rows to promotion moves.
-                return validMoves.SelectMany(move => move.To.Row == 0 || move.To.Row == 7 ? 
-                    new[] { PieceType.Rook, PieceType.Knight, PieceType.Bishop, PieceType.Queen }
-                        .Select(pt => Move.FromSquareToSquareWithPromotion(move.From, move.To, pt)) :
-                    new[] { move });
+                foreach (var validMove in validMoves)
+                {
+                    if (validMove.To.Row == 0 || validMove.To.Row == 7)
+                    {
+                        foreach (var validPromotion in validPromotions)
+                        {
+                            moves.Add(Move.FromSquareToSquareWithPromotion(validMove.From, validMove.To, validPromotion));
+                        }
+                    }
+                    else
+                    {
+                        moves.Add(validMove);
+                    }
+                }
+
             }
         }
 
@@ -444,19 +503,20 @@
             }
         }
 
-        private IEnumerable<Move> GetValidMovesForRook(Square square)
+        private static void GetValidMovesForRook(Square square, ICollection<Move> moves)
         {
-            IEnumerable<Square> horizontalSquares = GetHorizontalSquares(row: square.Row);
-            IEnumerable<Square> verticalSquares = GetVerticalSquares(column: square.Column);
+            ICollection<Square> horizontalVerticalSquares = new List<Square>();
+            GetHorizontalSquares(row: square.Row, squares: horizontalVerticalSquares);
+            GetVerticalSquares(column: square.Column, squares: horizontalVerticalSquares);
 
-            var movesWithoutObstructions = horizontalSquares.Union(verticalSquares)
-                .Select(toSquare => Move.FromSquareToSquare(square, toSquare))
-                .Where(move => !move.From.Equals(move.To));
-
-            return this.FilterMovesBasedOnObstructingPieces(movesWithoutObstructions);
+            foreach (var hvSquare in horizontalVerticalSquares)
+            {
+                var move = Move.FromSquareToSquare(square, hvSquare);
+                moves.Add(move);
+            }
         }
 
-        private IEnumerable<Move> GetValidMovesForKnight(Square square)
+        private static void GetValidMovesForKnight(Square square, ICollection<Move> moves)
         {
             var squaresWithoutObstructions = new[]
                 {
@@ -469,43 +529,43 @@
                     MaybeFromRowAndColumn(square.Row - 2, square.Column + 1),
                     MaybeFromRowAndColumn(square.Row - 2, square.Column - 1)
                 };
-            var movesWithoutObstructions = squaresWithoutObstructions
-                .Where(maybeSquare => maybeSquare.HasValue)
-                .Select(maybeSquare => maybeSquare.Value)
-                .Select(toSquare => Move.FromSquareToSquare(square, toSquare));
 
-            Position theThis = this;
-            return movesWithoutObstructions
-                .Where(move => !theThis.IsOccupiedByPieceOfColor(move.To, theThis.movementEvents.NextMoveColor));
+            foreach (var maybeSquare in squaresWithoutObstructions)
+            {
+                if (maybeSquare.HasValue)
+                {
+                    var move = Move.FromSquareToSquare(square, maybeSquare.Value);
+                    moves.Add(move);
+                }
+            }
         }
 
-        private IEnumerable<Move> GetValidMovesForBishop(Square square)
+        private static void GetValidMovesForBishop(Square square, ICollection<Move> moves)
         {
-            IEnumerable<Square> diagonalSquares = GetDiagonalSquares(square);
+            var diagonalSquares = new List<Square>();
+            GetDiagonalSquares(square, diagonalSquares);
 
-            var movesWithoutObstructions = diagonalSquares
-                .Select(toSquare => Move.FromSquareToSquare(square, toSquare));
-
-            return this.FilterMovesBasedOnObstructingPieces(movesWithoutObstructions);
+            foreach (var surroundingSquare in diagonalSquares)
+            {
+                moves.Add(Move.FromSquareToSquare(square, surroundingSquare));
+            }
         }
 
-        private IEnumerable<Move> GetValidMovesForQueen(Square square)
+        private static void GetValidMovesForQueen(Square square, ICollection<Move> moves)
         {
-            IEnumerable<Square> diagonalSquares = GetDiagonalSquares(square);
-            IEnumerable<Square> horizontalSquares = GetHorizontalSquares(row: square.Row);
-            IEnumerable<Square> verticalSquares = GetVerticalSquares(column: square.Column);
+            ICollection<Square> surroundingSquares = new List<Square>();
+            GetDiagonalSquares(square, squares: surroundingSquares);
+            GetHorizontalSquares(row: square.Row, squares: surroundingSquares);
+            GetVerticalSquares(column: square.Column, squares: surroundingSquares);
 
-            var movesWithoutObstructions = diagonalSquares.Union(horizontalSquares).Union(verticalSquares)
-                .Select(toSquare => Move.FromSquareToSquare(square, toSquare));
-
-            return this.FilterMovesBasedOnObstructingPieces(movesWithoutObstructions);
+            foreach (var surroundingSquare in surroundingSquares)
+            {
+                moves.Add(Move.FromSquareToSquare(square, surroundingSquare));
+            }
         }
 
-        private IEnumerable<Move> GetValidMovesForKing(Square square, bool ignoreThreatenedKing)
+        private void GetValidMovesForKing(Square square, bool ignoreThreatenedKing, ICollection<Move> moves)
         {
-            var oneStepMoves = this.GetValidMovesForQueen(square)
-                .Where(move => Math.Abs(move.From.Column - move.To.Column) <= 1 && Math.Abs(move.From.Row - move.To.Row) <= 1);
-            
             // These moves are only valid if king can move one step to the right or left without being captured.
             // We don't know that right now, so we may filter away these later.
             bool kingCanMoveForCastling = !this.HasCurrentKingMoved() && (ignoreThreatenedKing || !this.IsOwnKingIsThreatened());
@@ -525,17 +585,33 @@
 
             if (canDoLeftCastling)
             {
-                yield return Move.FromSquareToSquare(square, Square.FromRowAndColumn(square.Row, square.Column - 2));
+                moves.Add(Move.FromSquareToSquare(square, Square.FromRowAndColumn(square.Row, square.Column - 2)));
             }
 
             if (canDoRightCastling)
             {
-                yield return Move.FromSquareToSquare(square, Square.FromRowAndColumn(square.Row, square.Column + 2));
+                 moves.Add(Move.FromSquareToSquare(square, Square.FromRowAndColumn(square.Row, square.Column + 2)));
             }
 
-            foreach (var oneStepMove in oneStepMoves)
+            for (int i = -1; i <= 1; i++)
             {
-                yield return oneStepMove;
+                for (int j = -1; j <= 1; j++)
+                {
+                    if (i != 0 || j != 0)
+                    {
+                        int row = square.Row + i;
+                        int column = square.Column + j;
+                        
+                        if (row >= 0 && row < 8 && column >= 0 && column < 8)
+                        {
+                            var target = Square.FromRowAndColumn(row, column);
+                            if (!this.IsOccupiedByPieceOfColor(target, this.MovementEvents.NextMoveColor))
+                            {
+                                moves.Add(Move.FromSquareToSquare(square, target));
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -562,22 +638,22 @@
             return this[square].IsEmpty;
         }
 
-        private static IEnumerable<Square> GetDiagonalSquares(Square square)
+        private static void GetDiagonalSquares(Square square, ICollection<Square> squares)
         {
-            return GetDiagonalSquaresWithIncrements(square, 1, 1)
-                .Union(GetDiagonalSquaresWithIncrements(square, 1, -1))
-                .Union(GetDiagonalSquaresWithIncrements(square, -1, 1))
-                .Union(GetDiagonalSquaresWithIncrements(square, -1, -1));
+            GetDiagonalSquaresWithIncrements(square, 1, 1, squares);
+            GetDiagonalSquaresWithIncrements(square, 1, -1, squares);
+            GetDiagonalSquaresWithIncrements(square, -1, 1, squares);
+            GetDiagonalSquaresWithIncrements(square, -1, -1, squares);
         }
 
-        private static IEnumerable<Square> GetDiagonalSquaresWithIncrements(Square square, int rowIncrement, int columnIncrement)
+        private static void GetDiagonalSquaresWithIncrements(Square square, int rowIncrement, int columnIncrement, ICollection<Square> squares)
         {
             for (int i = 0; i < 8; i++)
             {
                 Square? newSquare = MaybeFromRowAndColumn(square.Row + (i * rowIncrement), square.Column + (i * columnIncrement));
                 if (newSquare.HasValue)
                 {
-                    yield return newSquare.Value;
+                    squares.Add(newSquare.Value);
                 }
                 else
                 {
@@ -586,40 +662,25 @@
             }
         }
 
-        private IEnumerable<Move> FilterMovesBasedOnObstructingPieces(IEnumerable<Move> moves)
-        {
-            var theThis = this;
-            return moves
-                .Where(theThis.CanDoMoveWithoutPassingOverPiece)
-                .Where(move => !theThis.IsOccupiedByPieceOfColor(move.To, theThis.movementEvents.NextMoveColor));
-        }
-
         private bool IsOccupiedByPieceOfColor(Square square, Color color)
         {
             return !this[square].IsEmpty && this[square].ColorOnSquare == color;
         }
 
-        private static IEnumerable<Square> GetVerticalSquares(int column)
+        private static void GetVerticalSquares(int column, ICollection<Square> squares)
         {
             for (int i = 0; i < 8; i++)
             {
-                yield return Square.FromRowAndColumn(i, column);
+                squares.Add(Square.FromRowAndColumn(i, column));
             }
         }
 
-        private static IEnumerable<Square> GetHorizontalSquares(int row)
+        private static void GetHorizontalSquares(int row, ICollection<Square> squares)
         {
             for (int i = 0; i < 8; i++)
             {
-                yield return Square.FromRowAndColumn(row, i);
+                squares.Add(Square.FromRowAndColumn(row, i));
             }
-        }
-
-        private bool CanDoMoveWithoutPassingOverPiece(Move move)
-        {
-            var onTheWay = SquaresOnTheWay(move);
-            bool allOnTheWayAreEmpty = onTheWay.All(this.SquareIsEmpty);
-            return allOnTheWayAreEmpty;
         }
 
         private bool SquareIsEmpty(Square square)
@@ -627,55 +688,9 @@
             return this[square].IsEmpty;
         }
 
-        private static IEnumerable<Square> SquaresOnTheWay(Move move)
-        {
-            if (IsVerticalMove(move))
-            {
-                return VerticalSquaresOnTheWay(move);
-            }
-            else if (IsHorizontalMove(move))
-            {
-                return HorizontalSquaresOnTheWay(move);
-            }
-            else if (IsDiagonalMove(move))
-            {
-                return DiagonalSquaresOnTheWay(move);
-            }
-            else
-            {
-                throw new Exception("Unexpected move.");
-            }
-        }
-
-        private static IEnumerable<Square> DiagonalSquaresOnTheWay(Move move)
-        {
-            int maxColumn = Math.Max(move.From.Column, move.To.Column);
-            int minColumn = Math.Min(move.From.Column, move.To.Column);
-            int columnIncrement = move.From.Column < move.To.Column ? 1 : -1;
-            int rowIncrement = move.From.Row < move.To.Row ? 1 : -1;
-            var squares = GetDiagonalSquaresWithIncrements(move.From, rowIncrement: rowIncrement, columnIncrement: columnIncrement);
-            return squares.Where(square => square.Column > minColumn && square.Column < maxColumn);
-        }
-
-        private static IEnumerable<Square> HorizontalSquaresOnTheWay(Move move)
-        {
-            int maxColumn = Math.Max(move.From.Column, move.To.Column);
-            int minColumn = Math.Min(move.From.Column, move.To.Column);
-            return GetHorizontalSquares(row: move.From.Row)
-                .Where(square => square.Column > minColumn && square.Column < maxColumn);
-        }
-
         private static bool IsVerticalMove(Move move)
         {
             return move.From.Column == move.To.Column && move.From.Row != move.To.Row;
-        }
-
-        private static IEnumerable<Square> VerticalSquaresOnTheWay(Move move)
-        {
-            int maxRow = Math.Max(move.From.Row, move.To.Row);
-            int minRow = Math.Min(move.From.Row, move.To.Row);
-            return GetVerticalSquares(column: move.From.Column)
-                .Where(square => square.Row > minRow && square.Row < maxRow);
         }
 
         private static bool IsHorizontalMove(Move move)
@@ -686,6 +701,50 @@
         private static bool IsDiagonalMove(Move move)
         {
             return Math.Abs(move.From.Row - move.To.Row) == Math.Abs(move.From.Column - move.To.Column);
+        }
+
+        private bool IsVerticalSquareOnTheWayBlocking(Move move)
+        {
+            int maxRow = Math.Max(move.From.Row, move.To.Row);
+            int minRow = Math.Min(move.From.Row, move.To.Row);
+
+            var verticalSquares = new List<Square>();
+            GetVerticalSquares(column: move.From.Column, squares: verticalSquares);
+            foreach (var square in verticalSquares)
+            {
+                if (square.Row > minRow && square.Row < maxRow)
+                {
+                    if (!this[square].IsEmpty)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private bool IsSquareOnTheWayBlocking(Move move)
+        {
+            Square start = move.From;
+
+            int columnIncrement = move.From.Column < move.To.Column ? 1 
+                : move.From.Column > move.To.Column ? -1 : 0;
+            int rowIncrement = move.From.Row < move.To.Row ? 1
+                : move.From.Row > move.To.Row ? -1 : 0;
+            int increment = (rowIncrement * 8) + columnIncrement;
+
+            for (int i = start.SquareIndex + increment;
+                i >= 0 && i < 64
+                && (i / 8 != move.To.Row || rowIncrement == 0)
+                && (i % 8 != move.To.Column || columnIncrement == 0);
+                i += increment)
+            {
+                if (!this.BarePosition[i].IsEmpty)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private bool IsOccupiedByColor(Square square, Color color)
@@ -701,10 +760,9 @@
 
         #region Equality
 
-        public bool Equals(Position position)
+        public bool Equals(Position other)
         {
-            return this.squaresContent.Zip(position.squaresContent, Tuple.Create)
-                .All(tuple => tuple.Item1.Equals(tuple.Item2));
+            return this.barePosition.Equals(other.BarePosition);
         }
 
         public override bool Equals(object obj)
@@ -717,9 +775,12 @@
         {
             unchecked
             {
-                return this.squaresContent.Aggregate(
-                    (int)2166136261,
-                    (hash, content) => hash * 16777619 ^ content.GetHashCode());
+                int hash = (int)2166136261;
+                for (int i = 0; i < 64; i++)
+                {
+                    hash = hash * 16777619 ^ this.barePosition[i].GetHashCode();
+                }
+                return hash;
             }
         }
 
@@ -729,7 +790,7 @@
 
         public override string ToString()
         {
-            var rows = this.squaresContent.Select((content, i) => new { Content = content, Index = i })
+            var rows = this.barePosition.Select((content, i) => new { Content = content, Index = i })
                 .GroupBy((contentI) => contentI.Index / 8).OrderBy(group => group.Key);
 
             // When iterating over rows, the black rows should be added first (the ones with higher row number).
