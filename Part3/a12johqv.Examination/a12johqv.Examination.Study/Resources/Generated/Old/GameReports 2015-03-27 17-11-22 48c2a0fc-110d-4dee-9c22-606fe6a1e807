@@ -1,0 +1,98 @@
+<matchReports>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.9306640625</averageProblemSimilarity>
+      <averageMoveSimilarity>0.43898809523809518</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92545572916666663</averageProblemSimilarity>
+      <averageMoveSimilarity>0.72619047619047628</averageMoveSimilarity>
+    </black>
+    <result>Undecided</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "*"]
+
+h2h3 a7a6 a2a3 a6a5 b2b3 a5a4 g2g3 a4xb3 h3h4 b3b2 f2f3 b2xa1=R a3a4 h7h6 Ng1h3 h6h5 Nh3g1 Ng8h6 Ng1h3 Nh6g8 Nh3g1 Ng8h6 Ng1h3 Nh6g8</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88739809782608692</averageProblemSimilarity>
+      <averageMoveSimilarity>0.44254658385093176</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88671875</averageProblemSimilarity>
+      <averageMoveSimilarity>0.70698051948051954</averageMoveSimilarity>
+    </black>
+    <result>Undecided</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "*"]
+
+a2a3 h7h5 Ra1a2 h5h4 h2h3 a7a6 b2b3 a6a5 g2g3 a5a4 b3xa4 b7b5 c2c3 h4xg3 a4a5 g3g2 a3a4 b5xa4 Ra2a1 a4a3 Ra1a2 g2xf1=R Ke1xf1+ c7c5 h3h4 c5c4 Ra2a1 a3a2 Ra1xa2 d7d5 Ng1h3 Nb8a6 Nb1a3 Rh8h7 Rh1g1 Na6b8 Ra2a1 Nb8a6 Na3b1 Na6b8 Nb1a3 Nb8a6 Na3b1 Na6b8 Nb1a3</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.8784375</averageProblemSimilarity>
+      <averageMoveSimilarity>0.44285714285714262</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.875625</averageProblemSimilarity>
+      <averageMoveSimilarity>0.72071428571428564</averageMoveSimilarity>
+    </black>
+    <result>Undecided</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "*"]
+
+a2a3 h7h6 h2h3 h6h5 b2b3 a7a6 g2g3 h5h4 g3xh4 a6a5 f2f3 g7g6 a3a4 g6g5 c2c3 g5xh4 Rh1h2 b7b6 Ra1a2 Ra8a7 b3b4 a5xb4 Ra2a1 b4b3 Rh2h1 b3b2 Rh1h2 b2xa1=R Rh2h1 Ra1xb1 Bc1b2 Rb1a1 Bb2xa1 Bc8a6 Ba1b2 Ba6b5 Bb2a1 Bb5xa4 Ba1b2 Ba4b3 Bb2a1 Bb3a2 Ba1b2 Ba2b1 Bb2a1 Bb1a2 Ba1b2 Ba2b1 Bb2a1 Bb1a2</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.87973484848484851</averageProblemSimilarity>
+      <averageMoveSimilarity>0.36525974025974023</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.8797607421875</averageProblemSimilarity>
+      <averageMoveSimilarity>0.75390625</averageMoveSimilarity>
+    </black>
+    <result>Undecided</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "*"]
+
+a2a3 a7a6 b2b3 h7h6 a3a4 h6h5 c2c3 a6a5 b3b4 a5xb4 a4a5 b4b3 Ra1a2 b3xa2 d2d3 a2a1=R a5a6 Ra1xb1 a6a7 Rb1a1 a7xb8=R Ra1b1 h2h3 Rb1a1 c3c4 Ra1b1 Bc1b2 Rb1a1 Bb2xa1 b7b5 Ba1b2 b5b4 Bb2a1 b4b3 Ba1b2 Ra8a1 Bb2xa1 b3b2 Ba1xb2 c7c5 Bb2a1 d7d5 Ba1b2 d5xc4 Bb2a1 c4c3 Ba1b2 c3xb2 Qd1a1 b2xa1=R Rb8b1+ Ra1xb1 Ke1d2+ Rb1a1 e2e3 Ra1b1 d3d4 Rh8h7 Rh1h2 Rh7h8 Rh2h1 Rh8h7 Rh1h2 Rh7h8 Rh2h1</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88519965277777779</averageProblemSimilarity>
+      <averageMoveSimilarity>0.4672619047619046</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88396139705882348</average
