@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Immutable;
     using System.Diagnostics;
     using System.Linq;
 
@@ -17,7 +16,7 @@
         public static Casebase ConvertToCasebaseForPlayer(Pgn.Database pgnDatabase, string playerName)
         {
             var cases = pgnDatabase.Games.AsParallel().AsSequential().SelectMany(game => GetCasesForPlayerInGame(game, playerName));
-            return new Casebase(ImmutableList.CreateRange(cases));
+            return new Casebase(cases.ToArray());
         }
 
         private static IEnumerable<Case> GetCasesForPlayerInGame(Pgn.Game game, string playerName)

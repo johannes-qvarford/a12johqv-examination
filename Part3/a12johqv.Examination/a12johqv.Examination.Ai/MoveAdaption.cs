@@ -14,17 +14,17 @@
     /// adaption is only towards any of the valid moves.
     /// The move to adapt to is the one whose most similar to the move in the case.
     /// Similarity is expressed as follows:
-    /// w1 * I(m, n) + w2 * C(m, n)
-    /// Where w1 and w2 are weights, m and n are moves,
+    /// w1 * I(m, n) + (1 - w1) * C(m, n)
+    /// Where w1 is a weight, m and n are moves,
     /// I is the inverse distance similarity of the moves and C is content similarity of the moves.
     /// 
     /// The content similarity of the moves is defined as:
-    /// w3 * F(p[m.From], c[n.From]) + w4 * F(p[m.To], c[n.To])
+    /// w2 * F(p[m.From], c[n.From]) + (1 - w2) * F(p[m.To], c[n.To])
     /// Where w3 and w4 are weights, p is the current barePosition, c is the case barePosition,
     /// and F is the similarity function for square content defined in SquareContentSimilarity.
     /// 
     /// The inverse distance similarity of the moves is defined as:
-    /// (1 - (w5 * G(m.From, n.From) + w6 * G(m.To, n.To)))
+    /// (1 - (w3 * G(m.From, n.From) + (1 - w3) * G(m.To, n.To)))
     /// where w5 and w6 are weights, and G is the normalized manhattan distance of squares.
     /// 
     /// normalized Manhattan distance of squares is defined as:

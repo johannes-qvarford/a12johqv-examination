@@ -131,7 +131,7 @@
         public Result GetResult(out Move[] validMoves)
         {
             validMoves = this.ValidMoves.ToArray();
-            var result = validMoves.Any() && !this.movementEvents.IsGameOver(this) ? Result.Undecided :
+            var result = validMoves.Any() && !this.movementEvents.IsGameOver(this.BarePosition) ? Result.Undecided :
                     this.IsOwnKingIsThreatened() ?
                         (this.movementEvents.NextMoveColor == Color.White ? Result.BlackVictory : Result.WhiteVictory) :
                         Result.Draw;
@@ -276,7 +276,7 @@
             var newBarePosition = BarePosition.FromSquareContents(newSquareContent.ToArray());
             var movementEventsWithPossiblePawnMove = this[move.From].PieceTypeOnSquare == PieceType.Pawn ? 
                 this.movementEvents.WithMoveByPawn() : this.movementEvents.WithMoveByNonPawn();
-            return FromSquareContents(ref newBarePosition, movementEventsWithPossiblePawnMove.WithVisitedPosition(this));
+            return FromSquareContents(ref newBarePosition, movementEventsWithPossiblePawnMove.WithVisitedPosition(this.BarePosition));
         }
 
         private Position WithMovementEvents(MovementEvents movementEvents)

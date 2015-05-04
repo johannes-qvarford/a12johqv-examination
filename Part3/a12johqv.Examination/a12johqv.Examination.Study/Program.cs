@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
 
@@ -12,14 +11,14 @@
     {
         /// Play games between all players and generate a file with a report of each match.
         /// 
-        /// Every player is paired up with every other player including themselves.
-        /// Every pair of unique players play 5 games each as white and black (10 games total).
-        /// Players play 5 games agains themselves.
+        /// Every player is paired up with every other player (21 pairs).
+        /// Every pair of unique players play 3 games each as white and black (6 * 21 games total).
+        /// This is done for every configuration (5 * 126 = 630 games total).
         /// The generated file is named in "GameReports {guid}" and placed in the directory "Resources/Generated".
         public static void Main(string[] args)
         {
             const int Seed = 1000;
-            const int GamesPerPairOfPlayers = 2;
+            const int GamesPerPairOfPlayers = 3;
 
             var now = DateTime.Now;
 
@@ -59,34 +58,12 @@
         {
             // Use different sets of weights to see if one stands out.
             double[,] bareWeightsList =
-                {   
-                    { 0.2, 0.2, 0.2, },
-                    { 0.5, 0.2, 0.2, },
-                    { 0.8, 0.2, 0.2, },
-                    { 0.2, 0.5, 0.2, },
-                    { 0.5, 0.5, 0.2, },
-                    { 0.8, 0.5, 0.2, },
-                    { 0.2, 0.8, 0.2, },
-                    { 0.5, 0.8, 0.2, },
-                    { 0.8, 0.8, 0.2, },
-                    { 0.2, 0.2, 0.5, },
-                    { 0.5, 0.2, 0.5, },
-                    { 0.8, 0.2, 0.5, },
-                    { 0.2, 0.5, 0.5, },
+                {
                     { 0.5, 0.5, 0.5, },
-                    { 0.8, 0.5, 0.5, },
-                    { 0.2, 0.8, 0.5, },
-                    { 0.5, 0.8, 0.5, },
                     { 0.8, 0.8, 0.5, },
-                    { 0.2, 0.2, 0.8, },
-                    { 0.5, 0.2, 0.8, },
-                    { 0.8, 0.2, 0.8, },
+                    { 0.8, 0.2, 0.5, },
                     { 0.2, 0.5, 0.8, },
-                    { 0.5, 0.5, 0.8, },
-                    { 0.8, 0.5, 0.8, },
-                    { 0.2, 0.8, 0.8, },
-                    { 0.5, 0.8, 0.8, },
-                    { 0.8, 0.8, 0.8, }
+                    { 0.2, 0.5, 0.2, },
                 };
 
             for (int i = 0; i < bareWeightsList.GetLength(0); i++)

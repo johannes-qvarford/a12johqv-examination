@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
     using a12johqv.Examination.Chess;
 
@@ -25,7 +26,7 @@
                            {
                                Event = "a12johqv 2015 Examination",
                                Site = "Högskolan i Skövde",
-                               Round = "?",
+                               Round = gameReport.Round.ToString(CultureInfo.InvariantCulture),
                                Year = DateTime.Now.Year,
                                Month = DateTime.Now.Month,
                                Day = DateTime.Now.Day,

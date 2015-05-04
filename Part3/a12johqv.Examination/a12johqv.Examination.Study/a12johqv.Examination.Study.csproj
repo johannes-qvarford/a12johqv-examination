@@ -66,6 +66,8 @@
     <None Include="Resources\Player2.pgn" />
     <None Include="Resources\Player3.pgn" />
     <None Include="Resources\Player4.pgn" />
+    <None Include="Resources\Player5.pgn" />
+    <None Include="Resources\Player6.pgn" />
     <None Include="Resources\Players.config">
       <SubType>Designer</SubType>
     </None>

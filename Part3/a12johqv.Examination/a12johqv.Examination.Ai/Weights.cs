@@ -5,14 +5,14 @@
     {
         private readonly double moveWeight;
 
-        private readonly double squareContentWeight;
-
         private readonly double distanceWeight;
+
+        private readonly double squareContentWeight;
 
         public Weights(
             double moveWeight,
-            double squareContentWeight,
-            double distanceWeight)
+            double distanceWeight,
+            double squareContentWeight)
         {
             this.moveWeight = moveWeight;
             this.squareContentWeight = squareContentWeight;
@@ -21,8 +21,8 @@
 
         public double MoveWeight { get { return this.moveWeight; } }
 
-        public double SquareContentWeight { get { return this.squareContentWeight; } }
-
         public double DistanceWeight { get { return this.distanceWeight; } }
+
+        public double SquareContentWeight { get { return this.squareContentWeight; } }
     }
 }

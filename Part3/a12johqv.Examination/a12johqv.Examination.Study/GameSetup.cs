@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
 
     using a12johqv.Examination.Ai;
     using a12johqv.Examination.Chess;
@@ -25,16 +24,19 @@
 
         public IEnumerable<GameReport> Play(int count, Weights weights, Random random)
         {
-            return Enumerable.Range(0, count).Select(_ => this.PlayOnce(weights, random));
+            for (int i = 0; i < count; i++)
+            {
+                yield return this.PlayOnce(weights, random.Next(), i);
+            }
         }
 
-        private GameReport PlayOnce(Weights weights, Random random)
+        private GameReport PlayOnce(Weights weights, int randomSeed, int round)
         {
             // Cycle between ais on every iteration of the loop.
             ChessAi[] ais =
                 {
-                    new ChessAi(this.whitePlayerWithCasebase.Item2, weights, Color.White),
-                    new ChessAi(this.blackPlayerWithCasebase.Item2, weights, Color.Black)
+                    new ChessAi(this.whitePlayerWithCasebase.Item2, weights, new Random(randomSeed)),
+                    new ChessAi(this.blackPlayerWithCasebase.Item2, weights, new Random(randomSeed * 2))
                 };
 
             // Check how fast each player decides their moves to make sure the AI follows the performance requirements. 
@@ -60,13 +62,13 @@
                 stopWatch.Start();
                 var move = currentAi.DecideMove(
                     position: position.BarePosition,
-                    validMoves: validMoves,
-                    random: random);
+                    color: position.CurrentColor,
+                    validMoves: validMoves);
                 stopWatch.Stop();
 
                 if (performedMoves.Count < 40 * 2)
                 {
-                    timeToDecideFirst40Moves[currentAi.Color] += stopWatch.Elapsed;
+                    timeToDecideFirst40Moves[position.CurrentColor] += stopWatch.Elapsed;
                 }
 
                 performedMoves.Add(move);
@@ -79,6 +81,7 @@
                 whitePlayerName: this.whitePlayerWithCasebase.Item1.Name,
                 blackPlayerName: this.blackPlayerWithCasebase.Item1.Name,
                 weights: weights,
+                round: round,
                 didFollowTimeRequirements: timeToDecideFirst40Moves[Color.White] < TimeSpan.FromMinutes(90)
                     && timeToDecideFirst40Moves[Color.Black] < TimeSpan.FromMinutes(90));
         }

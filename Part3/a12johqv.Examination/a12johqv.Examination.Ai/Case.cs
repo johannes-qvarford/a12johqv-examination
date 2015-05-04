@@ -4,8 +4,9 @@
 
     using a12johqv.Examination.Chess;
 
-    /// A case represented by a problem part: the position + color of player,
+    /// A case represented by a problem part: the bare position + color of player,
     /// and a solution part: the move performed.
+    /// This is an optimization to not have to store the entire position.
     public struct Case : IEquatable<Case>
     {
         private readonly BarePosition barePosition;

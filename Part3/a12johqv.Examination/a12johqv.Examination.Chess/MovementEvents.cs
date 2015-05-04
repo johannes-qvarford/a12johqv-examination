@@ -1,9 +1,7 @@
 namespace a12johqv.Examination.Chess
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.Immutable;
-    using System.Diagnostics;
     using System.Diagnostics.Contracts;
     using System.Linq;
 
@@ -32,11 +30,11 @@ namespace a12johqv.Examination.Chess
 
         private readonly int movesSinceLastPawnMove;
 
-        private readonly ImmutableDictionary<Position, int> previouslyVisitedPositions;
+        private readonly ImmutableDictionary<BarePosition, int> previouslyVisitedBarePositions;
 
         private static readonly MovementEvents InitialMovementEventsField = 
             new MovementEvents()
-            .Create(previouslyVisitedPositionsP: ImmutableDictionary.Create<Position, int>());
+            .Create(previouslyVisitedBarePositionsP: ImmutableDictionary.Create<BarePosition, int>());
 
         private MovementEvents(
             Color nextMoveColor,
@@ -48,7 +46,7 @@ namespace a12johqv.Examination.Chess
             bool leftBlackRookHasMoved,
             bool rightBlackRookHasMoved,
             int movesSinceLastPawnMove,
-            ImmutableDictionary<Position, int> previouslyVisitedPositions)
+            ImmutableDictionary<BarePosition, int> previouslyVisitedBarePositions)
         {
             this.nextMoveColor = nextMoveColor;
             this.lastMove = lastMove;
@@ -59,7 +57,7 @@ namespace a12johqv.Examination.Chess
             this.leftBlackRookHasMoved = leftBlackRookHasMoved;
             this.rightBlackRookHasMoved = rightBlackRookHasMoved;
             this.movesSinceLastPawnMove = movesSinceLastPawnMove;
-            this.previouslyVisitedPositions = previouslyVisitedPositions;
+            this.previouslyVisitedBarePositions = previouslyVisitedBarePositions;
         }
 
         public static MovementEvents Initial
@@ -95,12 +93,6 @@ namespace a12johqv.Examination.Chess
             get { return this.nextMoveColor; }
         }
 
-        /// All unique positions that have been visited during the match.
-        public IEnumerable<Position> VisitedPositions
-        {
-            get { return this.previouslyVisitedPositions.Keys; }
-        }
-
         /// Returns whether or the king of the given color has moved.
         public bool HasKingMoved(Color color)
         {
@@ -116,25 +108,25 @@ namespace a12johqv.Examination.Chess
                    this.rightBlackRookHasMoved;
         }
 
-        public bool IsGameOver(Position currentPosition)
+        public bool IsGameOver(BarePosition currentPosition)
         {
             // Need to include currentPosition here because the position can never be included in its movementsEvents,
             // while movementEvents is included in the position if both are immutable.
             // This means that to figure out if it's game over, we need to provide the latest position.
             var withVisitedPosition = this.WithVisitedPosition(currentPosition);
-            return this.movesSinceLastPawnMove >= 50 || withVisitedPosition.previouslyVisitedPositions.Values.Contains(3);
+            return this.movesSinceLastPawnMove >= 50 || withVisitedPosition.previouslyVisitedBarePositions[currentPosition] == 3;
         }
 
-        public MovementEvents WithVisitedPosition(Position position)
+        public MovementEvents WithVisitedPosition(BarePosition position)
         {
-            if (this.previouslyVisitedPositions.ContainsKey(position))
+            if (this.previouslyVisitedBarePositions.ContainsKey(position))
             {
-                var previousCount = this.previouslyVisitedPositions[position];
-                return this.Create(previouslyVisitedPositionsP: this.previouslyVisitedPositions.SetItem(position, previousCount + 1));
+                var previousCount = this.previouslyVisitedBarePositions[position];
+                return this.Create(previouslyVisitedBarePositionsP: this.previouslyVisitedBarePositions.SetItem(position, previousCount + 1));
             }
             else
             {
-                return this.Create(previouslyVisitedPositionsP: this.previouslyVisitedPositions.Add(position, 1));
+                return this.Create(previouslyVisitedBarePositionsP: this.previouslyVisitedBarePositions.Add(position, 1));
             }
         }
 
@@ -204,7 +196,7 @@ namespace a12johqv.Examination.Chess
             bool? leftBlackRookHasMovedP = null,
             bool? rightBlackRookHasMovedP = null,
             int? movesSinceLastPawnMoveP = null,
-            ImmutableDictionary<Position, int> previouslyVisitedPositionsP = null)
+            ImmutableDictionary<BarePosition, int> previouslyVisitedBarePositionsP = null)
         {
             return new MovementEvents(
                 nextMoveColor: nextMoveColorP.HasValue ? nextMoveColorP.Value : this.nextMoveColor,
@@ -216,7 +208,7 @@ namespace a12johqv.Examination.Chess
                 leftBlackRookHasMoved: leftBlackRookHasMovedP.HasValue ? leftBlackRookHasMovedP.Value : this.leftBlackRookHasMoved,
                 rightBlackRookHasMoved: rightBlackRookHasMovedP.HasValue ? rightBlackRookHasMovedP.Value : this.rightBlackRookHasMoved,
                 movesSinceLastPawnMove: movesSinceLastPawnMoveP.HasValue ? movesSinceLastPawnMoveP.Value : this.movesSinceLastPawnMove,
-                previouslyVisitedPositions: previouslyVisitedPositionsP ?? this.previouslyVisitedPositions);
+                previouslyVisitedBarePositions: previouslyVisitedBarePositionsP ?? this.previouslyVisitedBarePositions);
         }
     }
 }

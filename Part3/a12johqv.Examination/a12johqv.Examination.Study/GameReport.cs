@@ -8,11 +8,7 @@
     /// A report of a game.
     /// It contains information about the game, such as the result of the game,
     /// and the moves performed during the game.
-    /// It also contains color specific reports.
-    /// 
-    /// Note: this class is immutable EXCEPT for the move list, which is mutable for performance reasons.
-    /// Instances of game report should therefor be used with care,
-    /// and not be used across threads without external syncronization.
+    /// It also contains the players names, the weights used and if the game followed the time requirements.
     public struct GameReport
     {
         private readonly Result result;
@@ -25,6 +21,8 @@
 
         private readonly Weights weights;
 
+        private readonly int round;
+
         private readonly bool didFollowTimeRequirements;
 
         public GameReport(
@@ -33,6 +31,7 @@
             string whitePlayerName,
             string blackPlayerName,
             Weights weights,
+            int round,
             bool didFollowTimeRequirements)
         {
             this.result = result;
@@ -40,6 +39,7 @@
             this.whitePlayerName = whitePlayerName;
             this.blackPlayerName = blackPlayerName;
             this.weights = weights;
+            this.round = round;
             this.didFollowTimeRequirements = didFollowTimeRequirements;
         }
 
@@ -54,5 +54,7 @@
         public Weights Weights { get { return this.weights; } }
 
         public bool DidFollowTimeRequirements { get { return this.didFollowTimeRequirements; } }
+
+        public int Round { get { return this.round; } }
     }
 }

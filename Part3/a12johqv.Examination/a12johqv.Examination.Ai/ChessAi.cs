@@ -5,36 +5,32 @@
 
     using a12johqv.Examination.Chess;
 
-    /// Ai playing a certain color that uses a casebase to decide which chess moves to make.
-    /// It uses a game report to document the similarity of the current barePosition and the
-    /// barePosition in the chosen case,
-    /// and the similarity of the adapted move, and the move in the case.
+    /// Ai that uses a casebase to decide which chess moves to make, using weights and a random number generator
+    /// to affect its decisions.
     public struct ChessAi
     {
         private readonly Casebase casebase;
 
         private readonly Weights weights;
 
-        private readonly Color color;
+        private readonly Random random;
 
-        public ChessAi(Casebase casebase, Weights weights, Color color)
+        public ChessAi(Casebase casebase, Weights weights, Random random)
         {
             this.casebase = casebase;
             this.weights = weights;
-            this.color = color;
+            this.random = random;
         }
-
-        public Color Color { get { return this.color; } }
 
         public Move DecideMove(
             BarePosition position,
             IReadOnlyList<Move> validMoves,
-            Random random)
+            Color color)
         {
             var @case = this.casebase.FindMostSimilarCase(
                 currentPosition: position,
-                color: this.Color,
-                random: random,
+                color: color,
+                random: this.random,
                 weights: this.weights);
             
             var adaptedMove = MoveAdaption.AdaptToOneOfPossibleMoves(

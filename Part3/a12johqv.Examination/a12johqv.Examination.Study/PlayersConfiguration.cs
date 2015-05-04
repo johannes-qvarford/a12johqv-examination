@@ -17,11 +17,11 @@
 
         private static Player CreatePlayerFromXElement(XElement xElement)
         {
-            return new Player(
-                name: xElement.Element("name").Value,
-                index: int.Parse(xElement.Element("index").Value),
-                ranking: int.Parse(xElement.Element("ranking").Value),
-                filename: xElement.Element("filename").Value);
+            var name = xElement.Element("name").Value;
+            var index = int.Parse(xElement.Element("index").Value);
+            var ranking = int.Parse(xElement.Element("ranking").Value);
+            var filename = xElement.Element("filename").Value;
+            return new Player(name: name, index: index, ranking: ranking, filename: filename);
         }
     }
 }

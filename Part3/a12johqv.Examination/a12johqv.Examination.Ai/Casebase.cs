@@ -33,33 +33,36 @@
     /// and M is the max manhattan distance.
     public unsafe struct Casebase
     {
-        private readonly IReadOnlyList<Case> cases;
+        private readonly Case[] cases;
 
-        public Casebase(IReadOnlyList<Case> cases)
+        public Casebase(Case[] cases)
         {
             this.cases = cases;
         }
 
         public Case FindMostSimilarCase(BarePosition currentPosition, Color color, Random random, Weights weights)
         {
-            Contract.Assert(this.cases.Count > 1, "Needs at least one case to use");
+            Contract.Assert(this.cases.Length > 1, "Needs at least one case to use");
 
             var currentPositionBytes = currentPosition.Bytes;
-            double highestSimilarity = double.MinValue;
+            int highestSimilarity = 0;
 
-            List<Case> bestMatchingCases = new List<Case>();
+            var bestMatchingCases = new List<Case>();
             foreach (var @case in this.cases)
             {
-                double caseSimilarity = Similarity(@case.BarePosition.Bytes, currentPositionBytes);
-                if (@case.Color == color && MathUtility.IsGreaterThen(caseSimilarity, highestSimilarity))
+                if (@case.Color == color)
                 {
-                    bestMatchingCases.Clear();
-                    bestMatchingCases.Add(@case);
-                    highestSimilarity = caseSimilarity;
-                }
-                else if (MathUtility.AreEqual(caseSimilarity, highestSimilarity))
-                {
-                    bestMatchingCases.Add(@case);
+                    int caseSimilarity = Similarity(@case.BarePosition.Bytes, currentPositionBytes);
+                    if (caseSimilarity > highestSimilarity)
+                    {
+                        bestMatchingCases.Clear();
+                        bestMatchingCases.Add(@case);
+                        highestSimilarity = caseSimilarity;
+                    }
+                    else if (caseSimilarity == highestSimilarity)
+                    {
+                        bestMatchingCases.Add(@case);
+                    }
                 }
             }
             Debug.Assert(bestMatchingCases.Any(), "There has to be at least one case that has a similarity higher than minus infinity");
@@ -67,10 +70,12 @@
             return bestMatchingCases[random.Next(maxValue: bestMatchingCases.Count)];
         }
 
-        private static double Similarity(byte* a, byte* b)
+        private static int Similarity(byte* a, byte* b)
         {
+            // Similarity will be between 0 and 64*4=256
+
             // Hotspot, implemented for performance.
-            double similaritySum = 0;
+            int similaritySum = 0;
             for (int i = 0; i < 64; i++)
             {
                 similaritySum += SquareContentSimilarity.Similarity(
@@ -78,9 +83,8 @@
                     SquareContent.FromByte(*(b + i)));
             }
 
-            var averageSquareContentSimilarity = similaritySum / 64;
-            Debug.Assert(MathUtility.InRange(averageSquareContentSimilarity, 0, 1), "Similairity should be in [0, 1)");
-            return averageSquareContentSimilarity;
+            Debug.Assert(MathUtility.InRange(similaritySum, 0, 4 * 64), "Similairity should be in [0, 4*64)");
+            return similaritySum;
         }
     }
 }

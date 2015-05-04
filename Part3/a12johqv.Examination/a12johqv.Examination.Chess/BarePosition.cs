@@ -5,6 +5,17 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// A bare position without bookkeeping information;
+    /// a board in other words.
+    /// The board is represented as a tightly packed 64-element array of bytes.
+    /// (Would be SquareContent if c# allowed declaration of fixed size arrays for user defined types).
+    /// It's possible to index the board to get the content at a square, but it's also possible to get a pointer
+    /// to the byte array and traverse it manually. This is nessesary for an optimization.
+    /// 
+    /// This class goes against pretty much every safety measure.
+    /// It can be mutated through the byte pointer.
+    /// There is no bounds checking so both indexing into the board
+    /// and dererencing through a modified byte pointer is unsafe.
     public unsafe struct BarePosition : IEnumerable<SquareContent>, IEquatable<BarePosition>
     {
         private fixed byte squares[64];
@@ -30,21 +41,12 @@
                 {
                     return SquareContent.FromByte(*(pointer + index));
                 }
-                
-            }
-            set
-            {
-                fixed (byte* pointer = this.squares)
-                {
-                    *(pointer + index) = value.Representation;
-                }
             }
         }
 
         public SquareContent this[Square square]
         {
-            get { return this[square.SquareIndex]; }
-            set { this[square.SquareIndex] = value; }
+            get { return this[square.SquareIndex]; } 
         }
 
         public static BarePosition FromSquareContents(IList<SquareContent> squares)
@@ -55,14 +57,6 @@
                 stackSquares[i] = squares[i].Representation;
             }
             return new BarePosition(stackSquares);
-        }
-
-        public static BarePosition FromBarePosition(ref BarePosition barePosition)
-        {
-            fixed (byte* from = barePosition.squares)
-            {
-                return new BarePosition(from: from);
-            }
         }
 
         private static void CopySquareArray(byte* from, byte* to)

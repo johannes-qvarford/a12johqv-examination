@@ -3,6 +3,7 @@
     using a12johqv.Examination.Chess;
     using a12johqv.Examination.Core;
 
+    /// Square distance utility functions.
     public static class SquareDistance
     {
         public static double NormalizedManhattanDistance(Square a, Square b)

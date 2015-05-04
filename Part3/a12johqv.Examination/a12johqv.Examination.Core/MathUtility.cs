@@ -7,12 +7,7 @@
     {
         private const double Epsilon = 0.001;
 
-        public static bool IsGreaterThen(double a, double b, double epsilon = Epsilon)
-        {
-            return !AreEqual(a, b, epsilon) && a > b;
-        }
-
-        public static bool AreEqual(double a, double b, double epsilon = Epsilon)
+        private static bool AreEqual(double a, double b, double epsilon = Epsilon)
         {
             return Distance(a, b) < epsilon;
         }
@@ -25,11 +20,6 @@
         public static double Distance(double a, double b)
         {
             return Math.Abs(a - b);
-        }
-
-        public static double Inverse(double zeroToOne)
-        {
-            return 1 - zeroToOne;
         }
     }
 }
