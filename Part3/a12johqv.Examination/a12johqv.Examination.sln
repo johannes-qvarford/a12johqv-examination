@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Ai.Tests", "a12johqv.Examination.Ai.Tests\a12johqv.Examination.Ai.Tests.csproj", "{A9D58460-0A12-4A1E-8B7C-E2C22A9966A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "a12johqv.Examination.Summary", "a12johqv.Examination.Summary\a12johqv.Examination.Summary.csproj", "{5AB09EED-9603-42EC-969B-EDF468FABB01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,16 @@ Global
 		{A9D58460-0A12-4A1E-8B7C-E2C22A9966A1}.Release|ARM.ActiveCfg = Release|Any CPU
 		{A9D58460-0A12-4A1E-8B7C-E2C22A9966A1}.Release|x64.ActiveCfg = Release|Any CPU
 		{A9D58460-0A12-4A1E-8B7C-E2C22A9966A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Release|x64.ActiveCfg = Release|Any CPU
+		{5AB09EED-9603-42EC-969B-EDF468FABB01}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

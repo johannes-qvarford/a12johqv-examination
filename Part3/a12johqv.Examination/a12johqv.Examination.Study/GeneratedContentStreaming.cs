@@ -15,7 +15,7 @@
         {
             const string Directory = "Resources/Generated";
             const string Basename = "GameReports";
-            const string Extension = ".xml";
+            const string Extension = ".pgn";
 
             var guid = Guid.NewGuid();
             return string.Format("{0}/{1} {2}{3}", Directory, Basename, guid, Extension);

@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
 
+    using a12johqv.Examination.Ai;
     using a12johqv.Examination.Chess;
 
     using ilf.pgn.Data.MoveText;
@@ -13,16 +15,16 @@
     /// Utility functions for creating pgn databases from game reports.
     public static class GameReportPgnDatabaseCreation
     {
-        public static Pgn.Database CreateDatabase(GameReport gameReport)
+        public static Pgn.Database CreateDatabase(IEnumerable<GameReport> gameReports)
         {
             var database = new Pgn.Database();
-            database.Games.Add(CreateGame(gameReport));
+            database.Games.AddRange(gameReports.Select(CreateGame));
             return database;
         }
 
         private static Pgn.Game CreateGame(GameReport gameReport)
         {
-            return new Pgn.Game
+            var game = new Pgn.Game
                            {
                                Event = "a12johqv 2015 Examination",
                                Site = "Högskolan i Skövde",
@@ -35,6 +37,19 @@
                                BlackPlayer = gameReport.BlackPlayerName,
                                MoveText = CreateMoveText(gameReport.Moves)
                            };
+            game.AdditionalInfo.Add(new Pgn.GameInfo("DidFollowTimeRequirements", gameReport.DidFollowTimeRequirements.ToString()));
+            game.AdditionalInfo.Add(new Pgn.GameInfo("Weights", WeightsToString(gameReport.Weights)));
+            return game;
+        }
+
+        private static string WeightsToString(Weights weights)
+        {
+            return string.Format(
+                CultureInfo.InvariantCulture,
+                "{0} {1} {2}",
+                weights.MoveWeight,
+                weights.DistanceWeight,
+                weights.SquareContentWeight);
         }
 
         private static MoveTextEntryList CreateMoveText(IEnumerable<Move> moves)

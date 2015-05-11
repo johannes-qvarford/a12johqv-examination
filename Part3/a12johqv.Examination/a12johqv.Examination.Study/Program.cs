@@ -7,6 +7,8 @@
 
     using a12johqv.Examination.Ai;
 
+    using ilf.pgn;
+
     public static class Program
     {
         /// Play games between all players and generate a file with a report of each match.
@@ -75,14 +77,14 @@
             }
         }
 
-        private static void LogReportedGames(IEnumerable<GameReport> gameReports, DateTime dateTime)
+        private static void LogReportedGames(IList<GameReport> gameReports, DateTime dateTime)
         {
+            var pgnDatabase = GameReportPgnDatabaseCreation.CreateDatabase(gameReports);
+
             using (Stream stream = GeneratedContentStreaming.OpenStreamForGameReports(dateTime))
             {
-                var streamWriter = new StreamWriter(stream);
-                var gameReportWriter = new GameReportXmlWriter(streamWriter);
-                gameReportWriter.WriteStudyGameReports(gameReports);
-                streamWriter.Flush();
+                var pgnWriter = new PgnWriter(stream);
+                pgnWriter.Write(pgnDatabase);
             }
         }
     }
