@@ -1,0 +1,23 @@
+[LastMove "2"]
+[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.5.14"]
+[Round "0"]
+[White "Hirsch, Andreas"]
+[Black "Prusikin, Michael"]
+[Result "*"]
+[ECO "D00"]
+[Opening "Blackmar-Diemer"]
+[Variation "Beyer Countergambit"]
+[TimeControl "40/1800:40/1800:1800"]
+[Termination "unterminated"]
+[PlyCount "51"]
+[WhiteType "human"]
+[BlackType "human"]
+
+1. e4 e5 2. d4 d5 3. dxe5 c5 4. e6 b5 5. e5 Nc6 6. f4 Bxe6
+7. h4 h6 8. g4 c4 9. f5 Bd7 10. e6 c3 11. f6 b4 12. exd7+ Kxd7 13. g5 Bd6
+14. Bd3 Bc7 15. Bh7 Bd6 16. gxh6 Bc7 17. bxc3 Bd6 18. Bg5 Qa5 19. fxg7 Qc5
+20. Be7 Qa5 21. Bf8 Qc5 22. Bxg8 Qa5 23. Bh7 Qc5 24. Bg8 Qa5 25. Bh7 Qc5
+26. Bg8 *
+

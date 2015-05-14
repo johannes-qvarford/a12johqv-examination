@@ -1,0 +1,17 @@
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\Done\2015-05-14\Visual\Games\Exempel.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\ExamplePgn.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports f27d5698-9c1a-4d40-8442-e340b2651cd7.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports 5f110ff3-b1f1-42fd-b994-a7db7694b73e.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports 7b93b089-0bcb-4d3e-8ea1-1ae02f16a89f.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports 8eb69b2a-2f8d-4739-acbb-308987960273.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Player0.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\Weird.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports b2c4a42f-43ff-4694-a408-bafc1fe3f3ac.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports 3be1a013-bd10-4ffb-a198-32d8e739d477.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\Analyserade Partier.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\Bilaga A.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\Generated\GameReports f4ce1e82-1343-4cf9-b82d-8926f08cbad9.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\a12johqv.Examination\a12johqv.Examination.Application\Resources\Generated\AMatch3.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\a12johqv.Examination\a12johqv.Examination.Application\Resources\Generated\AMatch.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\a12johqv.Examination\a12johqv.Examination.Application\Resources\Level0.pgn
+C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part2\Experimentation\ArenaTestGame.pgn

@@ -1,0 +1,963 @@
+<matchReports>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.88823784722222221</averageProblemSimilarity>
+      <averageMoveSimilarity>0.93849206349206371</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.61111111111111116</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.89453125</averageProblemSimilarity>
+      <averageMoveSimilarity>0.96081349206349187</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.27777777777777779</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Bf1e2 b6b5 f2f4 d7d6 Qa4b4 h7h5 Qb4a4 e7e6
+        Qa4b4 d6d5 Qb4a4 Ng8h6 Be2g4 Rh8h7 g2g3 Nh6xg4 Qa4b4 Ng4h6
+        Qb4a4 Nh6g4 Qa4b4 Ng4h6 Qb4a4 Nh6g4</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84838299418604646</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9489202657807313</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.41860465116279072</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84929142441860461</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91652823920265813</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.16279069767441862</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 g7g6 c2c4 Bf8g7 e2e4 Bg7h6 Nb1c3 c7c6 Bc1e3 c6c5
+        b2b3 b7b6 Bf1e2 d7d6 Ng1f3 Ke8f8 O-O b6b5 Nf3e5 d6d5
+        Be2f3 a7a6 Nc3xd5 e7e6 d4xc5 f7f6 Nd5f4 b5b4 Ne5g4 a6a5
+        Be3d4 Nb8c6 Bd4e3 a5a4 Nf4d5 Ra8a6 Ng4e5 Nc6xe5 Be3d2 e6xd5
+        e4xd5 Ne5d3 c5c6 Nd3f4 c6c7 Nf4d3 Ra1b1 Nd3c5 Rb1b2 Ra6b6
+        Rf1e1 Qd8e8 Re1e3 Rb6a6 Rb2c2 Nc5e6 Re3c3 f6f5 d5d6 f5f4
+        Rc2b2 Ne6d4 Kg1f1 Ra6a5 Rb2c2 Ra5b5 Kf1g1 Rb5d5 Rc2b2 g6g5
+        Rc3e3 Nd4e2 Re3xe2+ Rd5c5 Re2e1 Qe8d8 Re1e2 Rc5xc4 Re2e1 Rc4d4
+        Re1e2 Rd4c4 Re2e1 Rc4d4 Re1e2 Rd4c4</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84903169014084512</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90897887323943649</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.54929577464788737</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.8588169642857143</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9165051020408167</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.34285714285714286</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Ke1e2 Nb8c6 Ke2f3 d7d6 Nc3e2 Ng8f6 Ng1h3 b6b5
+        Ra1e1 Bc8d7 Re1d1 O-O Rd1d2 Nf6e8 Rd2c2 Qd8c8 Rc2d2 Bg7f6
+        g2g3 Qc8a6 Ne2f4 Bd7e6 Bf1d3 Kg8g7 g3g4 f5xe4 Kf3g3+ Qa6a5
+        f2f3 e4xd3 Rd2f2 Bf6e5 Qa4b3 a7a6 Kg3h4 Qa5a4 Rh1g1 Ne8c7
+        Qb3b4 Be6d7 b2b3 Be5xd4 b3xa4 a6a5 Qb4a3 Bd4xe3 Qa3xd3 Be3d2
+        Qd3xd2 d6d5 Rf2e2 d5d4 Qd2b4 d4d3 Rg1f1 d3xe2 Qb4a3 Nc6d4
+        Nf4h5 g6xh5+ g4xh5 Kg7h6 Nh3g5 Nd4f5 Kh4h3+ e2xf1=R f3f4 Rf1f3
+        Qa3xf3+ Nf5g3 Qf3g4+ Ng3xh5 f4f5 Nh5f4 Kh3h4+ Nf4h3 Ng5xh7 Nh3f2
+        Qg4h5 Kh6g7+ Qh5h6 Kg7xh6+ f5f6 Nf2h3 a4xb5 Nh3f4 h2h3 Nf4h5
+        f6f7 Nh5f4 Nh7xf8 Nf4h5 Nf8h7 Nh5f4 b5b6 Kh6g6 Nh7f6 Kg6h6
+        b6b7 Kh6g6 Nf6d5 Kg6h6 Nd5xe7 Kh6h7 b7xa8=R Kh7h6 Kh4g3 Kh6h5
+        h3h4 Kh5h6 Ra8b8 Nf4h3 Kg3h2 Nh3f2 h4h5 Kh6xh5 Rb8b5 Kh5h4
+        Rb5xa5 Kh4g4 Ra5a8 Kg4h4 Ra8b8 Kh4g4 Rb8a8 Kg4h4 Ra8b8 Kh4g4
+        Rb8a8</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85618622448979587</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92510932944606417</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.40816326530612246</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.86750637755102045</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90845481049562693</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.40816326530612246</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 g7g6 c2c4 Bf8g7 Nb1c3 c7c6 e2e4 d7d6 Bc1e3 d6d5
+        Qd1e2 c6c5 f2f4 Qd8d6 Ng1f3 Bc8g4 Ke1d2 h7h5 Qe2f2 e7e6
+        Bf1d3 Bg4xf3 Qf2g1 Qd6e5 c4xd5 Ng8h6 Bd3e2 b7b5 g2xf3 e6xd5
+        d4xe5 a7a5 h2h4 b5b4 f4f5 Nb8a6 Rh1h2 c5c4 e4xd5 b4xc3
+        b2xc3+ Na6c5 Kd2c2 Nc5e4 Rh2h3 Ne4c5 Be3f2 g6g5 Rh3g3 g5g4
+        f3xg4 h5xg4 f5f6 Nh6f5 e5e6 Nf5xh4 Rg3xg4 Nh4f3 d5d6 Nf3h2
+        e6e7 Rh8h5 d6d7 Nc5xd7+ Rg4h4 Rh5xh4 f6xg7 Nh2f3 Be2xf3 Rh4h3
+        Bf2e3 Rh3xf3 Qg1g3 Rf3xg3 Be3f4 Rg3h3 Bf4g3 Rh3h2 Bg3xh2+ f7f5
+        Bh2g3 f5f4 Bg3xf4 Nd7f6 Bf4e5 Nf6h5 Kc2d2 Nh5f4 Be5f6 Nf4g2
+        Bf6e5 Ng2e3 Be5f6 Ne3g2 Bf6e5 Ng2e3 Be5f6 Ne3g2</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.88975694444444442</averageProblemSimilarity>
+      <averageMoveSimilarity>0.98769841269841274</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.61111111111111116</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.90211397058823528</averageProblemSimilarity>
+      <averageMoveSimilarity>0.99285714285714288</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.29411764705882354</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Bf1e2 b6b5 f2f4 d7d6 Qa4b4 h7h5 Qb4a4 e7e6
+        Qa4b4 d6d5 Qb4a4 Ng8h6 Be2g4 Nh6xg4 g2g3 Ng4h6 Qa4b4 Nh6g4
+        Qb4a4 Ng4h6 Qa4b4 Nh6g4 Qb4a4</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84484649122807021</averageProblemSimilarity>
+      <averageMoveSimilarity>0.97158521303258116</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.35087719298245612</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.8527483258928571</averageProblemSimilarity>
+      <averageMoveSimilarity>0.98402423469387779</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.48214285714285715</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 g7g6 c2c4 Bf8g7 Nb1c3 Bg7h6 e2e4 c7c6 Bc1e3 d7d6
+        Bf1e2 Qd8d7 d4d5 e7e6 c4c5 c6xd5 c5c6 b7xc6 e4xd5 c6xd5
+        Ng1f3 Qd7e7 g2g3 e6e5 b2b3 Qe7d7 h2h3 Qd7e7 g3g4 Qe7d7
+        a2a3 Qd7e7 b3b4 Ke8d7 Qd1b3 Kd7c7 h3h4 Kc7d7 g4g5 Bh6g7
+        O-O-O Qe7e6 b4b5 Qe6e7 a3a4 e5e4 a4a5 f7f5 h4h5 f5f4
+        h5h6 d5d4 a5a6 d6d5 Nf3e5 Qe7xe5+ f2f3 e4xf3 Be2xf3 f4xe3
+        Kc1b1 Kd7e6 b5b6 Ke6f5 b6b7 Kf5f4 b7xc8=R Kf4xf3 Nc3b5 Kf3g4
+        Qb3c4 Kg4xg5 Kb1c2 Kg5g4 Kc2d3 g6g5 Kd3e2 Kg4f4 h6xg7 Kf4g4
+        g7xh8=R Kg4f4 Rh8xh7 g5g4 Rh7g7 Kf4g3 Rg7e7 d4d3 Rd1xd3+ d5d4
+        Re7e8 Kg3g2 Ke2e1 e3e2 Ke1d2 Kg2f2 Kd2c2 g4g3 Kc2d2 Kf2g2
+        Kd2e1 Qe5g5 Ke1xe2 Qg5g4 Ke2d2+ Kg2f2 Kd2c2 Kf2g2 Kc2d2 Kg2f2
+        Kd2c2 Kf2g2 Kc2d2</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84612771739130432</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91572204968944126</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.45652173913043476</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.85659722222222223</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92686507936507956</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.37777777777777777</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Be3f4 b6b5 Bf1e2 d7d6 Ng1f3 Nb8c6 Be2d3 Bc8d7
+        Bd3e2 Bg7xd4 Be2d3 e7e5 O-O-O d6d5 Rd1d2 Qd8b6 b2b4 d5xc4
+        b4xc5 f5xe4 a2a3 Bd4e3 Nc3xe4 Ke8e7 Bf4g5 Ke7f7+ Bg5e7 c4xd3
+        c5xb6 h7h5 Qa4xb5 g6g5 Qb5xc6 g5g4 b6b7 g4xf3 Qc6g6 Kf7xg6+
+        a3a4 Kg6h6 a4a5 f3xg2 Kc1b1 g2g1=R Rd2d1+ h5h4 Rd1e1 h4h3
+        a5a6 Be3xf2 b7b8=R Rg1f1 Rb8b7 Bf2e3 Rb7xa7 Be3f2 Ra7b7 Bf2e3
+        a6a7 Be3f2 Rb7b5 Bf2e3 Rb5a5 Be3f2 Ra5a6 Kh6h5+ Ra6a5 Kh5g4
+        Ra5a6 Kg4f3 Ra6a5 Kf3g2 Ra5b5 Kg2f3 Rb5a5 Kf3g2 Ra5b5 Kg2f3
+        Rb5a5</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.8959099264705882</averageProblemSimilarity>
+      <averageMoveSimilarity>0.97415966386554609</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.58823529411764708</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.89407169117647056</averageProblemSimilarity>
+      <averageMoveSimilarity>0.97048319327731081</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.23529411764705882</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 e7e5 Nb1c3 Ng8f6 Ng1f3 d7d5 Bc1g5 c7c5
+        e2e3 b7b6 Bf1d3 g7g6 Qd1c2 Bf8d6 O-O Bc8e6 Qc2a4 Nb8d7+
+        Bd3e2 Nf6e4 a2a3 Qd8e7 Be2d3 Ke8f7 Bd3e2 Kf7g8 Be2d3 Kg8f7
+        Bd3e2 Kf7g8 Be2d3 Kg8f7</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.8931361607142857</averageProblemSimilarity>
+      <averageMoveSimilarity>0.94011479591836711</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.2857142857142857</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88411458333333337</averageProblemSimilarity>
+      <averageMoveSimilarity>0.94087301587301575</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.51851851851851849</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Bf1e2 Nb8c6 Be2f3 d7d6 Bf3e2 Ng8f6 Ng1f3 O-O
+        O-O Nc6a5 Qa4c2 Bc8a6 Qc2d2 b6b5 g2g3 Qd8b6 h2h3 Qb6c6
+        g3g4 Qc6b6 e4xf5 Na5b3 Be3f4 Qb6c6 Bf4g3 Nb3a5 Qd2f4 Qc6b6
+        h3h4 Qb6c6 g4g5 Qc6b6 Be2d3 Qb6c6 Qf4g4 Qc6b6 Bg3f4 Qb6c6
+        Bf4g3 Qc6b6 Bg3f4 Qb6c6 Bf4g3</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85558035714285718</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9160714285714292</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.31428571428571428</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.85691964285714284</averageProblemSimilarity>
+      <averageMoveSimilarity>0.94556122448979552</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.42857142857142855</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 Ng8f6 b2b4 g7g6 Nb1c3 Bf8g7 e2e4 c7c6
+        Ng1f3 O-O Bf1e2 Nb8a6 O-O Qd8e8 Bc1e3 h7h6 Qd1d2 h6h5
+        g2g3 Bg7h6 h2h3 h5h4 g3g4 g6g5 e4xf5 Nf6h5 Be3f4 e7e6
+        f5xe6 d7xe6 Rf1e1 Rf8f5 Bf4e5 Qe8g6 Be2d3 Kg8f7 Qd2xg5 Qg6f6
+        Bd3e4 Bh6xg5 Be5d6 Kf7e8 Bd6f8 Ke8f7 Bf8g7 Kf7e7 Bg7f8 Ke7d7+
+        Bf8g7 Nh5f4 Bg7f8 Nf4d5 Bf8g7 Kd7e7 Bg7f8 Ke7d7+ Bf8g7 Nd5xb4
+        Bg7f8 Nb4d5 Bf8g7 Nd5f4 Bg7f8 Nf4d5 Bf8g7 Nd5f4 Bg7f8 Nf4d5</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.88975694444444442</averageProblemSimilarity>
+      <averageMoveSimilarity>0.93849206349206371</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.61111111111111116</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.90211397058823528</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9642857142857143</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.29411764705882354</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Bf1e2 b6b5 f2f4 d7d6 Qa4b4 h7h5 Qb4a4 e7e6
+        Qa4b4 d6d5 Qb4a4 Ng8h6 Be2g4 Nh6xg4 g2g3 Ng4h6 Qa4b4 Nh6g4
+        Qb4a4 Ng4h6 Qa4b4 Nh6g4 Qb4a4</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85826945754716977</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92213611859838307</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.32075471698113206</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.85686910377358494</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90744609164420487</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.33962264150943394</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 g7g6 c2c4 Bf8g7 Nb1c3 Bg7h6 e2e4 c7c6 Bc1e3 d7d6
+        Bf1e2 Qd8d7 d4d5 e7e6 c4c5 c6xd5 c5c6 b7xc6 e4xd5 c6xd5
+        Ng1f3 Qd7e7 g2g3 e6e5 b2b3 Qe7d7 h2h3 Qd7e7 g3g4 Qe7d7
+        Be2d3 Qd7e7 Qd1d2 Ke8d7 Bd3e2 f7f5 Be3f4 Ng8f6 h3h4 Bc8a6
+        g4xf5 Nf6h5 f5f6 Nh5xf4 f6xe7 Kd7e6 Nf3xe5 Ke6xe5 Rh1h3 Ke5f5
+        Be2g4 Kf5e5+ Nc3e2 Ke5e4 Ne2g3 Ke4e5+ Ng3h5 Ba6b5 e7e8=R Nf4e6+
+        b3b4 g6xh5 Bg4f3 d5d4 Ke1d1 d4d3 Kd1c1 d6d5 Kc1d1 d5d4
+        Kd1c1 Bh6f4 Re8xe6 Ke5f5+ Bf3g2 h7h6 f2f3 Bf4g3 Kc1d1 Bg3xh4
+        Kd1c1 Bh4g3 Kc1d1 h5h4 Ra1c1 Kf5xe6 Rc1c4 Ke6f5 Rc4xd4 Kf5g6
+        Rd4d8 h6h5 Rd8e8 Kg6f5 Bg2h1 Bg3f4 Re8f8 Kf5g6+ Rf8e8 Kg6g5
+        Re8f8 Kg5g6 Rf8e8 Kg6g5 Re8f8 Kg5g6</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84147135416666663</averageProblemSimilarity>
+      <averageMoveSimilarity>0.94055059523809492</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.29166666666666669</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84366688829787229</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9068768996960489</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.31914893617021278</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "½-½"]
+        
+        d2d4 f7f5 c2c4 g7g6 e2e4 Bf8g7 Nb1c3 c7c6 Bc1e3 c6c5
+        Qd1a4 b7b6 Ke1e2 Nb8c6 Ke2f3 d7d6 Nc3e2 Ng8f6 Ng1h3 b6b5
+        b2b3 Bc8d7 Be3d2 a7a5 g2g3 b5b4 Ne2f4 Ra8a6 Bf1e2 O-O
+        Be2d3 Qd8b8 g3g4 d6d5 Kf3g3 Ra6b6 f2f3 d5xc4 Kg3h4 c4xd3
+        e4xf5 Nf6xg4 Rh1g1 g6g5 Nh3xg5+ Ng4xh2 Bd2e3 Nh2g4 Nf4g6 Ng4h2
+        Kh4h5 Nh2g4 f5f6 Ng4h2 f6xg7 Bd7g4 f3xg4+ Nh2xg4 Kh5xg4 Qb8h2
+        Ng5xh7 Nc6e5 Kg4g5+ Ne5g4 Kg5xg4 Qh2e5 Kg4h3 Qe5xe3 Kh3g4+ Qe3e5
+        Kg4h4 Qe5h5 Kh4xh5+ Rf8f4 Kh5g5 Rf4f5 Kg5h6+ Rf5h5 Kh6xh5+ Kg8xg7
+        Kh5g5 d3d2 Kg5g4 d2d1=R Kg4g5 Rd1f1 Kg5g4 Kg7h6 Kg4h4 Kh6g7
+        Kh4g5 Kg7f7 Kg5g4 Kf7g7 Kg4g5</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84043337264150941</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91192722371967683</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.64150943396226412</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84367487980769229</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92163461538461544</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.46153846153846156</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </black>
+    <result>WhiteVictory</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Black "Hirsch, Andreas"]
+        [Result "1-0"]
+        
+        d2d4 f7f5 c2c4 g7g6 Nb1c3 Bf8g7 e2e4 c7c6 Bc1e3 d7d6
+        Qd1a4 b7b6 d4d5 b6b5 b2b4 c6c5 a2a3 Nb8c6 f2f3 h7h5
+        Nc3xb5 e7e6 Be3f2 e6xd5 Bf2g3 Qd8g5 f3f4 Bc8e6 Ng1f3 Nc6e5
+        Bf1e2 Be6d7 Nf3xg5 Bd7xb5 Ng5h3 Ne5d7 Be2d3 Nd7e5 Ke1e2 h5h4
+        Ke2e3 h4xg3 h2xg3 Ng8e7 e4xf5 Ne7g8 Bd3e4 Ne5d7 f5xg6 Nd7e5
+        f4f5 Ne5f3 f5f6 Nf3g5 Be4f5 Ng5e4 Bf5xe4 Rh8xh3 Be4f5 Rh3h2
+        f6f7 Ke8f8+ Bf5e4 Rh2xg2 Be4f5 Rg2h2 Bf5e6 Bg7h6 Ke3d3+ Bh6f4
+        g3xf4 Ng8h6 Be6f5 Nh6xf5 Rh1xh2 Bb5xa4 Ra1d1 Nf5h4 b4b5 Nh4f3
+        Kd3c3 Nf3xh2 c4xd5 Nh2f3 b5b6 Nf3h2 f4f5 Nh2g4 f5f6 Ng4h2
+        b6b7 Nh2g4 Rd1d4 Ng4h2 b7b8=R Ba4e8+ Rd4c4 Nh2g4 Rc4d4 Ng4h2
+        Rd4h4 Nh2g4 Rh4xg4 c5c4 f7xe8=R#</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84019886363636365</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90710678210678242</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.6767676767676768</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.82684948979591832</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91964285714285732</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.44897959183673469</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Bc1a3 Bf8c5 Ba3xc5+ Qd8e7
+        Rf1e1 Bc8b7 a2a4 Ke8d7 b3b4 Qe7d8 Ra1a3 b5xa4 Ra3xa4 Qd8e7
+        b4b5 Qe7d8 b5b6 Qd8e7 Nb1a3 Qe7d8 Qd1b1 Bb7d5 Re1d1 a7a5
+        Rd1c1 Ra8a6 h2h3 Nf6xe4 Bc5b4 Ne4xc3 Kg1f1 Bd5e4 Kf1e1 Nc3d1
+        Ke1f1 c4c3 Kf1e1 c3xd2 Ke1f1+ Nd1b2 Kf1f2 d2xc1=R Bg2f1 d3d2
+        Kf2e3 Rc1xf1 Qb1a2 Rf1xf3 Ke3d4+ Nb2d3 g3g4 Nd3c1 Bb4c5 Nc1d3
+        Bc5b4 d2d1=R Bb4c5 Rd1d2 Bc5b4 Nd3c1 Kd4c5+ Nc1d3 Kc5b5+ Rd2c2
+        Bb4c5 Nd3c1 Bc5b4 Nc1d3 Bb4c5 e6e5 Bc5d4 Nd3c1 Bd4c5 Nc1d3
+        Bc5d4 e5xf4 g4g5 Be4d5 Bd4g1 Nd3c1 Bg1f2 Rc2d2 h3h4 Bd5e4
+        Kb5c5 Kd7e7 g5g6 Ke7d7 Kc5b5 Kd7d6 Kb5c4 Nb8c6 g6xh7 Qd8c7
+        h4h5 Kd6e7 h5h6 Qc7c8 Bf2g1 Nc6e5 Kc4b5+ Ke7d6 b6b7 Qc8c5
+        Kb5xa6+ Be4d3 Ra4c4+ Qc5xc4 Ka6b6+ Qc4c3 Kb6a7 Qc3c2 Bg1h2 Rd2d1
+        Bh2g1 Qc2b1 Na3c4 Ne5xc4+ Ka7a6 Bd3c2 h6xg7 Kd6e7 Ka6a7 Nc4e3
+        Ka7a6 Rd1d3 Ka6a7 Ne3d1 Ka7a6 Rf3f1 Ka6a7 Rf1e1 Ka7a6 Rd3c3
+        Ka6a7 f4f3 Ka7a6 Qb1b4 Ka6a7 Ke7d6 Ka7a6 Kd6e7 Ka6a7 Rc3c8
+        Ka7a6 Ke7d6 Ka6a7 Rc8c5 Ka7a6 Kd6e7 Ka6a7 Qb4b1 g7g8=R Qb1b4
+        Ka7b8 Qb4f4 Kb8a7+ f3f2 Ka7b6 Bc2d3 Kb6a7 Qf4d2 Ka7b6 Rc5c8
+        Kb6a7 Bd3e4 Ka7b6 Ke7d6 Kb6a7 Rc8c5 Ka7b8 Rc5d5 Kb8c8 Rd5c5
+        Kc8d8+ Rc5d5 Kd8c8 Rd5c5 Kc8d8+ Rc5d5 Kd8c8</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.86905570652173914</averageProblemSimilarity>
+      <averageMoveSimilarity>0.9549689440993786</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.34782608695652173</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85458096590909094</averageProblemSimilarity>
+      <averageMoveSimilarity>0.95576298701298723</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.5</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 d7d5 f2f4 d5d4 e2e4 c7c5 g3g4 b7b5 f4f5 c5c4
+        d2d3 a7a5 e4e5 Ng8f6 Bc1g5 g7g6 Ng1h3 e7e6 Nh3f4 e6xf5
+        Nf4h3 f5f4 Nb1c3 Bf8g7 Nh3xf4 O-O h2h4 Bc8b7 h4h5 Nb8c6
+        e5xf6 Qd8xf6 Qd1e2 Rf8d8 Nc3xb5 Qf6e6 Qe2e5 Qe6f6 Qe5c5 Qf6e6
+        Qc5e5+ Qe6f6 Qe5c5 Qf6e6 Qc5e5+</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84742647058823528</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92948179271708631</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.45098039215686275</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.81571691176470584</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90059523809523823</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.41176470588235292</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Qd1e2 Bc8b7 Bc1a3 Nb8c6
+        b3b4 Bf8c5 Nf3d4+ Qd8e7 e4e5 O-O Ba3b2 Nf6d5 Rf1e1 Qe7h4
+        Nb1a3 Nd5xf4 Bg2xc6 f7f5 Bb2c1 g7g5 h2h3 Ra8d8 Kg1f2 Rd8a8
+        Qe2d1 g5g4 Qd1e2 Nf4h5 Qe2d1 Bc5d6 Na3xb5 Bd6c7 Nb5d6 f5f4
+        a2a4 f4f3 Kf2e3 Bb7a6 a4a5 Ba6b5 Nd4xb5 f3f2 Nb5xc7 f2xe1=R
+        Ke3d4+ Re1e4 Kd4c5+ Re4d4 b4b5 a7a6 Kc5b6 Rd4e4 Kb6c5 Re4e1
+        Kc5b6 Re1xd1 Kb6c5 Rd1xd2 Kc5b6 Rd2c2 Kb6c5 Rc2xc1 Kc5b6 d3d2
+        Kb6c5 d2d1=R Kc5b6 Rd1d4 Kb6c5 Rc1f1 Kc5b6 Rd4d3 Kb6c5 Rf1c1
+        Kc5b6 Rc1f1 Kb6c5 Ra8d8 Kc5b6 Rf1f4 Kb6c5 Rf4f1 Kc5b6 Rf1f4
+        Kb6c5 Rf4f1</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.85377358490566035</averageProblemSimilarity>
+      <averageMoveSimilarity>0.95421159029649627</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.22641509433962265</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.8555424528301887</averageProblemSimilarity>
+      <averageMoveSimilarity>0.88948787061994627</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.26415094339622641</averageMoreThanOneBestMatches>
+      <weights>0,9 0,1 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 d7d5 f2f4 c7c5 h2h4 Ng8f6 Ng1f3 Bc8f5 Bf1g2 e7e6
+        c2c4 Nb8c6 Qd1c2 Qd8b6 O-O Bf5d3 b2b3 O-O-O Bc1b2 Rd8d6
+        e2xd3 Nf6e4 d3d4 Ne4c3 Bb2c1 c5xd4 Bc1b2 d4d3 Nf3d4+ Bf8e7
+        Bb2c1 Nc3a4 Bc1b2 Be7f8 Bb2c1 Qb6a6 Bc1b2 Bf8e7 Bb2c3 Be7d8
+        Qc2b2 Bd8e7 Qb2a3 Be7d8 b3b4 Rh8g8 Bc3b2 Nc6xd4 Bb2xd4 d5xc4
+        Qa3xa4 Bd8e7 a2a3 Qa6b6 Rf1c1 Qb6c7 Rc1c3 Rd6xd4 Ra1a2 Qc7d8
+        Rc3c1 Qd8a5 Rc1c3 Kc8d8 Qa4d7 Kd8xd7+ Kg1f1 b7b5 Kf1e1 Rd4d6
+        a3a4 Rd6d4 Ra2a3 Rd4d6 Ra3b3 c4xb3 Nb1a3 b3b2 Rc3c6 Qa5xb4
+        Ke1f2 Qb4e4 Bg2f3 Qe4d4 Kf2g2+ Qd4e4 Bf3xe4 b5b4 Rc6b6 b4b3
+        Rb6c6 b2b1=R Rc6b6 Rb1e1 Rb6c6 Re1xe4 Rc6b6 b3b2 Rb6c6 Re4d4
+        Rc6b6 Rd4e4 Rb6c6 Re4d4 Rc6b6 Rd4e4</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.849609375</averageProblemSimilarity>
+      <averageMoveSimilarity>0.97168778801843281</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.40322580645161288</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.83852066532258063</averageProblemSimilarity>
+      <averageMoveSimilarity>0.88548387096774139</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.20967741935483872</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Bc1a3 Bf8c5 Ba3xc5+ Qd8e7
+        Rf1e1 Bc8b7 a2a4 Bb7c8 b3b4 O-O Ra1a3 b5xa4 b4b5 a7a6
+        b5b6 Nf6e8 Ra3b3 f7f5 Rb3a3 Ne8c7 Ra3b3 Kg8h8 Rb3a3 Rf8f7
+        Ra3b3 Bc8b7 Rb3a3 Qe7f6 b6xc7 e6e5 e4xf5 Nb8d7 f4xe5 Nd7f8
+        g3g4 Nf8d7 e5e6 Nd7xc5 Kg1f1 g7g6 Kf1f2 Nc5xe6 Re1e5 Ne6f4
+        h2h4 Rf7e7 Kf2e3 Re7d7 Ke3xf4 Qf6e7 Kf4e3 Rd7xc7 Ke3d4 Rc7d7
+        Kd4xc4+ Rd7c7 Re5c5+ Rc7d7 Kc4b4 Rd7c7 f5f6 Rc7d7 Kb4c4 Rd7c7
+        f6f7 Rc7d7 Kc4b4 Rd7c7 f7f8=R Ra8xf8+ Kb4c4 Rf8xf3 Kc4d4 Rf3f4
+        Kd4xd3+ Rf4f3 Kd3d4+ Rf3f4 Kd4d3+ Rf4f3 Bg2xf3+ Rc7d7 Kd3c4+ Rd7c7
+        g4g5 Rc7d7 Kc4b4 Rd7c7 h4h5 Rc7d7 Kb4c4 Rd7c7 h5xg6 Rc7d7
+        Kc4b4 Rd7c7 g6g7 Qe7xg7+ Kb4c4 Rc7e7 Kc4d3 Re7d7 Kd3c4+ Rd7e7
+        Kc4d3 Re7d7 Kd3c4+ Rd7e7</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.89399857954545459</averageProblemSimilarity>
+      <averageMoveSimilarity>0.99529220779220784</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.54545454545454541</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.89453125</averageProblemSimilarity>
+      <averageMoveSimilarity>0.99158163265306143</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.52380952380952384</averageMoreThanOneBestMatches>
+      <weights>0,1 0,9 0,5 0,5 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 Ng8f6 f2f3 c7c5 f3f4 d7d5 e2e4 e7e6 h2h4 Nb8c6
+        d2d4 d5xe4 Ng1f3 Qd8c7 Rh1g1 e6e5 c2c3 Bc8e6 Nb1a3 Bf8e7
+        Na3c2 Be6d7 Nc2e3 Bd7e6 Qd1b3 O-O Ne3d1 h7h6 d4xc5 Rf8e8
+        Nf3d2 Be7d6 Nd1f2 Be6g4 Nf2d1 Bg4d7 Nd2b1 Bd7e6 Nb1d2 Bd6e7
+        Nd2b1 Be7d6 Nb1d2</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.85169956140350878</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92565789473684224</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.42105263157894735</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.8418666294642857</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92544642857142823</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.6785714285714286</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 b5b4 e4e5 Ng8f6 g3g4 a7a6 f4f5 a6a5
+        Qd1c2 a5a4 b2b3 Bc8b7 a2a3 b4xa3 b3b4 Bb7c6 d2d3 Bc6b7
+        Qc2xa4 Nb8c6+ d3xc4 Qd8b6 c4c5 Nf6e4 Bc1e3 Qb6c7 Nb1d2 a3a2
+        c3c4 Qc7b6 Qa4xc6 Ke8e7+ Ra1c1 Qb6c7 Bg2h3 Ne4xc5 Qc6xb7 g7g6
+        Be3xd4 f7f6 f5xe6 Rh8g8 Kg1h1 Nc5a4 Rf1e1 Ra8b8 Nf3g1 Na4c5
+        Kh1g2 Rb8xb7 Kg2f1 Rg8g7 g4g5 Rb7b5 Kf1e2 h7h6 e5xf6 Ke7e8+
+        Ke2f1 h6xg5 e6e7 Rg7f7 c4xb5 Qc7xe7 Kf1f2 Rf7g7 Bh3g4 Qe7e2
+        Kf2g3+ Rg7g8 Re1f1 Bf8d6 Kg3h3+ Nc5d3 Rf1f5 Nd3b2 Ng1f3 Qe2xf3
+        Bg4xf3+ Bd6e7 Kh3g4 Be7xf6 h2h4 Bf6e5 Rf5xe5 Ke8d7+ Re5e8 Kd7xe8
+        Kg4xg5 Ke8d7 Kg5f6 Kd7e8 Kf6e6 Ke8d8 Ke6f7 Kd8d7 Kf7f6 Kd7d8
+        Kf6f7 Kd8d7 Kf7f6</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84154647435897434</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91945970695970691</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.38461538461538464</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.844983552631579</averageProblemSimilarity>
+      <averageMoveSimilarity>0.96071428571428563</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.26315789473684209</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,9 0,1 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 b7b5 Ng1f3 e7e6 Bf1g2 a7a6 d2d3 d7d5
+        O-O d5d4 c2c3 Bc8b7 e2e4 Bb7c6 e4e5 Bc6b7 c3c4 Nb8c6
+        g3g4 Bf8d6 f4f5 Qd8c7 b2b4 Nc6xb4 h2h4 e6xf5 e5e6 f5f4
+        Nf3e5 f7f5 e6e7 f5xg4 Bg2e4 Bd6xe5 Nb1c3 h7h6 Be4d5 Bb7xd5
+        h4h5 g7g6 h5xg6 f4f3 g6g7 Nb4xd3 g7xh8=R Be5h2 Kg1h1+ f3f2
+        Qd1f3+ Ke8xe7 Rf1e1 Ke7d6+ Rh8xg8 Kd6c6 Rg8e8 Kc6d6 Re1e2 Kd6c6
+        Re8e7 Ra8d8 Re7e8 Kc6d6 Kh1g2 Kd6c6 Re2e3 Kc6d6 Kg2h1 Kd6c6
+        Re8e7 Kc6d6 Re7e8 Kd6c6 Re8e7 Kc6d6 Re7e8</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.87421875</averageProblemSimilarity>
+      <averageMoveSimilarity>0.91028571428571414</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.48</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.8559375</averageProblemSimilarity>
+      <averageMoveSimilarity>0.93933333333333335</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.30666666666666664</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Qd1e2 Bc8b7 a2a4 Nb8c6
+        Bc1a3 Qd8b6 Ba3c5+ Bf8xc5 Nf3d4+ Qb6a6 e4e5 Nc6b4 Bg2d5 Nb4xd5
+        e5xf6 g7xf6 Qe2e5 Bc5b6 Qe5e3 Qa6a5 Nd4xb5 Qa5a6 Qe3c5 Qa6xb5
+        Qc5e3 Qb5a6 Qe3c5 Bb6a5 Ra1a3 e6e5 b3xc4 Ra8d8 Kg1g2 Rd8d6
+        c4xd5 Rd6xd5 Qc5c6 Rd5d7+ Kg2f3 e5e4 Kf3g4+ Ba5d8 Kg4h3 Qa6c4
+        Rf1f3 Qc4d5 Kh3g2 Qd5d4 Kg2h3 Qd4xa4 g3g4 Bd8e7 Kh3h4 Ke8f8
+        h2h3 Qa4xc6 f4f5 Kf8e8 Rf3e3 Bb7c8 Re3xe4 Qc6xe4 Kh4h5 Qe4d4
+        g4g5 Rd7d8 g5xf6 Qd4a4 f6xe7 Qa4f4 e7xd8=R Ke8xd8+ f5f6 Qf4xd2
+        c3c4 Qd2a5 c4c5+ Bc8f5 Kh5g5 Qa5xc5 Kg5h6 Qc5c1 Kh6g7+ Qc1xb1
+        Kg7xh8 Bf5e4 Kh8g7 Qb1e1 Kg7g8 Qe1e3 Kg8f8 Qe3f4 Kf8g7 Qf4c1
+        Kg7xf7 d3d2 Kf7e6 Qc1c7 f6f7 Qc7d7 Ke6f6+ Qd7c7 f7f8=R Kd8d7+
+        Kf6f7 Qc7e5 Rf8e8 d2d1=R Re8e7 Qe5xe7+ Kf7g8+ Kd7d6 Ra3xa7 Rd1d5
+        Ra7b7 Rd5c5 Rb7b8 Rc5d5 Rb8b5 Rd5c5 Rb5b8 Rc5d5 Rb8b5 Rd5c5
+        Rb5xc5 Kd6xc5 Kg8h8 Kc5d6 Kh8g8 Kd6c5 Kg8h8 Kc5d6 Kh8g8 Kd6c5</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.88878038194444442</averageProblemSimilarity>
+      <averageMoveSimilarity>0.89945436507936471</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.25</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.87087673611111116</averageProblemSimilarity>
+      <averageMoveSimilarity>0.95634920634920639</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.30555555555555558</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,1 0,9 0,5 0,5</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        Ng1f3 d7d5 g2g3 c7c5 Bf1g2 e7e5 d2d4 b7b5 O-O c5xd4
+        c2c4 Nb8c6 b2b4 Ng8f6 c4c5 d4d3 a2a4 d5d4 e2xd3 Bc8e6
+        a4xb5 Qd8b6 Nb1c3 Bf8e7 Bc1e3 O-O Ra1c1 Qb6c7 b5b6 Ra8c8
+        Nf3xd4 a7a6 Rc1b1 Rc8b8 Bg2xc6 Rb8b7 Nd4xe6 Rf8d8 Ne6xg7 Rd8d4
+        Ng7e8 a6a5 Ne8g7 a5a4 Ng7e8 Nf6d5 Ne8g7 Nd5xb6 Ng7e8 Nb6a8
+        Ne8g7 Qc7a5 Ng7e8 Rd4d8 Ne8g7 f7f5 Ng7e8 Qa5xc5 Ne8g7 Qc5xb4
+        Ng7e8 Qb4xb1 Ne8g7 Qb1b2 Ng7e8 Qb2a2 Ne8g7 Qa2b2 Ng7e8 Qb2a2
+        Ne8g7 Qa2b2</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.86076536016949157</averageProblemSimilarity>
+      <averageMoveSimilarity>0.90045399515738522</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.49152542372881358</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85863415948275867</averageProblemSimilarity>
+      <averageMoveSimilarity>0.85492610837438343</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.31034482758620691</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Bc1a3 Bf8c5 Ba3xc5+ Qd8e7
+        Rf1e1 Bc8b7 a2a4 Bb7c8 b3b4 O-O Ra1a3 b5xa4 b4b5 a7a6
+        b5b6 Nf6e8 Ra3b3 f7f5 Rb3a3 Ne8c7 Ra3b3 Kg8h8 Rb3a3 Rf8f7
+        Ra3b3 Bc8b7 Rb3a3 Qe7f6 Ra3xa4 Kh8g8 Ra4a3 a6a5 b6xc7 a5a4
+        Ra3xa4 Ra8xa4 Nb1a3 Ra4b4 c3xb4 c4c3 b4b5 c3c2 Kg1f1 Qf6e5
+        Kf1f2 Qe5xe4 b5b6 Qe4d4 Bc5xd4+ c2xd1=R c7c8=R Bb7xc8+ b6b7 Rd1xe1
+        b7xc8=R Rf7f8+ Bd4c5 Re1e4 Bc5d6 Re4d4 Bd6c5 Rd4d8 Bc5d6 e6e5
+        f4xe5 f5f4 e5e6 Nb8d7 e6e7 Nd7e5 h2h4 Ne5g4 Kf2e1+ Ng4e5
+        Bd6c5 Ne5g6 e7xf8=R Rd8xf8+ Nf3g5 f4f3 Ng5e6 f3f2 Ke1f1+ Ng6e5
+        Bc5d6 Ne5g4 Rc8b8 Ng4e5 Bd6c5 Ne5g4 Ne6c7 Ng4e5 Nc7d5 Ne5g4
+        Nd5b6 Ng4e5 Nb6d5 Ne5g4 Nd5b6 Ng4e5 Nb6d5</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.8696875</averageProblemSimilarity>
+      <averageMoveSimilarity>0.93442857142857139</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.28</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.85986328125</averageProblemSimilarity>
+      <averageMoveSimilarity>0.98125000000000018</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.20833333333333334</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,9 0,1</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        Ng1f3 d7d5 g2g3 d5d4 h2h3 c7c5 Bf1g2 e7e5 Bg2f1 f7f6
+        Bf1g2 b7b5 O-O c5c4 c2c3 d4d3 b2b4 Bc8g4 Qd1a4 Qd8b6
+        Qa4xa7 Qb6d6 Nb1a3 Bf8e7 Bc1b2 Ke8d8 Qa7b7 Qd6b6 Rf1c1 Kd8e8
+        e2xd3 Ke8d8 d3d4 Qb6d6 d2d3 Qd6b6 d3xc4 Qb6d6 c4xb5 Qd6b6
+        c3c4 Qb6d6 Qb7a7 Qd6b6 Qa7b7 Qb6d6 Qb7a7 Qd6b6 Qa7b7</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84918064024390238</averageProblemSimilarity>
+      <averageMoveSimilarity>0.93789198606271773</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.58536585365853655</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.84169921875</averageProblemSimilarity>
+      <averageMoveSimilarity>0.92669642857142853</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.4</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </black>
+    <result>WhiteVictory</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "1-0"]
+        
+        g2g3 c7c5 f2f4 d7d5 Ng1f3 e7e6 Bf1g2 b7b5 O-O d5d4
+        c2c3 c5c4 e2e4 d4d3 b2b3 Ng8f6 Qd1e2 Bc8b7 Bc1a3 Nb8c6
+        b3b4 Bf8c5 Nf3d4+ Qd8e7 e4e5 O-O Ba3b2 Nf6d5 Rf1e1 Qe7h4
+        Nb1a3 Nd5xf4 Bg2xc6 f7f5 Bb2c1 Nf4h5 Kg1f2 f5f4 Na3xc4 f4f3
+        Qe2xf3 Rf8f4 Re1e3 Bc5b6 Nc4a5 Ra8e8 Kf2e1 a7a6 Qf3d1 Re8c8
+        Qd1e2 Rf4f5 Nd4xb5 Rf5f4 Qe2f2 Bb7xc6 Na5xc6 Rc8xc6 a2a4 a6xb5
+        Ke1f1 Bb6c7 Ra1b1 Bc7d8 Rb1b2 Bd8a5 Rb2c2 d3xc2 a4xb5 Ba5b6
+        g3xh4 Bb6d4 Re3e4 Rc6c4 Re4xd4 Rc4xb4 Rd4d6 Rb4e4 Rd6d8 Rf4f8+
+        Rd8xf8#</pgn>
+  </matchReport>
+  <matchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84714673913043481</averageProblemSimilarity>
+      <averageMoveSimilarity>0.939052795031056</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.391304347826087</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </white>
+    <black>
+      <playerIndex>1</playerIndex>
+      <averageProblemSimilarity>0.83619225543478259</averageProblemSimilarity>
+      <averageMoveSimilarity>0.95962732919254679</averageMoveSimilarity>
+      <averageMoreThanOneBestMatches>0.36956521739130432</averageMoreThanOneBestMatches>
+      <weights>0,5 0,5 0,5 0,5 0,1 0,9</weights>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+        [Site "Högskolan i Skövde"]
+        [Date "2015.4.2"]
+        [Round "?"]
+        [White "Hirsch, Andreas"]
+        [Black "Abaeji, Sinan Younus Abdulrazzaq"]
+        [Result "½-½"]
+        
+        Ng1f3 d7d5 g2g3 d5d4 Bf1g2 Qd8d5 Bg2h3 Ng8f6 O-O Bc8f5
+        Kg1g2 e7e6 c2c4 Nb8c6 Qd1c2 b7b6 b2b3 Qd5b5 Rf1g1 O-O-O
+        d2d3 Rd8d6 Nf3xd4 Qb5a6 Nb1c3 Nc6a5 Ra1b1 Na5c6 Rb1b2 Bf8e7
+        f2f3 Be7f8 Rg1d1 Bf8e7 f3f4 Be7f8 Nd4xf5 Bf8e7 g3g4 h7h6
+        g4g5 Nc6a5 Nf5xh6 Be7f8 f4f5 Na5c6 Rb2b1 Nc6a5 a2a3 Kc8d8
+        c4c5 Rd6d7 c5c6 Nf6g4 e2e3 Rd7e7 f5xe6 Re7d7 e3e4 Rd7e7
+        e6xf7 Re7d7 Kg2f3 Na5b7 g5g6 Nb7a5 Nh6g8 Rd7d5 Kf3xg4 Rd5f5
+        Ng8e7 Na5b7 Ne7g8 Nb7a5 Kg4xf5 Na5xc6 Ng8e7 Nc6a5 Ne7g8 Na5b7
+        Ng8f6 Nb7a5 Nf6g8 c7c5 Ng8e7 Na5b7 Ne7g8 Nb7a5 Ng8e7 Kd8c7
+        Ne7g8 Kc7d8</pgn>
+  </matchReport>
+</matchReports>

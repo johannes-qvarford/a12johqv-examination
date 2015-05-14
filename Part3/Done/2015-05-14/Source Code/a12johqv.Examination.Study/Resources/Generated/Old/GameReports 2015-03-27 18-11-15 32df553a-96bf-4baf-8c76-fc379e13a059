@@ -1,0 +1,28 @@
+<matchReports>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92507102272727271</averageProblemSimilarity>
+      <averageMoveSimilarity>0.75487012987012991</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.90625</averageProblemSimilarity>
+      <averageMoveSimilarity>0.732142857142857</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Hirsch, Andreas"]
+[Black "Hirsch, Andreas"]
+[Result "½-½"]
+
+a2a4 a7a5 Nb1a3 b7b6 Na3b5 c7c5 Nb5a7 c5c4 Na7xc8 c4c3 Nc8a7 c3xb2 Na7c8 b2xa1=R Nc8a7 Ra1b1 Na7c8 Rb1a1 Nc8a7 Ra1b1 Na7c8 Rb1a1</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.912109375</averageProblemSimilarity>
+      <averageMoveSimilarity>0.667261904761905</averageMoveSimilarity>
