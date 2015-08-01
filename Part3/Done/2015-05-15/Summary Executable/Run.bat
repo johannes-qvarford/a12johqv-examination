@@ -1,0 +1,1 @@
+a12johqv.Examination.Summary.exe "../Bilaga A.pgn" "Resources/Players.config"

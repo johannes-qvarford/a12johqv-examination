@@ -1,0 +1,34 @@
+[Scheme0]
+Name=ChessPad
+WhiteSquareColor=237, 211, 158
+BlackSquareColor=154, 148, 73
+
+[Scheme1]
+Name=ChessBd
+WhiteSquareColor=255, 255, 191
+BlackSquareColor=96, 223, 96
+
+[Scheme2]
+Name=WinBoard
+WhiteSquareColor=192, 192, 96
+BlackSquareColor=112, 160, 111
+
+[Scheme3]
+Name=Fritz5
+WhiteSquareColor=231, 208, 167
+BlackSquareColor=167, 126, 92
+
+[Scheme4]
+Name=Junior5
+WhiteSquareColor=160, 184, 224
+BlackSquareColor=80, 103, 160
+
+[Scheme5]
+Name=Nimzo
+WhiteSquareColor=239, 184, 176
+BlackSquareColor=175, 104, 96
+
+[Scheme6]
+Name=Hiarcs
+WhiteSquareColor=224, 223, 192
+BlackSquareColor=63, 128, 63

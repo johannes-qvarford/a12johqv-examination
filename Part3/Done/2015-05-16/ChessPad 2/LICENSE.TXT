@@ -1,0 +1,126 @@
+Product   : ChessPad 2.0.3
+Author 	: Mark van der Leek
+Copyright : (c) 1998-2012, All rights reserved.
+WWW 	: http://www.wmlsoftware.com
+Email 	: mark@wmlsoftware.com
+
+END-USER LICENSE AGREEMENT FOR THIS SOFTWARE :
+IMPORTANT READ CAREFULLY !
+----------------------------------------------------------------------------
+This End-User License Agreement ("EULA") is a binding legal agreement 
+between you (either an individual or a single entity) and the mentioned 
+author of this Software for the Software Product identified above, which 
+includes computer software and may include associated media, printed 
+materials, and "online" or electronic documentation ("Software Product").
+By installing, copying, or otherwise using the Software Product, you agree 
+to be bound by the terms of this EULA. IF YOU DO NOT AGREE to the terms of 
+this EULA, do not install or use the Software Product.
+
+SOFTWARE PRODUCT LICENSE
+The Software Product is protected by copyright laws and international 
+copyright treaties, as well as other intellectual property laws and
+treaties. The Software Product is licensed, not sold.
+
+1. GRANT OF LICENSE. This EULA grants you the following rights:
+
+a. Installation and Use.
+You may install and use one single copy of this Software Product. If you 
+registered more than one license for the Software Product, you may install 
+the number of copies for which you purchased licenses. Installing the 
+Software Product on more computers than licenses purchased is in violation 
+of international copyright laws.
+
+b. Reproduction and Distribution.
+Re-Sale of this Software Product is allowed provided that you inform the 
+author about this sale, provided that this copy shall be a true and complete 
+copy, including all copyright and trademark notices, and shall be 
+accompanied by a copy of this EULA, and provided that you destroy all copies 
+of the Software Product and all of its component parts immediately after 
+this sale.
+Solely with respect to electronic documents included with the Software, you 
+may make an unlimited number of copies (either in hardcopy or electronic 
+form), provided that such copies shall be used only for internal purposes 
+and are not republished or distributed to any third party.
+
+2. UPGRADES.
+If the SOFTWARE is an upgrade, whether from the Author or another supplier, 
+you may use or transfer the Software Product only in conjunction with the 
+upgraded product. If the Software Product is an upgrade from an earlier 
+Software Product, you may now use that upgraded product only in accordance 
+with this EULA. 
+
+3. COPYRIGHT.
+All title and copyrights in and to the Software Product (including but not 
+limited to any images, photographs, animations, video, audio, music, text, 
+and "applets" incorporated into the Software Product), the accompanying 
+printed materials, and any copies of the Software Product are owned by the 
+Author of this Software. The Software Product is protected by copyright laws 
+and international treaty provisions. Therefore, you must treat the Software 
+Product like any other copyrighted material except that you may install the 
+Software Product on a single computer provided you keep the original solely 
+for backup or archival purposes. 
+
+4. DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS.
+
+a. Limitations on Reverse Engineering, Decompilation, and Disassembly. You 
+may not reverse engineer, decompile, or disassemble the Software Product, 
+except and only to the extent that such activity is expressly permitted by 
+applicable law notwithstanding this limitation.
+
+b. Separation of Components.
+The Software Product is licensed as a single product. Its component parts 
+may not be separated for use on more than one computer. If you purchased 
+more than one license for the Software Product, you may install the number 
+of copies for which you purchased licenses.
+
+c. Software Transfer.
+You may permanently transfer all of your rights under this EULA, provided 
+the recipient agrees to the terms of this EULA. See "Reproduction and 
+Distribution".
+
+d. Rental. You may not rent or lease the Software Product. 
+
+e. Termination.
+Without prejudice to any other rights, the Author of this Software may 
+terminate this EULA if you fail to comply with the terms and conditions of 
+this EULA. In such event, you must destroy all copies of the Software 
+Product and all of its component parts.
+
+f. Distribution.
+The Software Product may not be distributed without the conditions mentioned 
+above.
+
+MISCELLANEOUS 
+
+If you acquired this product in The Netherlands, this EULA is governed by the laws 
+of The Netherlands. If this product was acquired outside of The Netherlands, then local law 
+may apply.
+
+Should you have any questions concerning this EULA, or if you desire to 
+contact the author of this Software for any reason, please contact him at 
+the email address mentioned at the top of this EULA or write to his address 
+(also mentioned at the top).
+
+LIMITED WARRANTY 
+
+NO WARRANTIES.
+The Author of this Software expressly disclaims any warranty for the 
+Software Product. The Software Product and any related documentation is 
+provided "as is" without warranty of any kind, either express or implied, 
+including, without limitation, the implied warranties or merchantability, 
+fitness for a particular purpose, or noninfringement. The entire risk 
+arising out of use or performance of the Software Product remains with you.
+
+NO LIABILITY FOR DAMAGES.
+In no event shall the author of this Software be liable for any damages 
+whatsoever (including, without limitation, damages for loss of business 
+profits, business interruption, loss of business information, or any other 
+pecuniary loss) arising out of the use of or inability to use this product, 
+even if the Author of this Software has been advised of the possibility of 
+such damages. Because some states / jurisdictions do not allow the exclusion 
+or limitation of liability for consequential or incidental damages, the 
+above limitation may not apply to you. In this case the Author of this 
+Software will only be liable for the amount of money you spent for this 
+Software Product in exchange for the return of the product, all copies, 
+registration papers and manuals, and all materials that constitute a 
+transfer of ownership from the customer back to the Software Author.

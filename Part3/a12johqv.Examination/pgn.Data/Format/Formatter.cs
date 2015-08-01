@@ -70,7 +70,7 @@ namespace ilf.pgn.Data.Format
             {
                 case GameResult.White: return "1-0";
                 case GameResult.Black: return "0-1";
-                case GameResult.Draw: return "½-½";
+                case GameResult.Draw: return "1/2-1/2";
             }
             return "*";
         }

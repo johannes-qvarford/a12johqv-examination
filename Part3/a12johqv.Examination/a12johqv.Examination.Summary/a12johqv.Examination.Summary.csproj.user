@@ -2,6 +2,6 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartWorkingDirectory>C:\Users\Johannes\Documents\Projects\a12johqv.Examination\Part3\a12johqv.Examination\a12johqv.Examination.Study\bin\Release\Resources\</StartWorkingDirectory>
-    <StartArguments>"Generated/GameReports 3ca8d084-1a39-4004-89cb-9b04b0a741ad.pgn" Players.config</StartArguments>
+    <StartArguments>"Generated/GameReports 80f6ab66-2e09-4770-b479-663d2372ef19.pgn" Players.config</StartArguments>
   </PropertyGroup>
 </Project>

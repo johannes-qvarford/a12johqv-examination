@@ -1,0 +1,9 @@
+Arbetet med detta program utfördes av Pontus Wallin vid Högskolan i Skövde, inom ramen för examensarbete med inriktining dataspelsutveckling.
+
+Instruktioner:
+
+1. Välj om du vill rendera matcherna eller inte.
+2. Välj antalet generationer du vill att testningen ska pågå.
+3. Välj antalet spelare du vill ha i varje befolkning (vid färre än 10 spelare kan programmet krascha).
+4. Välj antalet enheter per individ.
+5. Kolla upp resultatet i "Population 1.txt", "Population 2.txt" och "Epoch_Result.txt".

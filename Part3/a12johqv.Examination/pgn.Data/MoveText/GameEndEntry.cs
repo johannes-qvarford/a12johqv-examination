@@ -38,7 +38,7 @@ namespace ilf.pgn.Data
                 case GameResult.Black:
                     return "0-1";
                 case GameResult.Draw:
-                    return "½-½";
+                    return "1/2-1/2";
             }
 
             return "*";

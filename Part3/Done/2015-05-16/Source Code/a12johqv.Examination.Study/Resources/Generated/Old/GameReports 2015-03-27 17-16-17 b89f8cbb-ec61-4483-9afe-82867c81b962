@@ -1,0 +1,97 @@
+<matchReports>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92903645833333337</averageProblemSimilarity>
+      <averageMoveSimilarity>0.43005952380952372</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92649147727272729</averageProblemSimilarity>
+      <averageMoveSimilarity>0.72077922077922085</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+h2h3 h7h6 a2a3 a7a5 g2g3 a5a4 h3h4 h6h5 b2b3 a4xb3 Ng1h3 b3b2 Nh3g1 b2xa1=R f2f3 Ng8h6 Ng1h3 Nh6g8 Nh3g1 Ng8h6 Ng1h3 Nh6g8 Nh3g1</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92258522727272729</averageProblemSimilarity>
+      <averageMoveSimilarity>0.42207792207792205</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.92045454545454541</averageProblemSimilarity>
+      <averageMoveSimilarity>0.68831168831168832</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+a2a3 a7a6 b2b3 a6a5 h2h3 a5a4 b3xa4 h7h6 g2g3 h6h5 h3h4 g7g6 f2f3 g6g5 Ng1h3 Ng8h6 Nh3g1 Nh6g8 Ng1h3 Ng8h6 Nh3g1 Nh6g8</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.87072172619047616</averageProblemSimilarity>
+      <averageMoveSimilarity>0.40518707482993177</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.86937881097560976</averageProblemSimilarity>
+      <averageMoveSimilarity>0.69163763066202111</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+a2a3 h7h6 b2b3 a7a6 a3a4 a6a5 c2c3 b7b5 b3b4 a5xb4 a4a5 b4b3 Ra1a2 b3xa2 d2d3 a2a1=R a5a6 Ra1xb1 a6a7 Rb1a1 a7xb8=R Ra1b1 h2h3 Rb1a1 c3c4 Ra1b1 c4xb5 Rb1a1 b5b6 Ra1b1 b6b7 Rb1a1 b7xa8=R Ra1b1 Bc1b2 Rb1a1 Bb2xa1 c7c5 Ba1b2 c5c4 Bb2a1 c4c3 Ba1b2 c3xb2 Qd1a1 b2xa1=R Ra8xa1+ d7d5 Ra1b1 d5d4 Rb1a1 h6h5 Ra1b1 h5h4 Rb1a1 e7e5 Ra1b1 e5e4 Rb1a1 e4xd3 Ra1b1 d3d2 Ke1d1+ d4d3 Rb1a1 d3xe2 Ng1xe2+ Bc8xh3 Rh1g1 Bh3xg2 Rg1h1 Bg2xh1 Bf1g2 Bh1xg2 Ne2g1 Bg2h1 Ng1h3 Bh1g2 Nh3g1 Bg2h1 Ng1h3 Bh1g2 Nh3g1</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.84576231060606055</averageProblemSimilarity>
+      <averageMoveSimilarity>0.42207792207792205</averageMoveSimilarity>
+    </white>
+    <black>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.843505859375</averageProblemSimilarity>
+      <averageMoveSimilarity>0.66015624999999989</averageMoveSimilarity>
+    </black>
+    <result>Draw</result>
+    <pgn>[Event "a12johqv 2015 Examination"]
+[Site "Högskolan i Skövde"]
+[Date "2015.3.27"]
+[Round "?"]
+[White "Andreas Hirsch"]
+[Black "Andreas Hirsch"]
+[Result "½-½"]
+
+a2a3 a7a5 h2h3 a5a4 g2g3 b7b6 h3h4 h7h6 f2f3 b6b5 Ng1h3 b5b4 b2b3 Ng8f6 g3g4 a4xb3 a3a4 b3b2 c2c3 b2xa1=R a4a5 b4b3 d2d3 Ra1xb1 Bc1b2 Rb1a1 h4h5 Ra1b1 Bb2a1 Rb1xa1 Qd1xa1 b3b2 Qa1b1 g7g5 Qb1a1 b2xa1=R Ke1f2+ Ra1b1 Rh1g1 Rb1a1 Rg1h1 Ra1b1 c3c4 Rb1a1 Rh1g1 Ra1b1 a5a6 Rb1a1 Rg1h1 Ra1b1 Bf1g2 Rb1a1 Rh1xa1 Bc8xa6 Ra1b1 c7c5 Rb1h1 Rh8g8 Rh1a1 Rg8h8 Ra1h1 Rh8g8 Rh1a1 Rg8h8 Ra1h1</pgn>
+  </MatchReport>
+  <MatchReport>
+    <white>
+      <playerIndex>0</playerIndex>
+      <averageProblemSimilarity>0.9168526785714286</averageProblemSimilarity>
+      <averageMoveSimilarity>0.40688775510204073</averageMoveSimilarity>
+    </white>
+    <black>
+     
